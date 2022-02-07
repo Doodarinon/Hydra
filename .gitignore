@@ -22,7 +22,6 @@ ExportedObj/
 *.booproj
 *.svd
 *.pdb
-*.log
 *.opendb
 *.VC.db
 
