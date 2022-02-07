@@ -8,10 +8,10 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Walls to Collide with
   - Water
   - UI
-  - 
+  - Objects
   - 
   - 
   - 
