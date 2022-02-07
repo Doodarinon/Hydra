@@ -39,9 +39,9 @@ public class EnemyBaseScript : MonoBehaviour
             
         }
 
-        dead();
+        Dead();
     }
-    public void dead()
+    public void Dead()
     {
         if(EnemyHeatlh <= 0)
         {
