@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyBaseScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float Heatlh = 0;
+    public float EnemyHeatlh = 10;
     public float Damage = 0;
 
 
@@ -38,7 +38,15 @@ public class EnemyBaseScript : MonoBehaviour
            
             
         }
-       
 
+        dead();
     }
+    public void dead()
+    {
+        if(EnemyHeatlh <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }
