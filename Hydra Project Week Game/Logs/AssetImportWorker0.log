@@ -503,3 +503,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 4072.818884 seconds.
+  path: Assets/Assets/Scripts/Player_Controller.cs
+  artifactKey: Guid(0b5e41e00aa016c47a7a6d5a6536c881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Scripts/Player_Controller.cs using Guid(0b5e41e00aa016c47a7a6d5a6536c881) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e87e070e71c30976b993420ca169f202') in 0.010951 seconds 
+  Import took 0.014029 seconds .
+
