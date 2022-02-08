@@ -1,8 +1,15 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 94c316d163f73f54d93c72df7a1c6a38
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
+=======
+guid: 008d71e742b089b46bf17f43628c2920
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+>>>>>>> parent of 3ac5985 (this should work)
   userData: 
   assetBundleName: 
   assetBundleVariant: 
