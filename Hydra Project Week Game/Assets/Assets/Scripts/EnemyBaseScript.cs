@@ -71,7 +71,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Melee")
+        if (other.tag == "Melee" || playerController.timer <= 0)
         {
             TakeDamage();
         }

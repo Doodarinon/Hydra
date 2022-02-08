@@ -523,7 +523,7 @@ GameObject:
   - component: {fileID: 468968764}
   m_Layer: 0
   m_Name: Knife
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -844,13 +844,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef28155d6d8ecb84b9f24e7e2fa75b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHeatlh: 10
-  Damage: 0
+  EnemyHealth: 10
+  damagePerHit: 0
+  attackspeed: 5
   target: {fileID: 920874819}
   raycastLayers:
     serializedVersion: 2
     m_Bits: 0
   SeeDistece: 5
+  playerHealth: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!195 &614443989
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1068,3 +1071,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement_speed: 5
   baseTimer: 5
+  damage: 10
+  timer: 0
