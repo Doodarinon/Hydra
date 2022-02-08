@@ -9,6 +9,7 @@ public class Player_Controller : MonoBehaviour
     Rigidbody rb;
 =======
     public float baseTimer = 5f;
+    public int damage = 10;
     private float timer;
     // public GameObject player;
 
