@@ -535,21 +535,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468968759}
-<<<<<<< HEAD
-  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-=======
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.4528153, y: 0.54, z: 0.21}
->>>>>>> parent of 3ac5985 (this should work)
   m_LocalScale: {x: 0.1, y: 2, z: 0.1}
   m_Children: []
   m_Father: {fileID: 920874819}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
-<<<<<<< HEAD
-  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
-=======
->>>>>>> parent of 3ac5985 (this should work)
 --- !u!65 &468968761
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -622,7 +614,7 @@ Animator:
   m_GameObject: {fileID: 468968759}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 008d71e742b089b46bf17f43628c2920, type: 2}
+  m_Controller: {fileID: 9100000, guid: 94c316d163f73f54d93c72df7a1c6a38, type: 2}
   m_CullingMode: 2
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -855,11 +847,6 @@ MonoBehaviour:
   EnemyHealth: 10
   damagePerHit: 0
   attackspeed: 1
-<<<<<<< HEAD
-  EnemyHeatlh: 10
-  Damage: 0
-=======
->>>>>>> parent of 3ac5985 (this should work)
   target: {fileID: 920874819}
   raycastLayers:
     serializedVersion: 2
@@ -1085,9 +1072,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement_speed: 5
   animator: {fileID: 0}
+  uiInventory: {fileID: 0}
   baseTimer: 5
-  damage: 10
   timer: 0
+  damage: 10
 --- !u!114 &920874821
 MonoBehaviour:
   m_ObjectHideFlags: 0
