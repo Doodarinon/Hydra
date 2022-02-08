@@ -420,11 +420,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 386787653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b5e41e00aa016c47a7a6d5a6536c881, type: 3}
+  m_Script: {fileID: 11500000, guid: 674002ff15ee0e24fb9182f1771f731b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movement_speed: 5
   baseTimer: 5
+  damage: 10
+  timer: 0
 --- !u!54 &386787659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -963,15 +965,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef28155d6d8ecb84b9f24e7e2fa75b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHeatlh: 10
+  EnemyHealth: 10
   damagePerHit: 5
-  attackspeed: 5
+  attackspeed: 1
   target: {fileID: 386787657}
   raycastLayers:
     serializedVersion: 2
     m_Bits: 64
   SeeDistece: 5
   playerHealth: {fileID: 386787660}
+  playerController: {fileID: 0}
 --- !u!1001 &6721295374778989698
 PrefabInstance:
   m_ObjectHideFlags: 0
