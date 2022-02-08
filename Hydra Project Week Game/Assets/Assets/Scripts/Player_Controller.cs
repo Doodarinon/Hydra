@@ -29,7 +29,7 @@ public class Player_Controller : MonoBehaviour
         {
             timer = -Time.deltaTime;
         }
-        if (Input.GetButtonDown("mouse 1") || timer <= 0)
+        if (Input.GetButtonDown("Fire2") || timer <= 0)
         {
             PlayerAttack();
         }
