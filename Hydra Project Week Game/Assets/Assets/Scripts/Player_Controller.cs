@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
     public float movement_speed = 5f;
+    public Animator animator;
 
     Rigidbody rb;
 
@@ -16,12 +17,11 @@ public class Player_Controller : MonoBehaviour
     // private Vector3 pos;
 
  
-    // Start is called before the first frame update
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        // Sets "pos" as the players position
-        // pos = player.transform.position;
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("attack", false);
     }
 
     // Update is called once per frame
@@ -40,17 +40,20 @@ public class Player_Controller : MonoBehaviour
         if (timer > 0)
         {
             timer -= Time.deltaTime;
+            Debug.Log("timer");
         }
         if (Input.GetButtonDown("Fire1") && timer <= 0)
         {
+            Debug.Log("attack");
             PlayerAttack();
         }
     }
 
     void PlayerAttack()
     {
-
+        animator.SetBool("attack", true);
         timer = baseTimer;
+
 
     }
 }
