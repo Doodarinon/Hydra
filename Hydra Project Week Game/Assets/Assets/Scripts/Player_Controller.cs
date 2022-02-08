@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    public float movement_speed = 50f;
+    public float movement_speed = 5f;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -19,8 +19,8 @@ public class Player_Controller : MonoBehaviour
     {
         
         // Movement
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime, 0f, Input.GetAxis("Vertical") * Time.deltaTime);
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical"));
         // movement.Normalize();
-        rb.MovePosition(transform.position + movement * Time.deltaTime);
+        rb.MovePosition(transform.position + movement * movement_speed*  Time.deltaTime);
     }
 }

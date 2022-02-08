@@ -34,7 +34,6 @@ public class Player_Rotation : MonoBehaviour
                 Debug.Log(hit.point.y + transform.position.y - groudnPlane.transform.position.y - (transform.localScale.y / 2));
             }
         }
-
         
     }
 }
