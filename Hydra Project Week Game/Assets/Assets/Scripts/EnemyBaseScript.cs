@@ -9,7 +9,7 @@ public class EnemyBaseScript : MonoBehaviour
     // Start is called before the first frame update
     public float EnemyHealth = 10;
     public float damagePerHit = 0;
-    public float attackspeed = 5f;
+    public int attackspeed = 1;
 
     private float timer;
 
@@ -24,7 +24,7 @@ public class EnemyBaseScript : MonoBehaviour
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
-        
+
     }
 
     // Update is called once per frame
@@ -50,28 +50,31 @@ public class EnemyBaseScript : MonoBehaviour
         }
     }
 
-   
+
 
     private void OnCollisionEnter(Collision collision)
     {
 
         if (collision.collider.CompareTag("Player"))
         {
-           
-            
-                //Debug.Log("yes");
+
+
+            if (timer > 0)
+            {
                 timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    playerHealth.healthPlayer -= damagePerHit;
-                }
-            
+            }
+            if (timer <= 0)
+            {
+                playerHealth.healthPlayer -= damagePerHit;
+                timer = attackspeed;
+            }
+
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Melee")
+        if (other.tag == "Melee" || playerController.timer <= 0)
         {
             TakeDamage();
         }

@@ -10,7 +10,7 @@ public class Player_Controller : MonoBehaviour
 
     public float baseTimer = 5f;
     public int damage = 10;
-    private float timer;
+    public float timer;
     // public GameObject player;
 
     // private Vector3 pos;
@@ -39,9 +39,9 @@ public class Player_Controller : MonoBehaviour
 
         if (timer > 0)
         {
-            timer = -Time.deltaTime;
+            timer -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire2") || timer <= 0)
+        if (Input.GetButtonDown("Fire1") && timer <= 0)
         {
             PlayerAttack();
         }
