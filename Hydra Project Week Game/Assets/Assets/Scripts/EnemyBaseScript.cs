@@ -50,11 +50,14 @@ public class EnemyBaseScript : MonoBehaviour
         }
     }
 
+   
+
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.collider.CompareTag("Player"))
         {
-            //while (collision.collider.CompareTag("Player"))
+           
             
                 //Debug.Log("yes");
                 timer -= Time.deltaTime;
