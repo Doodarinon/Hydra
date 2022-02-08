@@ -30,7 +30,7 @@ public class Player_Controller : MonoBehaviour
 
         
         // Movement
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical"));
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical")).normalized;
         // movement.Normalize();
         rb.MovePosition(transform.position + movement * movement_speed * Time.deltaTime);
 
