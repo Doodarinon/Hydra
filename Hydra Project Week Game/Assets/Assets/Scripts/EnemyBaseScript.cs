@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyBaseScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float EnemyHeatlh = 10;
+    public float EnemyHealth = 10;
     public float damagePerHit = 0;
     public float attackspeed = 5f;
 
@@ -19,6 +19,7 @@ public class EnemyBaseScript : MonoBehaviour
     public float SeeDistece = 5f;
 
     public PlayerHealth playerHealth;
+    public Player_Controller playerController;
 
     void Start()
     {
@@ -30,7 +31,7 @@ public class EnemyBaseScript : MonoBehaviour
     void Update()
     {
 
-        
+
 
         RaycastHit hit;
         // If nothing is between this and target
@@ -46,16 +47,6 @@ public class EnemyBaseScript : MonoBehaviour
         {
 
 
-        }      
-        Dead();
-
-    }
-    public void Dead()
-    {
-        //If Enemys health under 0 
-        if(EnemyHeatlh <= 0)
-        {
-            Destroy(gameObject);
         }
     }
 
@@ -72,6 +63,23 @@ public class EnemyBaseScript : MonoBehaviour
                     playerHealth.healthPlayer -= damagePerHit;
                 }
             
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Melee")
+        {
+            TakeDamage();
+        }
+    }
+
+    private void TakeDamage()
+    {
+        EnemyHealth -= playerController.damage;
+        if (EnemyHealth <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

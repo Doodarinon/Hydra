@@ -7,6 +7,7 @@ public class Player_Controller : MonoBehaviour
 
     public float movement_speed = 5f;
     public float baseTimer = 5f;
+    public int damage = 10;
     private float timer;
     // public GameObject player;
 
