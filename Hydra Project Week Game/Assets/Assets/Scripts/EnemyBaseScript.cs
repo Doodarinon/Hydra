@@ -71,10 +71,9 @@ public class EnemyBaseScript : MonoBehaviour
 
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Melee" || playerController.timer <= 0)
+        if (other.tag == "Weapon" && playerController.timer2 > 1)
         {
             TakeDamage();
         }
@@ -83,6 +82,7 @@ public class EnemyBaseScript : MonoBehaviour
     private void TakeDamage()
     {
         EnemyHealth -= playerController.damage;
+        Debug.Log("took damage");
         if (EnemyHealth <= 0)
         {
             Destroy(gameObject);

@@ -69,7 +69,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: New State
-  m_Speed: 100000
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -9063084005236330789}
@@ -124,7 +124,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: melee_attack
-  m_Speed: 0.1
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5640368040803057951}
@@ -137,7 +137,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 53a41b0406916af4da5b3b349276564a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2a0cafeb67e600647ad94e2a8818cce4, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
