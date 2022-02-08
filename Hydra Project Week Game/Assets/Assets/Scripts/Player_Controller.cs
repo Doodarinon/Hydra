@@ -23,5 +23,14 @@ public class Player_Controller : MonoBehaviour
 
         transform.Translate(movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movement_speed * Input.GetAxis("Vertical") * Time.deltaTime);
 
+        if (true)
+        {
+
+        }
+    }
+
+    void PlayerAttack()
+    {
+
     }
 }
