@@ -40,19 +40,17 @@ public class EnemyBaseScript : MonoBehaviour
             if (Vector3.Distance(transform.position, target.position) < SeeDistece)
                 nav.destination = target.position;
 
-            
+
         }
         else
         {
-           
-            
-        }
 
-        dead();
 
-        
+        }      
+        Dead();
+
     }
-    public void dead()
+    public void Dead()
     {
         //If Enemys health under 0 
         if(EnemyHeatlh <= 0)
