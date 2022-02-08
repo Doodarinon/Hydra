@@ -73,7 +73,7 @@ public class EnemyBaseScript : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Weapon" && playerController.timer2 > 1)
+        if (other.tag == "Weapon" && playerController.timer > 1)
         {
             TakeDamage();
         }

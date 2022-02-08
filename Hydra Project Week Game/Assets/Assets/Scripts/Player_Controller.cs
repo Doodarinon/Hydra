@@ -9,7 +9,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] private UI_Inventory uiInventory;
     private Inventory inventory;
     public float baseTimer = 5f;
-    public float timer2;
+    public float timer;
     Rigidbody rb;
     public int damage = 10;
     void Start()
@@ -26,14 +26,14 @@ public class Player_Controller : MonoBehaviour
         // movement.Normalize();
         rb.MovePosition(transform.position + movement * movement_speed * Time.deltaTime);
 
-        if (timer2 > 0)
+        if (timer > 0)
         {
-            timer2 -= Time.deltaTime;
+            timer -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire2") && timer2 <= 0)
+        if (Input.GetButton("Fire2") && timer <= 0)
         {
             animator.SetBool("attack", true);
-            timer2 = baseTimer;
+            timer = baseTimer;
         }
     }
 }
