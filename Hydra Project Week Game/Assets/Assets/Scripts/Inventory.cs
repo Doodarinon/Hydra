@@ -20,7 +20,24 @@ public class Inventory
     // Allows the player to add items to their inventory.
     public void AddItem(Item item)
     {
-        itemList.Add(item);
+        if (item.IsStackable())
+        {
+            bool itemAlreadyInInventory = false;
+            foreach(Item inventoryItem in itemList)
+            {
+                if (inventoryItem.itemType == item.itemType)
+                    inventoryItem.amount += item.amount;
+                    itemAlreadyInInventory = true;
+            }
+            if (!itemAlreadyInInventory)
+            {
+                itemList.Add(item);
+            }
+        }
+        else
+        {
+            itemList.Add(item);
+        }
         OnItemListChange?.Invoke(this, EventArgs.Empty);
     }
 
