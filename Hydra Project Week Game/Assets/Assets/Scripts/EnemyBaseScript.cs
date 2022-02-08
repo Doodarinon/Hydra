@@ -19,7 +19,7 @@ public class EnemyBaseScript : MonoBehaviour
     public float SeeDistece = 5f;
 
     public PlayerHealth playerHealth;
-    public Player_Controller playerController;
+    private Player_Controller playerController;
 
     void Start()
     {
@@ -30,7 +30,10 @@ public class EnemyBaseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
 
 
         RaycastHit hit;
@@ -51,18 +54,11 @@ public class EnemyBaseScript : MonoBehaviour
     }
 
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-
         if (collision.collider.CompareTag("Player"))
         {
-
-
-            if (timer > 0)
-            {
-                timer -= Time.deltaTime;
-            }
+           
             if (timer <= 0)
             {
                 playerHealth.healthPlayer -= damagePerHit;
