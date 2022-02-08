@@ -393,7 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b0b2972e890df446a8b1847d92aba20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPlayer: 100
 --- !u!114 &329061805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,13 +405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d097c05070a0448b944b57f11d4967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groudnPlane: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  otherMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &329061806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,11 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674002ff15ee0e24fb9182f1771f731b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement_speed: 5
-  uiInventory: {fileID: 1657131866}
-  baseTimer: 5
-  damage: 10
-  timer: 0
 --- !u!136 &329061808
 CapsuleCollider:
   m_ObjectHideFlags: 0
