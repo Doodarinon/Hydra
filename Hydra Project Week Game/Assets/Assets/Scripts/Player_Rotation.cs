@@ -28,7 +28,7 @@ public class Player_Rotation : MonoBehaviour
                 mousePos = Input.mousePosition;
 
                 hit.point = new Vector3(hit.point.x, 
-                    hit.point.y + transform.position.y - groudnPlane.transform.position.y - (transform.localScale.y / 2), hit.point.z);
+                    hit.point.y + transform.position.y, hit.point.z);
                 transform.rotation = Quaternion.LookRotation(hit.point - transform.position);
 
                 Debug.Log(hit.point.y + transform.position.y - groudnPlane.transform.position.y - (transform.localScale.y / 2));
