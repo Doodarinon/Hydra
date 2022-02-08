@@ -6,6 +6,8 @@ public class Player_Controller : MonoBehaviour
 {
 
     public float movement_speed = 5f;
+    public float baseTimer = 5f;
+    private float timer;
     // public GameObject player;
 
     // private Vector3 pos;
@@ -23,14 +25,19 @@ public class Player_Controller : MonoBehaviour
 
         transform.Translate(movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movement_speed * Input.GetAxis("Vertical") * Time.deltaTime);
 
-        if (true)
+        if (timer > 0)
         {
-
+            timer = -Time.deltaTime;
+        }
+        if (Input.GetButtonDown("mouse 1") || timer <= 0)
+        {
+            PlayerAttack();
         }
     }
 
     void PlayerAttack()
     {
 
+        timer = baseTimer;
     }
 }
