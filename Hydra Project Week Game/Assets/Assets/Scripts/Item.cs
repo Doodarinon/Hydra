@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item
 {
+    
     // References to each item type.
     public enum ItemType
     {

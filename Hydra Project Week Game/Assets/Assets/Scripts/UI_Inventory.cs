@@ -28,6 +28,7 @@ public class UI_Inventory : MonoBehaviour
         itemSlotContainer.gameObject.SetActive(state);
     }
 
+    // Sets inventory to current state.
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -37,6 +38,7 @@ public class UI_Inventory : MonoBehaviour
         RefreshInventoryItems();
     }
 
+    // When a change in the inventory occurs, refresh.
     private void Inventory_OnItemListChange(object sender, System.EventArgs e)
     {
         RefreshInventoryItems();
@@ -57,8 +59,6 @@ public class UI_Inventory : MonoBehaviour
         {
            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
-
-            
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
