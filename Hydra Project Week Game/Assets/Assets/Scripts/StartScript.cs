@@ -7,6 +7,7 @@ public class StartScript : MonoBehaviour
 
     public string scene1;
     public string scene2;
+    public string scene3;
     public void SceneSwitch1()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene1);
@@ -14,6 +15,10 @@ public class StartScript : MonoBehaviour
     public void SceneSwitch2()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(scene2);
+    }
+    public void SceneSwitch3()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(scene3);
     }
     public void Quit()
     {
