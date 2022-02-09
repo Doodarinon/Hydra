@@ -10,7 +10,7 @@ public class Player_Controller : MonoBehaviour
 
     public float movementSpeed = 5f;
     Rigidbody rb;
-
+    public Animator animator;
     
     public float dashCooldown;
     public float dash;
@@ -101,7 +101,7 @@ public class Player_Controller : MonoBehaviour
 
     void PlayerAttack()
     {
-
+        animator.Play("melee_attack");
         timer = baseTimer;
 
     }
