@@ -45,19 +45,4 @@ public class Inventory
     {
         return itemList;
     }
-    // For weapons.
-    public void Equip()
-    {
-
-    }
-     // For all items.
-    public void Drop()
-    {
-
-    }
-    //For healthpacks.
-    public void Use()
-    {
-
-    }
 }
