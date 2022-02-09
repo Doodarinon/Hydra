@@ -19,15 +19,8 @@ public class EnemyBaseScript : MonoBehaviour
     public float SeeDistece = 5f;
 
     public PlayerHealth playerHealth;
-<<<<<<< HEAD
     private Player_Controller playerController;
     public HealthBar healthbar;
-    
-    
-=======
-    public Player_Controller playerController;
-
->>>>>>> 011fe7ba42afbbf5f1b9de452a225a3f0de47930
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
