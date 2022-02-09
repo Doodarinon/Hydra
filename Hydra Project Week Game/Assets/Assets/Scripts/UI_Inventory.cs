@@ -57,7 +57,7 @@ public class UI_Inventory : MonoBehaviour
         float itemSlotCellsize = 75f;
         foreach (Item item in inventory.GetItemList())
         {
-           RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
+            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
@@ -68,9 +68,11 @@ public class UI_Inventory : MonoBehaviour
             if (item.amount > 1)
             {
                 text.SetText(item.amount.ToString());
-            }   
+            }
             else
+            {
                 text.SetText("");
+            }      
 
             x++;
             if(x > 4)
