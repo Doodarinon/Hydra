@@ -60,11 +60,14 @@ public class UI_Inventory : MonoBehaviour
            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
 
+            //Use item.
+            inventory.UseItem(item);
+
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
             image.sprite = item.GetSprite();
 
-            TextMeshProUGUI text = itemslotRectTransform.Find("amount").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI text = itemslotRectTransform.Find("amount").GetComponentInChildren<TextMeshProUGUI>();
             if (item.amount > 1)
             {
                 text.SetText(item.amount.ToString());
