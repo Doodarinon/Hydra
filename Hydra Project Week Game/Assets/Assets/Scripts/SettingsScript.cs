@@ -7,7 +7,6 @@ public class SettingsScript : MonoBehaviour
 {
 
     public string scene1;
-    
     GameObject audioIcon_1;
     GameObject audioIcon_2;
     GameObject audioIcon_3;

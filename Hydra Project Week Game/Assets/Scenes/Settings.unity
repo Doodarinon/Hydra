@@ -866,6 +866,7 @@ GameObject:
   - component: {fileID: 1371930219}
   - component: {fileID: 1371930218}
   - component: {fileID: 1371930220}
+  - component: {fileID: 1371930221}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -971,9 +972,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1488531391}
         m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
         m_MethodName: AudioIconChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1488531392}
+        m_TargetAssemblyTypeName: SliderScript, Assembly-CSharp
+        m_MethodName: ChangeSlider
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -996,6 +1009,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene1: 
+--- !u!114 &1371930221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371930216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2c6d95b39ecd04f99277aed9840b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1371930219}
+  sliderValue: 1
 --- !u!1 &1488531389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,6 +1033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1488531390}
   - component: {fileID: 1488531391}
+  - component: {fileID: 1488531392}
   m_Layer: 0
   m_Name: SettingsManager
   m_TagString: Untagged
@@ -1040,6 +1068,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene1: StartMenu
+--- !u!114 &1488531392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488531389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2c6d95b39ecd04f99277aed9840b9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 1371930219}
+  sliderValue: 1
 --- !u!1 &1515814242
 GameObject:
   m_ObjectHideFlags: 0
