@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     public void Update()
     {
         //Destroy object player can change to animation later
-        if (healthPlayer <= 0)
+        if (healthPlayercurent <= 0)
         {
             Destroy(gameObject);
         }

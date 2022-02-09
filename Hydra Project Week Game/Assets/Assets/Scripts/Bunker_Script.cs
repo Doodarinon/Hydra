@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bunker_Script : MonoBehaviour
 {
-
+    public float defaultTimer = 1f;
+    public float timer;
     public float hp;
     public GameObject[] levels;
     private int level;
@@ -17,10 +18,10 @@ public class Bunker_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0)
-        {
-
-        }
+        
+        
+          
+        
     }
 
     public void Upgrade()
@@ -28,5 +29,9 @@ public class Bunker_Script : MonoBehaviour
         level++;
         levels[level].SetActive(true);
         levels[level-1].SetActive(false);
+    }
+    public void TakeDamage()
+    {
+        hp -= 5;
     }
 }
