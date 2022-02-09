@@ -5,56 +5,35 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
     public float movement_speed = 5f;
-    // Showcases inventory.
+    public Animator animator;
     [SerializeField] private UI_Inventory uiInventory;
     private Inventory inventory;
-    
-
-    Rigidbody rb;
-
     public float baseTimer = 5f;
-    private float timer;
-    // public GameObject player;
-
-    // private Vector3 pos;
-
-    // Start is called before the first frame update
+    public float timer;
+    Rigidbody rb;
+    public int damage = 10;
     void Start()
     {
-        // Sets "pos" as the players position
-        // pos = player.transform.position;
-        // Creates inventory.
+        rb = gameObject.GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
         inventory = new Inventory();
-        // Sets UI Inventory to match player's inventory.
         uiInventory.SetInventory(inventory);
     }
-
-    // Update is called once per frame
     void Update()
     {
-
-        
         // Movement
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical")).normalized;
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical"));
         // movement.Normalize();
         rb.MovePosition(transform.position + movement * movement_speed * Time.deltaTime);
 
-
-        // transform.Translate(movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movement_speed * Input.GetAxis("Vertical") * Time.deltaTime);
-
         if (timer > 0)
         {
-            timer = -Time.deltaTime;
+            timer -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("mouse 1") || timer <= 0)
+        if (Input.GetButton("Fire2") && timer <= 0)
         {
-            PlayerAttack();
+            animator.Play("melee_attack");
+            timer = baseTimer;
         }
-    }
-
-    void PlayerAttack()
-    {
-
-        timer = baseTimer;
     }
 }
