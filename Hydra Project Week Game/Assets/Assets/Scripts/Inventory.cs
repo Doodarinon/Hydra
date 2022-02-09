@@ -38,6 +38,7 @@ public class Inventory
                 Debug.Log("Added new stackable item");
             }
         }
+        // If item is not stackable.
         else
         {
             itemList.Add(item);
@@ -64,6 +65,7 @@ public class Inventory
                 itemList.Remove(itemInInventory);
             }
         }
+        // If item is not stackable.
         else
         {
             itemList.Remove(item);

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    
+    // Declares player inventory.
+    private Inventory inventory;
+    [SerializeField] private UI_Inventory uiInventory;
 
     public float movementSpeed = 5f;
     Rigidbody rb;
@@ -26,6 +28,9 @@ public class Player_Controller : MonoBehaviour
 
         // Sets "pos" as the players position
         // pos = player.transform.position;
+
+        // Creates player inventory.
+        inventory = new Inventory();
     }
 
     // Update is called once per frame
