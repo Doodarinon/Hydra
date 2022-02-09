@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 432aade9c8d997443a5a701e49743183
+=======
 guid: 9e6904547d99baa40997af8d4f8141af
+>>>>>>> parent of 3ac5985 (this should work)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

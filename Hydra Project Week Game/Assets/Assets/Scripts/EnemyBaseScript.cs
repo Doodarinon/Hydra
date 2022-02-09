@@ -19,10 +19,15 @@ public class EnemyBaseScript : MonoBehaviour
     public float SeeDistece = 5f;
 
     public PlayerHealth playerHealth;
+<<<<<<< HEAD
     private Player_Controller playerController;
     public HealthBar healthbar;
     
     
+=======
+    public Player_Controller playerController;
+
+>>>>>>> 011fe7ba42afbbf5f1b9de452a225a3f0de47930
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -32,10 +37,7 @@ public class EnemyBaseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
+
 
 
         RaycastHit hit;
@@ -56,11 +58,18 @@ public class EnemyBaseScript : MonoBehaviour
     }
 
 
-    private void OnCollisionStay(Collision collision)
+
+    private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.collider.CompareTag("Player"))
         {
-           
+
+
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
             if (timer <= 0)
             {
                 playerHealth.healthPlayercurent -= damagePerHit;
@@ -73,10 +82,9 @@ public class EnemyBaseScript : MonoBehaviour
 
         }
     }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Melee" || playerController.timer <= 0)
+        if (other.tag == "Weapon" && playerController.timer > 1)
         {
             TakeDamage();
         }
@@ -85,6 +93,7 @@ public class EnemyBaseScript : MonoBehaviour
     private void TakeDamage()
     {
         EnemyHealth -= playerController.damage;
+        Debug.Log("took damage");
         if (EnemyHealth <= 0)
         {
             Destroy(gameObject);

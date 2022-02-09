@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Weapon
+  - GameMusic
+  - Audio_1
+  - Audio_2
+  - Audio_3
   layers:
   - Default
   - TransparentFX
