@@ -47,6 +47,7 @@ public class UI_Inventory : MonoBehaviour
     // Updates the inventory.
     private void RefreshInventoryItems()
     {
+        Debug.Log("Refreshing");
         foreach(Transform child in itemSlotContainer)
         {
             if (child == itemSlotTemplate) continue;
@@ -58,7 +59,7 @@ public class UI_Inventory : MonoBehaviour
         foreach (Item item in inventory.GetItemList())
         {
            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
-            itemslotRectTransform.gameObject.SetActive(true);
+           itemslotRectTransform.gameObject.SetActive(true);
 
             //Use item.
             inventory.UseItem(item);
@@ -67,7 +68,7 @@ public class UI_Inventory : MonoBehaviour
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
             image.sprite = item.GetSprite();
 
-            TextMeshProUGUI text = itemslotRectTransform.Find("amount").GetComponentInChildren<TextMeshProUGUI>();
+            TextMeshProUGUI text = itemslotRectTransform.Find("amount").GetComponent<TextMeshProUGUI>();
             if (item.amount > 1)
             {
                 text.SetText(item.amount.ToString());
