@@ -19,21 +19,17 @@ public class EnemyBaseScript : MonoBehaviour
     public float SeeDistece = 5f;
 
     public PlayerHealth playerHealth;
-    private Player_Controller playerController;
+    public Player_Controller playerController;
     public HealthBar healthbar;
     public Bunker_Script bunkerScript;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
         RaycastHit hit;
         // If nothing is between this and target
         if (!Physics.Linecast(transform.position, target.position, out hit, raycastLayers))
@@ -46,8 +42,6 @@ public class EnemyBaseScript : MonoBehaviour
         }
         else
         {
-
-
         }
     }
 
@@ -87,11 +81,14 @@ public class EnemyBaseScript : MonoBehaviour
             bunkerScript.TakeDamage();
         }
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Weapon" && playerController.timer > 1)
+        if (other != null)
         {
-            TakeDamage();
+            if (other.CompareTag("Weapon") && playerController.timer > 1)
+            {
+                TakeDamage();
+            }
         }
     }
 
