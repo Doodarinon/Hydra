@@ -52,7 +52,7 @@ public class EnemyBaseScript : MonoBehaviour
 
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
 
         if (collision.collider.CompareTag("Player"))
@@ -66,7 +66,7 @@ public class EnemyBaseScript : MonoBehaviour
             if (timer <= 0)
             {
                 playerHealth.healthPlayercurent -= damagePerHit;
-
+                Debug.Log("hej");
                 healthbar.SetHealth(playerHealthcurent.healthPlayercurent);
 
                 timer = attackspeed;
