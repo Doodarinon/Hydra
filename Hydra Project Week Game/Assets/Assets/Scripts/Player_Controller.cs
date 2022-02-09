@@ -32,7 +32,7 @@ public class Player_Controller : MonoBehaviour
         }
         if (Input.GetButton("Fire2") && timer <= 0)
         {
-            animator.SetBool("attack", true);
+            animator.Play("melee_attack");
             timer = baseTimer;
         }
     }

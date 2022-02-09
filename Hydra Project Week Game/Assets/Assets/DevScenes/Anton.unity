@@ -1070,11 +1070,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674002ff15ee0e24fb9182f1771f731b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement_speed: 5
+  movement_speed: 20
   animator: {fileID: 0}
   uiInventory: {fileID: 0}
   baseTimer: 5
-  timer2: 0
+  timer: 0
   damage: 10
 --- !u!114 &920874821
 MonoBehaviour:
