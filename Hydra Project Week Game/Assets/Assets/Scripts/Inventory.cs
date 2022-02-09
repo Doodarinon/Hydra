@@ -8,12 +8,10 @@ public class Inventory
     public event EventHandler OnItemListChange;
     // Creates list to track items in inventory!
     private List<Item> itemList;
-    private Action<Item> useItemAction;
 
     // Gives the player their inventory.
-    public Inventory(Action<Item> useItemAction)
+    public Inventory()
     {
-        this.useItemAction = useItemAction;
         itemList = new List<Item>();
 
         AddItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
@@ -40,7 +38,6 @@ public class Inventory
                 Debug.Log("Added new stackable item");
             }
         }
-        // If item is not stackable.
         else
         {
             itemList.Add(item);
@@ -67,18 +64,11 @@ public class Inventory
                 itemList.Remove(itemInInventory);
             }
         }
-        // If item is not stackable.
         else
         {
             itemList.Remove(item);
         }
         OnItemListChange?.Invoke(this, EventArgs.Empty);
-    }
-
-    // Allows the player to use an item.
-    public void UseItem(Item item)
-    {
-        useItemAction(item);
     }
 
     public List<Item> GetItemList()

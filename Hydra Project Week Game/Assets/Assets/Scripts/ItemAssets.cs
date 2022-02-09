@@ -12,6 +12,6 @@ public class ItemAssets : MonoBehaviour
     }
 
     // Add sprites here (for inventory icons)!
-    public Sprite baseballbatSprite;
-    public Sprite healthpackSprite;
+      public Sprite baseballbatSprite;
+      public Sprite healthpackSprite;
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Player_Gravity : MonoBehaviour
 {
-    new Rigidbody rigidbody;
+    Rigidbody rigidbody;
 
-    public float gravityMultiplier = 1;
+    public float gravity_multiplier = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,6 @@ public class Player_Gravity : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody.AddForce(-transform.up * gravityMultiplier);
+        rigidbody.AddForce(-transform.up * gravity_multiplier);
     }
 }
