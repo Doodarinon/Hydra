@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player_Rotation : MonoBehaviour
 {
-    [SerializeField] private GameObject groudnPlane;
+    [SerializeField] private GameObject groundPlane;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask otherMask;
-    private Vector3 mousePos;
+    protected Vector3 mousePos;
 
 
     // Start is called before the first frame update
@@ -31,7 +31,7 @@ public class Player_Rotation : MonoBehaviour
                     hit.point.y + transform.position.y, hit.point.z);
                 transform.rotation = Quaternion.LookRotation(hit.point - transform.position);
 
-                //Debug.Log(hit.point.y + transform.position.y - groudnPlane.transform.position.y - (transform.localScale.y / 2));
+                // Debug.Log(hit.point.y + transform.position.y - groudnPlane.transform.position.y - (transform.localScale.y / 2));
             }
         }
         
