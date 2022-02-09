@@ -41,6 +41,30 @@ public class Inventory
         OnItemListChange?.Invoke(this, EventArgs.Empty);
     }
 
+    // Allows the player to drop an item.
+    public void RemoveItem(Item item)
+    {
+        if (item.IsStackable())
+        {
+            Item itemInInventory = null;
+            foreach (Item inventoryItem in itemList)
+            {
+                if (inventoryItem.itemType == item.itemType)
+                    inventoryItem.amount -= item.amount;
+                itemInInventory = inventoryItem;
+            }
+            if (itemInInventory != null && itemInInventory.amount <= 0)
+            {
+                itemList.Remove(itemInInventory);
+            }
+        }
+        else
+        {
+            itemList.Remove(item);
+        }
+        OnItemListChange?.Invoke(this, EventArgs.Empty);
+    }
+
     public List<Item> GetItemList()
     {
         return itemList;

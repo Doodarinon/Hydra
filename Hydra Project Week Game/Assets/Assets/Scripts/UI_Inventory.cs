@@ -10,7 +10,6 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
-    private Transform useButton;
     bool state;
 
     // On awake, find existing objects.
@@ -27,7 +26,6 @@ public class UI_Inventory : MonoBehaviour
         state = !state;
         background.gameObject.SetActive(state);
         itemSlotContainer.gameObject.SetActive(state);
-        useButton.gameObject.SetActive(true);
     }
 
     public void SetInventory(Inventory inventory)
@@ -37,22 +35,6 @@ public class UI_Inventory : MonoBehaviour
         inventory.OnItemListChange += Inventory_OnItemListChange;
 
         RefreshInventoryItems();
-    }
-
-    // For weapons.
-    public void Equip()
-    {
-
-    }
-    // For all items.
-    public void Drop()
-    {
-
-    }
-    //For healthpacks.
-    public void Use()
-    {
-
     }
 
     private void Inventory_OnItemListChange(object sender, System.EventArgs e)
@@ -75,6 +57,8 @@ public class UI_Inventory : MonoBehaviour
         {
            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
+
+            
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
