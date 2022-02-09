@@ -11,7 +11,7 @@ public class ItemAssets : MonoBehaviour
         Instance = this;
     }
 
-    // Add sprites here!
+    // Add sprites here (for inventory icons)!
       public Sprite baseballbatSprite;
       public Sprite healthpackSprite;
 }
