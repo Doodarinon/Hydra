@@ -21,6 +21,7 @@ public class EnemyBaseScript : MonoBehaviour
     public PlayerHealth playerHealth;
     public Player_Controller playerController;
     public HealthBar healthbar;
+    public Bunker_Script bunkerScript;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -67,6 +68,17 @@ public class EnemyBaseScript : MonoBehaviour
 
             }
 
+        }
+        if (collision.collider.CompareTag("Bunker"))
+        {
+            bunkerScript.TakeDamage();
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Bunker"))
+        {
+            bunkerScript.TakeDamage();
         }
     }
     private void OnTriggerEnter(Collider other)
