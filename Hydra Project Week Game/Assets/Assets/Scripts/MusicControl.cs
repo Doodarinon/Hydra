@@ -5,16 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class MusicControl : MonoBehaviour
 {
-    private void Awake()
+    
+    private void FixedUpdate()
     {
-        Scene activeScene = SceneManager.GetActiveScene();
-        
+         Scene activeScene = SceneManager.GetActiveScene();
+
         GameObject[] musicObj = GameObject.FindGameObjectsWithTag("GameMusic");
 
-        if (musicObj.Length > 1 || activeScene != SceneManager.GetSceneByName("StartMenu") && activeScene != SceneManager.GetSceneByName("Settings") || activeScene == SceneManager.GetSceneByName("Game"))
+        if (musicObj.Length > 1)
         {
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        else if (activeScene != SceneManager.GetSceneByName("StartMenu") && activeScene != SceneManager.GetSceneByName("Settings"))
+        {
+            Destroy(this.gameObject);
+        }
+        else if (activeScene == SceneManager.GetSceneByName("Game"))
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
 }
