@@ -6,20 +6,20 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public float healthPlayer = 100;
-    public float healthPlayercurent;
+    public float currentPlayerHealth;
 
     public HealthBar healthbar;
     
     public void Start()
     {
 
-        healthPlayercurent += healthPlayer;
+        currentPlayerHealth += healthPlayer;
         SetMaxHealth(healthPlayer);
     }
     public void Update()
     {
         //Destroy object player can change to animation later
-        if (healthPlayercurent <= 0)
+        if (currentPlayerHealth <= 0)
         {
             Destroy(gameObject);
         }
