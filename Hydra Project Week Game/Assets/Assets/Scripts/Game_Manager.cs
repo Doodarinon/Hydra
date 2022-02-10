@@ -5,31 +5,41 @@ using UnityEngine;
 public class Game_Manager : MonoBehaviour
 {
 
+    public Bunker_Script bunker_Script;
     public EnemySpawner enemySpawner;
+    public int enemyBaseAmmount = 3;
+    public int enemyMultiplier = 2;
     public bool startRound;
     bool gameover = false;
-    public int enemyBaseAmmount = 3;
-    public int enemyCount;
-    public int waveNr = 0;
-    public int enemyMultiplier = 2;
-    public Bunker_Script bunker_Script;
+    public int waveNr = 1;
     // Start is called before the first frame update
     void Start()
     {
 
        
     }
+<<<<<<< Updated upstream
 
     // Update is called once per frame
     /*void Update()
+=======
+    void Update()
+>>>>>>> Stashed changes
     {
-        if ( && startRound)
+        if (enemySpawner.enemyCount <= 0 && startRound)
         {
-            enemySpawner.ChooseEnemyAmmount(enemyBaseAmmount, waveNr, enemyMultiplier);
+            SpawnWaves(); 
         }
+<<<<<<< Updated upstream
     }*/
     void SpawnWaves()
+=======
+    }
+    public void SpawnWaves()
+>>>>>>> Stashed changes
     {
-
+        enemySpawner.ChooseEnemyAmmount(enemyBaseAmmount, waveNr, enemyMultiplier);
+        enemySpawner.Randomize();
+        enemySpawner.SpawnEnemys();
     }
 }

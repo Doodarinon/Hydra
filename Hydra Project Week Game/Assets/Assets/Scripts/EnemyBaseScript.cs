@@ -7,12 +7,12 @@ using UnityEngine.AI;
 public class EnemyBaseScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float EnemyHealth = 10;
+    public float enemyHealth = 10;
     public float damagePerHit = 0;
     public int attackspeed = 1;
     public PlayerHealth currentPlayerHealth;
     private float timer;
-
+    bool notDead = false;
     public Transform target;
     public LayerMask raycastLayers;
     private NavMeshAgent nav;
@@ -22,6 +22,7 @@ public class EnemyBaseScript : MonoBehaviour
     public Player_Controller playerController;
     public HealthBar healthbar;
     public Bunker_Script bunkerScript;
+    public EnemySpawner enemySpawner;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
@@ -40,12 +41,9 @@ public class EnemyBaseScript : MonoBehaviour
 
 
         }
-        else
-        {
-        }
     }
 
-
+    //test
 
     private void OnCollisionStay(Collision collision)
     {
@@ -88,27 +86,27 @@ public class EnemyBaseScript : MonoBehaviour
     }*/
 
 
-    
-    
+
+    private void TakeDamage()
+    {
+        enemyHealth -= playerController.damage;
+        if (enemyHealth <= 0 && !notDead)
+        {
+            notDead = true;
+            enemySpawner.enemyCount -= 1;
+            Destroy(gameObject);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other != null)
         {
-            if (other.CompareTag("Weapon") && playerController.timer > 1)
+            if (other.CompareTag("Weapon") && playerController.timer > 3)
             {
                 TakeDamage();
             }
         }
     }
 
-    private void TakeDamage()
-    {
-        EnemyHealth -= playerController.damage;
-        Debug.Log("took damage");
-        if (EnemyHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 }
