@@ -28,6 +28,20 @@ public class UI_Inventory : MonoBehaviour
         itemSlotContainer.gameObject.SetActive(state);
     }
 
+    // Use item when button is clicked.
+    public void OnClickUseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.BaseBallBat:
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
+                break;
+            case Item.ItemType.Healthpack:
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+                break;
+        }
+    }
+
     // Sets inventory to current state.
     public void SetInventory(Inventory inventory)
     {
@@ -60,9 +74,6 @@ public class UI_Inventory : MonoBehaviour
         {
            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
            itemslotRectTransform.gameObject.SetActive(true);
-
-            //Use item.
-            inventory.UseItem(item);
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
