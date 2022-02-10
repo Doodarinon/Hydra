@@ -73,15 +73,22 @@ public class EnemyBaseScript : MonoBehaviour
         {
             bunkerScript.TakeDamage();
         }
+    // Updated upstream
     }
-    private void OnCollisionStay(Collision collision)
+    /*private void OnCollisionStay(Collision collision)
     {
+        // Stashed changes
         if (collision.collider.CompareTag("Bunker"))
         {
             bunkerScript.TakeDamage();
         }
+        // Updated upstream
     }
-    private void OnTriggerEnter(Collider other)
+
+    }
+    
+    // Stashed changes
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other != null)
         {
@@ -100,5 +107,5 @@ public class EnemyBaseScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 }
