@@ -25,6 +25,7 @@ public class Player_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
 
         // Sets "pos" as the players position
