@@ -119,31 +119,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9723175, y: 2.7212386, z: 3.3920188}
   m_Center: {x: -0.07887542, y: 1.343013, z: 0.3067085}
---- !u!114 &7879275276798453063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032835704813770768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef28155d6d8ecb84b9f24e7e2fa75b63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EnemyHealth: 10
-  damagePerHit: 5
-  attackspeed: 1
-  playerHealthcurent: {fileID: 0}
-  target: {fileID: 0}
-  raycastLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  SeeDistece: 5
-  playerHealth: {fileID: 0}
-  playerController: {fileID: 0}
-  healthbar: {fileID: 0}
-  bunkerScript: {fileID: 0}
 --- !u!195 &7879275276798453062
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -166,3 +141,28 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7879275276798453063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7032835704813770768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef28155d6d8ecb84b9f24e7e2fa75b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyHealth: 10
+  damagePerHit: 5
+  attackspeed: 1
+  playerHealthcurent: {fileID: 8821800618255363086, guid: dcdb52e1213575642841758b4eb5fac7, type: 3}
+  target: {fileID: 9072481181989648364, guid: dcdb52e1213575642841758b4eb5fac7, type: 3}
+  raycastLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  SeeDistece: 5
+  playerHealth: {fileID: 8821800618255363086, guid: dcdb52e1213575642841758b4eb5fac7, type: 3}
+  playerController: {fileID: 8821800618255363087, guid: dcdb52e1213575642841758b4eb5fac7, type: 3}
+  healthbar: {fileID: 3709054956656901696, guid: e090f170988057e418de80654e598e87, type: 3}
+  bunkerScript: {fileID: 0}
