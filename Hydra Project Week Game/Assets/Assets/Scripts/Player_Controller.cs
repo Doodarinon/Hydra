@@ -20,7 +20,13 @@ public class Player_Controller : MonoBehaviour
     public float baseTimer = 5f;
     public int damage = 10;
     public float timer;
- 
+
+    private void Awake()
+    {
+        // Creates player inventory.
+        inventory = new Inventory();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +34,6 @@ public class Player_Controller : MonoBehaviour
 
         // Sets "pos" as the players position
         // pos = player.transform.position;
-
-        // Creates player inventory.
-        inventory = new Inventory();
     }
 
     // Update is called once per frame
