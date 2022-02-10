@@ -10,7 +10,7 @@ public class EnemyBaseScript : MonoBehaviour
     public float EnemyHealth = 10;
     public float damagePerHit = 0;
     public int attackspeed = 1;
-    public PlayerHealth playerHealthcurent;
+    public PlayerHealth currentPlayerHealth;
     private float timer;
 
     public Transform target;
@@ -60,9 +60,9 @@ public class EnemyBaseScript : MonoBehaviour
             }
             if (timer <= 0)
             {
-                playerHealth.healthPlayercurent -= damagePerHit;
+                playerHealth.currentPlayerHealth -= damagePerHit;
                 Debug.Log("hej");
-                healthbar.SetHealth(playerHealthcurent.healthPlayercurent);
+                healthbar.SetHealth(currentPlayerHealth.currentPlayerHealth);
 
                 timer = attackspeed;
 
