@@ -11,6 +11,8 @@ public class ItemAssets : MonoBehaviour
         Instance = this;
     }
 
+    public Transform pfItemWorld;
+
     // Add sprites here (for inventory icons)!
       public Sprite baseballbatSprite;
       public Sprite healthpackSprite;

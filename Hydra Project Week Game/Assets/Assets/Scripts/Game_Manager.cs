@@ -21,13 +21,13 @@ public class Game_Manager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         if ( && startRound)
         {
             enemySpawner.ChooseEnemyAmmount(enemyBaseAmmount, waveNr, enemyMultiplier);
         }
-    }
+    }*/
     void SpawnWaves()
     {
 

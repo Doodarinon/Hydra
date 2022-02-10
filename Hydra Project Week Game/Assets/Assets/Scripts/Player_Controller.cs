@@ -36,6 +36,18 @@ public class Player_Controller : MonoBehaviour
         uiInventory.SetInventory(inventory);
     }
 
+    // Pick up items.
+    private void OnTriggerEnter(Collider other)
+    {
+        ItemWorld itemWorld = other.GetComponent<ItemWorld>();
+        if(itemWorld != null)
+        {
+            // Is touching item.
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
