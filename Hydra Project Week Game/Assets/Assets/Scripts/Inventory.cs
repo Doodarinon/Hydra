@@ -14,7 +14,7 @@ public class Inventory
     {
         itemList = new List<Item>();
 
-        AddItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 2 });
         AddItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
         Debug.Log("Added " + itemList.Count + " item(s).");
     }

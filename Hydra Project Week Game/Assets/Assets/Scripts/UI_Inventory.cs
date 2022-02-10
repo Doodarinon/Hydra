@@ -70,7 +70,8 @@ public class UI_Inventory : MonoBehaviour
 
         int x = 0;
         int y = 0;
-        float itemSlotCellsize = 75f;
+        // Distance between slots.
+        float itemSlotCellsize = 75;
         // For ever existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
