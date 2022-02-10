@@ -71,6 +71,7 @@ public class UI_Inventory : MonoBehaviour
         int x = 0;
         int y = 0;
         float itemSlotCellsize = 75f;
+        // For ever existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
@@ -80,13 +81,15 @@ public class UI_Inventory : MonoBehaviour
            Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
            image.sprite = item.GetSprite();
 
-           TextMeshProUGUI text = itemslotRectTransform.Find("amount").GetComponent<TextMeshProUGUI>();
+           TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
            if (item.amount > 1)
            {
                text.SetText(item.amount.ToString());
-           }   
-           else
-               text.SetText("");
+           }
+            else
+            {
+                text.SetText("");
+            }
 
            x++;
            if(x > 4)
