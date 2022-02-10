@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -37,8 +38,6 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         // Movement
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical")).normalized;
         // movement.Normalize();
@@ -85,11 +84,24 @@ public class Player_Controller : MonoBehaviour
 
     }
     
-
     void PlayerAttack()
     {
         animator.Play("melee_attack");
         timer = baseTimer;
+    }
 
+    // Use item.
+    public void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.BaseBallBat:
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
+                break;
+            case Item.ItemType.Healthpack:
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+                break;
+        }
+        Debug.Log("Item has been used.");
     }
 }
