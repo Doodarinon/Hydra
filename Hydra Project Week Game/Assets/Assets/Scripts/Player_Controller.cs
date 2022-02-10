@@ -25,6 +25,7 @@ public class Player_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
 
         // Sets "pos" as the players position
@@ -33,6 +34,17 @@ public class Player_Controller : MonoBehaviour
         // Creates player inventory.
         inventory = new Inventory();
         uiInventory.SetInventory(inventory);
+    }
+
+    // Pick up item.
+    public void OnTriggerEnter(Collider other)
+    {
+        Item item = other.GetComponent<Item>();
+
+        if(item != null)
+        {
+            inventory.AddItem(item);
+        }
     }
 
     // Update is called once per frame

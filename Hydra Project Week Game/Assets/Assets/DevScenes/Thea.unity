@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d097c05070a0448b944b57f11d4967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groudnPlane: {fileID: 0}
+  groundPlane: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 128

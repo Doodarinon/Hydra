@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player_Rotation : MonoBehaviour
 {
-    [SerializeField] private GameObject groudnPlane;
+    [SerializeField] private GameObject groundPlane;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private LayerMask otherMask;
     private Vector3 mousePos;
