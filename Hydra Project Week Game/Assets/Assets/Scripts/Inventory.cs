@@ -8,7 +8,6 @@ public class Inventory
     public event EventHandler OnItemListChange;
     // Creates list to track items in inventory!
     private List<Item> itemList;
-    private Action<Item> useItem;
 
     // Gives the player their inventory.
     public Inventory()
@@ -18,11 +17,6 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
         Debug.Log("Added " + itemList.Count + " item(s).");
-    }
-
-    public Inventory(Action<Item> useItem)
-    {
-        this.useItem = useItem;
     }
 
     // Allows the player to add items to their inventory.
@@ -62,8 +56,11 @@ public class Inventory
             foreach (Item inventoryItem in itemList)
             {
                 if (inventoryItem.itemType == item.itemType)
+                {
                     inventoryItem.amount -= item.amount;
                     itemInInventory = inventoryItem;
+                }
+                    
             }
             // Makes sure player has enough items to remove.
             if (itemInInventory != null && itemInInventory.amount <= 0)

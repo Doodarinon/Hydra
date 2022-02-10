@@ -73,14 +73,24 @@ public class EnemyBaseScript : MonoBehaviour
         {
             bunkerScript.TakeDamage();
         }
+
     }
-    private void OnCollisionStay(Collision collision)
+    /*private void OnCollisionStay(Collision collision)
     {
+
+
+
         if (collision.collider.CompareTag("Bunker"))
         {
             bunkerScript.TakeDamage();
         }
-    }
+
+    }*/
+
+
+    
+    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other != null)
