@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseballbatSprite: {fileID: 21300000, guid: a0665685f22d83f4d83d6dc6fb5fe274, type: 3}
-  healthpackSprite: {fileID: 21300000, guid: ed68e1e5cd6abea4dbe97090749a0def, type: 3}
+  healthpackSprite: {fileID: 21300000, guid: ca5cb364a32dd0b40a1c76f94f44e523, type: 3}
 --- !u!4 &1796333875
 Transform:
   m_ObjectHideFlags: 0
