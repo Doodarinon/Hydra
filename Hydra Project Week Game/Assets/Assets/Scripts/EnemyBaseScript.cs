@@ -10,21 +10,26 @@ public class EnemyBaseScript : MonoBehaviour
     public float enemyHealth = 10;
     public float damagePerHit = 0;
     public int attackspeed = 1;
-    public PlayerHealth currentPlayerHealth;
     private float timer;
     bool notDead = false;
-    public Transform target;
-    public LayerMask raycastLayers;
-    private NavMeshAgent nav;
-    public float SeeDistece = 5f;
+    public LayerMask raycastLayers = 3;
+    private float SeeDistece = 25f;
 
-    public PlayerHealth playerHealth;
     public Player_Controller playerController;
-    public HealthBar healthbar;
     public Bunker_Script bunkerScript;
+    public PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
+    public HealthBar healthBar;
+    private NavMeshAgent nav;
+    public Transform target;
     void Start()
     {
+        playerController = FindObjectOfType<Player_Controller>().GetComponent<Player_Controller>();
+        bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
+        playerHealth = FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
+        enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
+        target = FindObjectOfType<Player_Rotation>().GetComponent<Transform>();
+        healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
         nav = GetComponent<NavMeshAgent>();
     }
 
@@ -60,7 +65,7 @@ public class EnemyBaseScript : MonoBehaviour
             {
                 playerHealth.currentPlayerHealth -= damagePerHit;
                 Debug.Log("hej");
-                healthbar.SetHealth(currentPlayerHealth.currentPlayerHealth);
+                healthBar.SetHealth(playerHealth.currentPlayerHealth);
 
                 timer = attackspeed;
 
@@ -100,13 +105,9 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other != null)
+        if (other.CompareTag("Weapon") && playerController.timer > 3)
         {
-            if (other.CompareTag("Weapon") && playerController.timer > 3)
-            {
-                TakeDamage();
-            }
+            TakeDamage();
         }
     }
-
 }

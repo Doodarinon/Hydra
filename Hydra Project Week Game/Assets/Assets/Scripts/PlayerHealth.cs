@@ -7,37 +7,10 @@ public class PlayerHealth : MonoBehaviour
 {
     public float healthPlayer = 100;
     public float currentPlayerHealth;
-
     public HealthBar healthbar;
-    
-    public void Start()
+
+    private void Start()
     {
-
-        currentPlayerHealth += healthPlayer;
-        SetMaxHealth(healthPlayer);
+        healthbar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
     }
-    public void Update()
-    {
-        //Destroy object player can change to animation later
-        if (currentPlayerHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-
-    }
-
-    public Slider slider;
-    public void SetHealth(float health)
-    {
-        slider.value = health;
-    }
-
-    public void SetMaxHealth(float health)
-    {
-        slider.value = health;
-    }
-
-    
-
-
 }

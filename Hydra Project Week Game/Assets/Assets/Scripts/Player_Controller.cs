@@ -9,52 +9,47 @@ public class Player_Controller : MonoBehaviour
     private Inventory inventory;
     [SerializeField] private UI_Inventory uiInventory;
 
-    public float movementSpeed = 5f;
+    private float movementSpeed = 5f;
     Rigidbody rb;
     public Animator animator;
-
+    private Vector3 movement;
     public float dashCooldown;
     public float dash;
-    // private Vector3 dashLength;
-
-
     public float baseTimer = 5f;
     public int damage = 10;
     public float timer;
-
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
-
-        // Sets "pos" as the players position
-        // pos = player.transform.position;
-
         // Creates player inventory.
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+        //inventory = new Inventory();
+        //uiInventory.SetInventory(inventory);
     }
 
     // Pick up item.
     public void OnTriggerEnter(Collider other)
     {
+        // The following code below breaks the entire game unless what you are colliding with is an item.
+        // Suggested change: Change the if statement below to: if (other.CampareTag("Item") && other != null)
+        //Then add a tag called "Item" and have that tag be applied to all the prefabs of items
+        /*
+         
         Item item = other.GetComponent<Item>();
 
         if(item != null)
         {
             inventory.AddItem(item);
-        }
+        }*/
     }
 
     // Update is called once per frame
     void Update()
     {
         // Movement
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
 
-        // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
-        rb.MovePosition(transform.position + movement * movementSpeed * Time.deltaTime);
+
 
 
         // transform.Translate(movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movement_speed * Input.GetAxis("Vertical") * Time.deltaTime);
@@ -71,6 +66,8 @@ public class Player_Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
+        rb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
         dashCooldown -= Time.deltaTime;
         // Debug.Log(dashCooldown);
         if (Input.GetKeyDown("space"))

@@ -41,8 +41,8 @@ InputManager:
     m_Name: Fire1
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
-    positiveButton: left ctrl
+    negativeButton: mouse 0
+    positiveButton: mouse 0
     altNegativeButton: 
     altPositiveButton: mouse 0
     gravity: 1000

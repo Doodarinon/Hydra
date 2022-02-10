@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> tempEnemies = new List<GameObject>();
     public GameObject[] spawnPoints;
-    List<GameObject> tempEnemies;
-    int tempEnemiesCount;
-    List<GameObject> enemies;
+    public List<int> randoNumbers = new List<int>();
     public GameObject enemy1;
     public GameObject enemy2;
-     public List<int> randoNumbers;
-    bool randomizing;
     public int enemyCount;
-    //test
+    int tempEnemiesCount;
+    bool randomizing;
+
+    // Please for the love of god dont look below here unless you want a stroke
+
     public void ChooseEnemyAmmount(int enemyBaseAmmount, int waveNr, int enemyMultiplier)
     {
+        tempEnemies.Clear();
         int enemy1MaxAmmount = enemyBaseAmmount * waveNr * enemyMultiplier;
         int enemy2MaxAmmount = enemyBaseAmmount * waveNr * enemyMultiplier;
-        Debug.Log(enemy1MaxAmmount);
         for (int i = 0; i < enemy1MaxAmmount; i++)
         {
             tempEnemies.Add(enemy1);
-            Debug.Log("Added enemy 1");
         }
-        for (int i = enemy1MaxAmmount; i <= enemy1MaxAmmount + enemy2MaxAmmount; i++)
+        for (int i = 0; i < enemy2MaxAmmount; i++)
         {
             tempEnemies.Add(enemy2);
-            Debug.Log("Added enemy 2");
         }
     }
-    public void Randomize() // Please for the love of god dont look below here unless you want a stroke
+    public void Randomize()
     {
         tempEnemiesCount = 0;
         int enemyCounter;
@@ -40,7 +40,8 @@ public class EnemySpawner : MonoBehaviour
         int randomNumber;
         randomizing = true;
         bool sequenceComplete = false;
-        foreach(GameObject gameObject in tempEnemies)
+        enemies.Clear();
+        foreach (GameObject gameObject in tempEnemies)
         {
             tempEnemiesCount++;
         }
@@ -64,7 +65,6 @@ public class EnemySpawner : MonoBehaviour
                 enemies.Add(tempEnemies[randomNumber]);
                 randoNumbers.Add(randomNumber);
                 sequenceComplete = false;
-                break;
             }
             else if (randoNumbers.Count == tempEnemiesCount)
             {
@@ -84,11 +84,24 @@ public class EnemySpawner : MonoBehaviour
     }
     public void SpawnEnemys()
     {
+        int i = 0;
         int counter = 0;
-        foreach (GameObject gameObject in enemies)
+        for (i = 0; i < enemies.Count; i++)
         {
-            //enemyCount++;
-            Instantiate(gameObject, spawnPoints[counter].transform.position, spawnPoints[counter].transform.rotation);
+            if (counter == spawnPoints.Length)
+            {
+                counter = 0;
+            }
+            StartCoroutine(SlowDown(2, counter, i));
+            enemyCount++;
+            counter++;
         }
+
+    }
+    private IEnumerator<WaitForSeconds> SlowDown(float slowDownTimer, int counter, int i)
+    {
+        Debug.Log(counter);
+        Instantiate(enemies[i], spawnPoints[counter].transform.position, spawnPoints[counter].transform.rotation);
+        yield return new WaitForSeconds(slowDownTimer);
     }
 }
