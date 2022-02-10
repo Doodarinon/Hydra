@@ -36,15 +36,14 @@ public class Player_Controller : MonoBehaviour
         uiInventory.SetInventory(inventory);
     }
 
-    // Pick up items.
-    private void OnTriggerEnter(Collider other)
+    // Pick up item.
+    public void OnTriggerEnter(Collider other)
     {
-        ItemWorld itemWorld = other.GetComponent<ItemWorld>();
-        if(itemWorld != null)
+        Item item = other.GetComponent<Item>();
+
+        if(item != null)
         {
-            // Is touching item.
-            inventory.AddItem(itemWorld.GetItem());
-            itemWorld.DestroySelf();
+            inventory.AddItem(item);
         }
     }
 
