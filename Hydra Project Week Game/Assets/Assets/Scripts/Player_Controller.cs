@@ -40,7 +40,8 @@ public class Player_Controller : MonoBehaviour
     {
         // Movement
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical")).normalized;
-        // movement.Normalize();
+        
+        // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
         rb.MovePosition(transform.position + movement * movementSpeed * Time.deltaTime);
 
 
