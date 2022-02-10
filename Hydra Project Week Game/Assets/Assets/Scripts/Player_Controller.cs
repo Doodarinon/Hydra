@@ -20,7 +20,7 @@ public class Player_Controller : MonoBehaviour
     public float baseTimer = 5f;
     public int damage = 10;
     public float timer;
- 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,21 +30,8 @@ public class Player_Controller : MonoBehaviour
         // pos = player.transform.position;
 
         // Creates player inventory.
-        inventory = new Inventory(UseItem);
-    }
-
-    // Allows player to use items.
-    private void UseItem(Item item)
-    {
-        switch (item.itemType)
-        {
-            case Item.ItemType.BaseBallBat:
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
-                break;
-            case Item.ItemType.Healthpack:
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-                break;
-        }
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     // Update is called once per frame
