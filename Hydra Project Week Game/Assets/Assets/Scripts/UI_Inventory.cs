@@ -28,20 +28,6 @@ public class UI_Inventory : MonoBehaviour
         itemSlotContainer.gameObject.SetActive(state);
     }
 
-    // Use item when button is clicked.
-    public void UseItem(Item item)
-    {
-        switch (item.itemType)
-        {
-            case Item.ItemType.BaseBallBat:
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
-                break;
-            case Item.ItemType.Healthpack:
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-                break;
-        }
-    }
-
     // Sets inventory to current state.
     public void SetInventory(Inventory inventory)
     {
@@ -61,16 +47,16 @@ public class UI_Inventory : MonoBehaviour
     // Updates the inventory.
     private void RefreshInventoryItems()
     {
-        Debug.Log("Refreshing");
         foreach(Transform child in itemSlotContainer)
         {
             if (child == itemSlotTemplate) continue;
             Destroy(child.gameObject);
         }
 
-        int x = 0;
-        int y = 0;
-        float itemSlotCellsize = 75f;
+        float x = -0.4f;
+        float y = 0.4f;
+        // Distance between slots.
+        float itemSlotCellsize = 70f;
         // For ever existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
@@ -82,7 +68,7 @@ public class UI_Inventory : MonoBehaviour
            image.sprite = item.GetSprite();
 
            TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
-           if (item.amount > 1)
+           if (item.amount > 1 && item.IsStackable())
            {
                text.SetText(item.amount.ToString());
            }
