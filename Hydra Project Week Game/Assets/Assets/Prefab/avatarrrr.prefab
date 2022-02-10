@@ -486,7 +486,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
@@ -517,9 +517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthPlayer: 100
-  healthPlayercurent: 0
-  healthbar: {fileID: 0}
-  slider: {fileID: 0}
+  currentPlayerHealth: 0
+  healthbar: {fileID: 3709054956656901696, guid: e090f170988057e418de80654e598e87, type: 3}
+  slider: {fileID: 3709054956656901697, guid: e090f170988057e418de80654e598e87, type: 3}
 --- !u!114 &8821800618255363087
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,11 +12,11 @@ public class Player_Controller : MonoBehaviour
     public float movementSpeed = 5f;
     Rigidbody rb;
     public Animator animator;
-    
+
     public float dashCooldown;
     public float dash;
     // private Vector3 dashLength;
-   
+
 
     public float baseTimer = 5f;
     public int damage = 10;
@@ -39,8 +39,8 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
         // Movement
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal") , 0f, Input.GetAxis("Vertical")).normalized;
-        
+        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
+
         // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
         rb.MovePosition(transform.position + movement * movementSpeed * Time.deltaTime);
 
@@ -56,27 +56,27 @@ public class Player_Controller : MonoBehaviour
             PlayerAttack();
         }
     }
-    
+
     private void FixedUpdate()
     {
         dashCooldown -= Time.deltaTime;
         // Debug.Log(dashCooldown);
-        PlayerDash();
+        if (Input.GetKeyDown("space"))
+        {
+            PlayerDash();
+        }
     }
 
     void PlayerDash()
     {
         if (dashCooldown <= 0)
         {
-            if (Input.GetKeyDown("space"))
-            {
-                // Vector3 mousePos = new Vector3(Input.mousePosition.x, transform.position.y, Input.mousePosition.z);
-                rb.AddRelativeForce(Vector3.forward * dash, ForceMode.Impulse);
+            // Vector3 mousePos = new Vector3(Input.mousePosition.x, transform.position.y, Input.mousePosition.z);
+            rb.AddRelativeForce(Vector3.forward * dash, ForceMode.Impulse);
 
-                dashCooldown = 2f;
+            dashCooldown = 2f;
 
-                Debug.Log("Dash Succesful");
-            }
+            Debug.Log("Dash Succesful");
         }
         else
         {
@@ -84,7 +84,7 @@ public class Player_Controller : MonoBehaviour
         }
 
     }
-    
+
     void PlayerAttack()
     {
         animator.Play("melee_attack");

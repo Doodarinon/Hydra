@@ -156,7 +156,7 @@ MonoBehaviour:
   EnemyHealth: 10
   damagePerHit: 5
   attackspeed: 1
-  playerHealthcurent: {fileID: 8821800618255363086, guid: dcdb52e1213575642841758b4eb5fac7, type: 3}
+  currentPlayerHealth: {fileID: 8821800618255363086, guid: dcdb52e1213575642841758b4eb5fac7, type: 3}
   target: {fileID: 9072481181989648364, guid: dcdb52e1213575642841758b4eb5fac7, type: 3}
   raycastLayers:
     serializedVersion: 2
