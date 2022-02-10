@@ -33,7 +33,6 @@ public class Player_Controller : MonoBehaviour
         inventory = new Inventory();
     }
 
-
     // Update is called once per frame
     void Update()
     {
