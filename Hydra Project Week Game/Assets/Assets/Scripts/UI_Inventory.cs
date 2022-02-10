@@ -52,32 +52,37 @@ public class UI_Inventory : MonoBehaviour
             if (child == itemSlotTemplate) continue;
             Destroy(child.gameObject);
         }
-        int x = 0;
-        int y = 0;
-        float itemSlotCellsize = 75f;
+
+        float x = -0.4f;
+        float y = 0.4f;
+        // Distance between slots.
+        float itemSlotCellsize = 70f;
+        // For ever existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
-            itemslotRectTransform.gameObject.SetActive(true);
+           itemslotRectTransform.gameObject.SetActive(true);
 
-            itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
-            Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
-            image.sprite = item.GetSprite();
+           itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
+           Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
+           image.sprite = item.GetSprite();
 
-            TextMeshProUGUI text = itemslotRectTransform.Find("amount").GetComponent<TextMeshProUGUI>();
-            if (item.amount > 1)
-            {
-                text.SetText(item.amount.ToString());
-            }   
+           TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
+           if (item.amount > 1 && item.IsStackable())
+           {
+               text.SetText(item.amount.ToString());
+           }
             else
-                text.SetText("");
-
-            x++;
-            if(x > 4)
             {
-                x = 0;
-                y++;
+                text.SetText("");
             }
+
+           x++;
+           if(x > 4)
+           {
+               x = 0;
+               y++;
+           }
         }
     }
 }

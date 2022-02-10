@@ -18,6 +18,7 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
         Debug.Log("Added " + itemList.Count + " item(s).");
     }
+
     // Allows the player to add items to their inventory.
     public void AddItem(Item item)
     {
@@ -55,8 +56,11 @@ public class Inventory
             foreach (Item inventoryItem in itemList)
             {
                 if (inventoryItem.itemType == item.itemType)
+                {
                     inventoryItem.amount -= item.amount;
                     itemInInventory = inventoryItem;
+                }
+                    
             }
             // Makes sure player has enough items to remove.
             if (itemInInventory != null && itemInInventory.amount <= 0)

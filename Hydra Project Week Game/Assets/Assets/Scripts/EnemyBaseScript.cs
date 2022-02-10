@@ -19,20 +19,17 @@ public class EnemyBaseScript : MonoBehaviour
     public float SeeDistece = 5f;
 
     public PlayerHealth playerHealth;
-    private Player_Controller playerController;
+    public Player_Controller playerController;
     public HealthBar healthbar;
+    public Bunker_Script bunkerScript;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
         RaycastHit hit;
         // If nothing is between this and target
         if (!Physics.Linecast(transform.position, target.position, out hit, raycastLayers))
@@ -45,14 +42,12 @@ public class EnemyBaseScript : MonoBehaviour
         }
         else
         {
-
-
         }
     }
 
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
 
         if (collision.collider.CompareTag("Player"))
@@ -66,7 +61,7 @@ public class EnemyBaseScript : MonoBehaviour
             if (timer <= 0)
             {
                 playerHealth.healthPlayercurent -= damagePerHit;
-
+                Debug.Log("hej");
                 healthbar.SetHealth(playerHealthcurent.healthPlayercurent);
 
                 timer = attackspeed;
@@ -74,12 +69,36 @@ public class EnemyBaseScript : MonoBehaviour
             }
 
         }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Weapon" && playerController.timer > 1)
+        if (collision.collider.CompareTag("Bunker"))
         {
-            TakeDamage();
+            bunkerScript.TakeDamage();
+        }
+
+    }
+    /*private void OnCollisionStay(Collision collision)
+    {
+
+
+
+        if (collision.collider.CompareTag("Bunker"))
+        {
+            bunkerScript.TakeDamage();
+        }
+
+    }*/
+
+
+    
+    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null)
+        {
+            if (other.CompareTag("Weapon") && playerController.timer > 1)
+            {
+                TakeDamage();
+            }
         }
     }
 
