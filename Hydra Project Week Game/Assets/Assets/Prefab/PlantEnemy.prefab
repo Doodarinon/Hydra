@@ -131,10 +131,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef28155d6d8ecb84b9f24e7e2fa75b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyHeatlh: 10
-  Damage: 0
-  target: {fileID: 0}
+  enemyHealth: 10
+  damagePerHit: 0
+  attackspeed: 1
   raycastLayers:
     serializedVersion: 2
     m_Bits: 64
-  SeeDistece: 5
+  playerController: {fileID: 0}
+  bunkerScript: {fileID: 0}
+  playerHealth: {fileID: 0}
+  enemySpawner: {fileID: 0}
+  healthBar: {fileID: 0}
+  target: {fileID: 0}

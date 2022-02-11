@@ -11,6 +11,7 @@ TagManager:
   - Audio_2
   - Audio_3
   - Bunker
+  - Item
   layers:
   - Default
   - TransparentFX

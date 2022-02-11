@@ -23,24 +23,19 @@ public class Player_Controller : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         // Creates player inventory.
-        //inventory = new Inventory();
-        //uiInventory.SetInventory(inventory);
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     // Pick up item.
     public void OnTriggerEnter(Collider other)
-    {
-        // The following code below breaks the entire game unless what you are colliding with is an item.
-        // Suggested change: Change the if statement below to: if (other.CampareTag("Item") && other != null)
-        //Then add a tag called "Item" and have that tag be applied to all the prefabs of items
-        /*
-         
+    {    
         Item item = other.GetComponent<Item>();
 
-        if(item != null)
+        if(other. CompareTag("Item") && other != null)
         {
             inventory.AddItem(item);
-        }*/
+        }
     }
 
     // Update is called once per frame
@@ -48,9 +43,6 @@ public class Player_Controller : MonoBehaviour
     {
         // Movement
         movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
-
-
-
 
         // transform.Translate(movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movement_speed * Input.GetAxis("Vertical") * Time.deltaTime);
 

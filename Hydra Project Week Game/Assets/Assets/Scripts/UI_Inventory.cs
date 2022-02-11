@@ -10,6 +10,7 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
+    public Button useItemButton;
     bool state;
 
     // On awake, find existing objects.
@@ -60,18 +61,20 @@ public class UI_Inventory : MonoBehaviour
         // For ever existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
-           RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
-           itemslotRectTransform.gameObject.SetActive(true);
+            RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
+            itemslotRectTransform.gameObject.SetActive(true);
 
-           itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
-           Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
-           image.sprite = item.GetSprite();
+            useItemButton.onClick.AddListener(() => { GetComponent<Player_Controller>().UseItem(item); });
 
-           TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
-           if (item.amount > 1 && item.IsStackable())
-           {
-               text.SetText(item.amount.ToString());
-           }
+            itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
+            Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
+            image.sprite = item.GetSprite();
+
+            TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
+            if (item.amount > 1 && item.IsStackable())
+            {
+                text.SetText(item.amount.ToString());
+            }
             else
             {
                 text.SetText("");
