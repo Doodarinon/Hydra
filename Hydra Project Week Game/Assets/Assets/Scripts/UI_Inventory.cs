@@ -19,6 +19,10 @@ public class UI_Inventory : MonoBehaviour
         itemSlotContainer = transform.Find("itemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
         background = transform.Find("Background");
+        foreach(Item item in inventory.GetItemList())
+        {
+            useItemButton.onClick.AddListener(() => { GetComponent<Player_Controller>().UseItem(item); });
+        }
     }
 
     // Shows or hides inventory depending on what button the player clicks.
@@ -63,8 +67,6 @@ public class UI_Inventory : MonoBehaviour
         {
             RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
-
-            useItemButton.onClick.AddListener(() => { GetComponent<Player_Controller>().UseItem(item); });
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
