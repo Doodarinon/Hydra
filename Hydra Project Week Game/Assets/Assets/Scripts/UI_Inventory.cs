@@ -19,10 +19,6 @@ public class UI_Inventory : MonoBehaviour
         itemSlotContainer = transform.Find("itemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
         background = transform.Find("Background");
-        foreach(Item item in inventory.GetItemList())
-        {
-            useItemButton.onClick.AddListener(() => { GetComponent<Player_Controller>().UseItem(item); });
-        }
     }
 
     // Shows or hides inventory depending on what button the player clicks.
@@ -62,11 +58,13 @@ public class UI_Inventory : MonoBehaviour
         float y = 0.4f;
         // Distance between slots.
         float itemSlotCellsize = 70f;
-        // For ever existing item, create an item slot.
+        // For every existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
             RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
+
+            useItemButton.onClick.AddListener(() => GetComponent<Player_Controller>().UseItem(item));
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
@@ -85,7 +83,7 @@ public class UI_Inventory : MonoBehaviour
            x++;
            if(x > 4)
            {
-               x = 0;
+               x = -0.4f;
                y++;
            }
         }

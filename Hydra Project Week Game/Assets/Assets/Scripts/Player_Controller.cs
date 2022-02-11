@@ -27,16 +27,17 @@ public class Player_Controller : MonoBehaviour
         uiInventory.SetInventory(inventory);
     }
 
-    // Pick up item.
+    /*// Pick up item.
     public void OnTriggerEnter(Collider other)
-    {    
+    {
         Item item = other.GetComponent<Item>();
 
-        if(other. CompareTag("Item") && other != null)
+        if(other.CompareTag("Item") && other != null)
         {
             inventory.AddItem(item);
+            Destroy(gameObject);
         }
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
@@ -101,6 +102,7 @@ public class Player_Controller : MonoBehaviour
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
                 break;
             case Item.ItemType.Healthpack:
+                /*GetComponent<PlayerHealth>().currentPlayerHealth += 10;*/
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
                 break;
         }
