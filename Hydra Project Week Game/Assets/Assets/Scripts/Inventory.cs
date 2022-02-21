@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Inventory
 {
-    public event EventHandler OnItemListChange;
     // Creates list to track items in inventory!
+    public event EventHandler OnItemListChange;
     private List<Item> itemList;
 
     // Gives the player their inventory.
@@ -59,8 +59,7 @@ public class Inventory
                 {
                     inventoryItem.amount -= item.amount;
                     itemInInventory = inventoryItem;
-                }
-                    
+                }        
             }
             // Makes sure player has enough items to remove.
             if (itemInInventory != null && itemInInventory.amount <= 0)

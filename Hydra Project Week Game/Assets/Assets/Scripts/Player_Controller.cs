@@ -52,6 +52,12 @@ public class Player_Controller : MonoBehaviour
         if(other.CompareTag("Upgrade"))
         {
             inCollider = false;
+            }
+
+        if(other.CompareTag("Item") && other != null)
+        {
+            inventory.AddItem(item);
+            Destroy(gameObject);
         }
     }
 
@@ -124,6 +130,7 @@ public class Player_Controller : MonoBehaviour
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
                 break;
             case Item.ItemType.Healthpack:
+                /*GetComponent<PlayerHealth>().currentPlayerHealth += 10;*/
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
                 break;
         }
