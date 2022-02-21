@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StartScript : MonoBehaviour
 {
-
+    /*
     public string scene1;
     public string scene2;
     public string scene3;
@@ -27,5 +27,5 @@ public class StartScript : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 
         Application.Quit();
-    }
+    } */
 }

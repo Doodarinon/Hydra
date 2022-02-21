@@ -13,7 +13,7 @@ public class EnemyBaseScript : MonoBehaviour
     private float timer;
     bool notDead = false;
     public LayerMask raycastLayers = 3;
-    private float SeeDistece = 25f;
+    private float SeeDistece = 250f;
 
     public Player_Controller playerController;
     public Bunker_Script bunkerScript;
@@ -28,7 +28,7 @@ public class EnemyBaseScript : MonoBehaviour
         bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
         playerHealth = FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
         enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
-        target = FindObjectOfType<Player_Rotation>().GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
         nav = GetComponent<NavMeshAgent>();
     }
@@ -105,7 +105,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon") && playerController.timer > 3)
+        if (other.CompareTag("Weapon") && playerController.timer > 0)
         {
             TakeDamage();
         }

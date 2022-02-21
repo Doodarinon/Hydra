@@ -12,6 +12,7 @@ TagManager:
   - Audio_3
   - Bunker
   - Item
+  - Upgrade
   layers:
   - Default
   - TransparentFX

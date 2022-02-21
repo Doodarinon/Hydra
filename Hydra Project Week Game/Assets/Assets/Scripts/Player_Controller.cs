@@ -6,35 +6,52 @@ using UnityEngine.UI;
 public class Player_Controller : MonoBehaviour
 {
     // Declares player inventory.
-    private Inventory inventory;
     [SerializeField] private UI_Inventory uiInventory;
-
+    public Bunker_Script bunkerScript;
     private float movementSpeed = 5f;
-    Rigidbody rb;
-    public Animator animator;
-    private Vector3 movement;
+    private Inventory inventory;
+    public float baseTimer = 1f;
     public float dashCooldown;
-    public float dash;
-    public float baseTimer = 5f;
+    private Vector3 movement;
+    public Animator animator;
+    [SerializeField] private bool inCollider;
     public int damage = 10;
     public float timer;
+    public float dash;
+    Rigidbody rb;
+
     void Start()
     {
+        bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
         animator = GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         // Creates player inventory.
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+       // inventory = new Inventory();
+       // uiInventory.SetInventory(inventory);
     }
 
     // Pick up item.
     public void OnTriggerEnter(Collider other)
-    {    
-        Item item = other.GetComponent<Item>();
-
-        if(other. CompareTag("Item") && other != null)
+    {
+        if (other.CompareTag("Upgrade"))
         {
-            inventory.AddItem(item);
+            inCollider = true;
+        }
+            //Item item = other.GetComponent<Item>();
+
+        if (other.CompareTag("Item") && other != null)
+        {
+           // inventory.AddItem(item);
+        }
+        
+
+        
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Upgrade"))
+        {
+            inCollider = false;
         }
     }
 
@@ -43,7 +60,6 @@ public class Player_Controller : MonoBehaviour
     {
         // Movement
         movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
-
         // transform.Translate(movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movement_speed * Input.GetAxis("Vertical") * Time.deltaTime);
 
         if (timer > 0)
@@ -90,6 +106,13 @@ public class Player_Controller : MonoBehaviour
     {
         animator.Play("melee_attack");
         timer = baseTimer;
+    }
+    public void ButtonClick()
+    {
+        if (inCollider)
+        {
+            bunkerScript.Upgrade();
+        }
     }
 
     // Use item.

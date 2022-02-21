@@ -7,7 +7,7 @@ public class Game_Manager : MonoBehaviour
 
     public Bunker_Script bunker_Script;
     public EnemySpawner enemySpawner;
-    int enemyBaseAmmount = 3;
+    int enemyBaseAmmount = 250;
     int enemyMultiplier = 2;
     public bool startRound;
     bool gameover = false;
