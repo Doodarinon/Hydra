@@ -56,7 +56,11 @@ public class Player_Controller : MonoBehaviour
 
         if(other.CompareTag("Item") && other != null)
         {
-            inventory.AddItem(item);
+            if (other.TryGetComponent(out Item item))
+            {
+
+                inventory.AddItem(item);
+            }
             Destroy(gameObject);
         }
     }
