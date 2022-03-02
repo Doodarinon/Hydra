@@ -22,6 +22,7 @@ public class Inventory
     // Allows the player to add items to their inventory.
     public void AddItem(Item item)
     {
+        // If the item is stackable.
         if (item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
@@ -39,17 +40,20 @@ public class Inventory
                 Debug.Log("Added new stackable item");
             }
         }
+        // If the item is NOT stackable.
         else
         {
             itemList.Add(item);
             Debug.Log("Added new non-stackable item");
         }
+        // Invokes even OnItemListChange, which refreshes the inventory after a change.
         OnItemListChange?.Invoke(this, EventArgs.Empty);
     }
 
     // Allows the player to remove an item.
     public void RemoveItem(Item item)
     {
+        // If item is stackable it counts the amount you have (if any) to then remove only one (if you have multiple of the same).
         if (item.IsStackable())
         {
             Item itemInInventory = null;
@@ -61,7 +65,7 @@ public class Inventory
                     itemInInventory = inventoryItem;
                 }        
             }
-            // Makes sure player has enough items to remove.
+            // Makes sure player actually has enough items to remove.
             if (itemInInventory != null && itemInInventory.amount <= 0)
             {
                 itemList.Remove(itemInInventory);

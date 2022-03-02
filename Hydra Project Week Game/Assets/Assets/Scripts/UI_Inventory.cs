@@ -54,27 +54,34 @@ public class UI_Inventory : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        // Code only for the inventory's visualization.
         float x = -0.4f;
         float y = 0.4f;
+
         // Distance between slots.
         float itemSlotCellsize = 70f;
+
         // For every existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
             RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
 
+            // When item is clicked, the player use said item.
             useItemButton.onClick.AddListener(() => GetComponent<Player_Controller>().UseItem(item));
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
+            // Each item has their own assigned sprite. The item image is in turn determinded by this.
             image.sprite = item.GetSprite();
 
             TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
+            // If item is stackable and the player has more than one of that item.
             if (item.amount > 1 && item.IsStackable())
             {
                 text.SetText(item.amount.ToString());
             }
+            // Otherwise, the text is empty.
             else
             {
                 text.SetText("");
