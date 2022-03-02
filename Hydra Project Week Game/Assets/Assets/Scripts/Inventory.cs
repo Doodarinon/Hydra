@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages the methods which cause changes in the inventory, such as adding items.
+/// </summary>
 public class Inventory
 {
-    // Creates list to track items in inventory!
+    // Decides what action to take after an inventory change.
     public event EventHandler OnItemListChange;
+    // Creates list to track items in inventory!
     private List<Item> itemList;
 
     // Gives the player their inventory.
@@ -19,7 +23,10 @@ public class Inventory
         Debug.Log("Added " + itemList.Count + " item(s).");
     }
 
-    // Allows the player to add items to their inventory.
+    /// <summary>
+    /// Adds an item to the player's inventory.
+    /// </summary>
+    /// <param name="item"></param>
     public void AddItem(Item item)
     {
         // If the item is stackable.
@@ -46,11 +53,13 @@ public class Inventory
             itemList.Add(item);
             Debug.Log("Added new non-stackable item");
         }
-        // Invokes even OnItemListChange, which refreshes the inventory after a change.
         OnItemListChange?.Invoke(this, EventArgs.Empty);
     }
 
-    // Allows the player to remove an item.
+    /// <summary>
+    /// Removes an item from the player's inventory.
+    /// </summary>
+    /// <param name="item"></param>
     public void RemoveItem(Item item)
     {
         // If item is stackable it counts the amount you have (if any) to then remove only one (if you have multiple of the same).
@@ -65,12 +74,13 @@ public class Inventory
                     itemInInventory = inventoryItem;
                 }        
             }
-            // Makes sure player actually has enough items to remove.
+            // If item less than/equal to 0, no item will be removed.
             if (itemInInventory != null && itemInInventory.amount <= 0)
             {
                 itemList.Remove(itemInInventory);
             }
         }
+        // Otherwise, the item used will be removed.
         else
         {
             itemList.Remove(item);
@@ -78,6 +88,10 @@ public class Inventory
         OnItemListChange?.Invoke(this, EventArgs.Empty);
     }
 
+    /// <summary>
+    /// Call on the item list.
+    /// </summary>
+    /// <returns></returns>
     public List<Item> GetItemList()
     {
         return itemList;

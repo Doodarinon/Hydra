@@ -4,16 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Manages the visual aspects of the inventory system.
+/// </summary>
 public class UI_Inventory : MonoBehaviour
 {
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
+    /// <summary>
+    /// Button for using an item. Drag "itemImage" (which is a button) into this slot.
+    /// </summary>
     public Button useItemButton;
     bool state;
 
-    // On awake, find existing objects.
     private void Awake()
     {
         itemSlotContainer = transform.Find("itemSlotContainer");
@@ -21,7 +26,9 @@ public class UI_Inventory : MonoBehaviour
         background = transform.Find("Background");
     }
 
-    // Shows or hides inventory depending on what button the player clicks.
+    /// <summary>
+    /// Shows or hides inventory depending on what button the player clicks.
+    /// </summary>
     public void ShowHide()
     {
         state = !state;
@@ -29,7 +36,9 @@ public class UI_Inventory : MonoBehaviour
         itemSlotContainer.gameObject.SetActive(state);
     }
 
-    // Sets inventory to current state.
+    /// <summary>
+    /// Sets inventory to current state.
+    /// </summary>
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -39,13 +48,19 @@ public class UI_Inventory : MonoBehaviour
         RefreshInventoryItems();
     }
 
-    // When a change in the inventory occurs, refresh.
+    /// <summary>
+    /// When a change in the inventory occurs, this event will be called and refresh the inventory to sync with the current state of the inventory.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void Inventory_OnItemListChange(object sender, System.EventArgs e)
     {
         RefreshInventoryItems();
     }
 
-    // Updates the inventory.
+    /// <summary>
+    /// Keeps the inventory updated to current state, both visually and function-wise.
+    /// </summary>
     private void RefreshInventoryItems()
     {
         foreach(Transform child in itemSlotContainer)
