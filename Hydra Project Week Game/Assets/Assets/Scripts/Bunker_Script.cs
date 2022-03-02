@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bunker_Script : MonoBehaviour
 {
-    public float defaultTimer = 1f;
-    public float timer;
-    public float hp;
+    private float defaultTimer = 1f;
+    private float timer;
+    private float hp = 1000;
     public GameObject[] levels;
     private int level;
     // Start is called before the first frame update
@@ -18,9 +18,6 @@ public class Bunker_Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-          
         
     }
 
