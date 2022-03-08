@@ -34,7 +34,7 @@ public class EnemyWander : MonoBehaviour
     /// </summary>
     private void Wander()
     {
-        // Sends enemy to new random position. Layermask is set to (-1) which means all layers :)
+        // Sends enemy to new random position. Layermask is set to (-1) which means destination can be found on all layers.
         Vector3 newPosition = RandomNavSphere(transform.position, roamRadius, -1);
         agent.SetDestination(newPosition);
 
@@ -42,16 +42,26 @@ public class EnemyWander : MonoBehaviour
         transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
     }
 
-    public static Vector3 RandomNavSphere(Vector3 originalPosition, float distance, int layermask)
+    /// <summary>
+    /// Vector which calculates a random destination from the current position within a set range.
+    /// </summary>
+    /// <param name="currentPosition"></param>
+    /// <param name="distance"></param>
+    /// <param name="layermask"></param>
+    /// <returns></returns>
+    public static Vector3 RandomNavSphere(Vector3 currentPosition, float distance, int layermask)
     {
         // Calculates a random direction within allowed range.
         Vector3 randomDirection = Random.insideUnitSphere * distance;
 
-        randomDirection += originalPosition;
+        randomDirection += currentPosition;
 
+        // Resulting position.
         NavMeshHit navHit;
 
+        // Checks if destination is found, in that case it returns true.
         NavMesh.SamplePosition(randomDirection, out navHit, distance, layermask);
+
         return navHit.position;
     }
 }
