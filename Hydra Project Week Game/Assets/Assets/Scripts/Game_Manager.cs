@@ -7,7 +7,7 @@ public class Game_Manager : MonoBehaviour
 
     public Bunker_Script bunker_Script;
     public EnemySpawner enemySpawner;
-    int enemyBaseAmmount = 250;
+    int enemyBaseAmmount = 1;
     int enemyMultiplier = 2;
     public bool startRound;
     bool gameover = false;
@@ -17,20 +17,20 @@ public class Game_Manager : MonoBehaviour
     {
         bunker_Script = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
         enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
-       
+
     }
     void Update()
     {
-        if (enemySpawner.enemyCount <= 0 && startRound)
-        {
-            SpawnWaves(); 
-        }
+
 
     }
     public void SpawnWaves()
     {
-        enemySpawner.ChooseEnemyAmmount(enemyBaseAmmount, waveNr, enemyMultiplier);
-        enemySpawner.Randomize();
-        enemySpawner.SpawnEnemys();
+        if (enemySpawner.enemyCount <= 0)
+        {
+            enemySpawner.ChooseEnemyAmmount(enemyBaseAmmount, waveNr, enemyMultiplier);
+            enemySpawner.Randomize();
+            enemySpawner.SpawnEnemys();
+        }
     }
 }
