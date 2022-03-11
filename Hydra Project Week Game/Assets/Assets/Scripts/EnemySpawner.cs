@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
         tempEnemies.Clear();
         int enemy1MaxAmmount = enemyBaseAmmount * waveNr * enemyMultiplier;
         int enemy2MaxAmmount = enemyBaseAmmount * waveNr * enemyMultiplier;
+
         for (int i = 0; i < enemy1MaxAmmount; i++)
         {
             tempEnemies.Add(enemy1);
@@ -40,7 +41,11 @@ public class EnemySpawner : MonoBehaviour
         int randomNumber;
         randomizing = true;
         bool sequenceComplete = false;
-        enemies.Clear();
+        if(enemyCount <= 0)
+        {
+            enemies.Clear();
+            randoNumbers.Clear();
+        }
         foreach (GameObject gameObject in tempEnemies)
         {
             tempEnemiesCount++;
@@ -88,6 +93,7 @@ public class EnemySpawner : MonoBehaviour
         int counter = 0;
         for (i = 0; i < enemies.Count; i++)
         {
+            Debug.Log(i);
             if (counter == spawnPoints.Length)
             {
                 counter = 0;
@@ -100,7 +106,6 @@ public class EnemySpawner : MonoBehaviour
     }
     private IEnumerator<WaitForSeconds> SlowDown(float slowDownTimer, int counter, int i)
     {
-        Debug.Log(counter);
         Instantiate(enemies[i], spawnPoints[counter].transform.position, spawnPoints[counter].transform.rotation);
         yield return new WaitForSeconds(slowDownTimer);
     }
