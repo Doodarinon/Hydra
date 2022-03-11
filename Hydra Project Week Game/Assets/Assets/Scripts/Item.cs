@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages items and their functionalities.
+/// </summary>
 public class Item
 {
-    
-    // References to each item type.
+    /// <summary>
+    /// List of each type of item.
+    /// </summary>
     public enum ItemType
     {
         BaseBallBat,
@@ -15,7 +19,10 @@ public class Item
     public ItemType itemType;
     public int amount;
 
-    // Assigns sprite to each item. This will only be displayed in the inventory.
+    /// <summary>
+    /// Assigns a sprite to each item to be displayed in the inventory.
+    /// </summary>
+    /// <returns></returns>
     public Sprite GetSprite()
       {
         switch (itemType)
@@ -25,7 +32,10 @@ public class Item
             case ItemType.Healthpack: return ItemAssets.Instance.healthpackSprite;
         }
     }
-    // Decides whether or not an item is stackable.
+    /// <summary>
+    /// Is the item stackable or not?
+    /// </summary>
+    /// <returns></returns>
     public bool IsStackable()
     {
         switch (itemType)
