@@ -13,9 +13,9 @@ public class EnemyBaseScript : MonoBehaviour
 
     private float timer;
     private float wanderSpeed = 0.5f;
-    private float SeeDistance = 250f;
+    private float seeDistance = 250f;
 
-    bool notDead = false;
+    bool isDead = false;
     public LayerMask raycastLayers = 3;
 
     private Player_Controller playerController;
@@ -27,19 +27,32 @@ public class EnemyBaseScript : MonoBehaviour
     public Transform target;
     void Start()
     {
-        playerController = FindObjectOfType<Player_Controller>().GetComponent<Player_Controller>();
-        bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
-        playerHealth = FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
-        enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
+        playerController = GetComponent<Player_Controller>();
+        bunkerScript = GetComponent<Bunker_Script>();
+        playerHealth = GetComponent<PlayerHealth>();
+        enemySpawner = GetComponent<EnemySpawner>();
+        healthBar = GetComponent<HealthBar>();
         nav = GetComponent<NavMeshAgent>();
+
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(wanderTime > 0)
+        RaycastHit hit;
+
+        // If nothing is between this and target
+        if (!Physics.Linecast(transform.position, target.position, out hit, raycastLayers))
+        {
+            // If in range, move to target
+            if (Vector3.Distance(transform.position, target.position) < seeDistance)
+            {
+                nav.destination = target.position;
+            }
+        }
+
+        if (wanderTime > 0)
         {
             transform.Translate(Vector3.forward * wanderSpeed);
             wanderTime -= Time.deltaTime;
@@ -49,16 +62,6 @@ public class EnemyBaseScript : MonoBehaviour
             // Enemy will wander around same area for random amount of time, before changing position.
             wanderTime = Random.Range(5f, 15f);
             Wander();
-        }
-
-        RaycastHit hit;
-
-        // If nothing is between this and target
-        if (!Physics.Linecast(transform.position, target.position, out hit, raycastLayers))
-        {
-            // If in range, move to target
-            if (Vector3.Distance(transform.position, target.position) < SeeDistance)
-                nav.destination = target.position;
         }
     }
 
@@ -99,9 +102,9 @@ public class EnemyBaseScript : MonoBehaviour
     private void TakeDamage()
     {
         enemyHealth -= playerController.damage;
-        if (enemyHealth <= 0 && !notDead)
+        if (enemyHealth <= 0 && !isDead)
         {
-            notDead = true;
+            isDead = true;
             enemySpawner.enemyCount -= 1;
             Destroy(gameObject);
         }
