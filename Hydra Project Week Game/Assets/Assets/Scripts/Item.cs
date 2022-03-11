@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Manages items and their abilities, such as being stackable or not.
+/// Manages items and their functionalities.
 /// </summary>
 public class Item
-{ 
+{
     /// <summary>
-    /// Declaration of each existing item type.
+    /// List of each type of item.
     /// </summary>
     public enum ItemType
     {
@@ -20,8 +20,9 @@ public class Item
     public int amount;
 
     /// <summary>
-    /// Assigns an inventory icon (sprite) to each existing item.
+    /// Assigns a sprite to each item to be displayed in the inventory.
     /// </summary>
+    /// <returns></returns>
     public Sprite GetSprite()
       {
         switch (itemType)
@@ -34,7 +35,7 @@ public class Item
         }
     }
     /// <summary>
-    /// Which items are stackable and which are not?
+    /// Is the item stackable or not?
     /// </summary>
     /// <returns></returns>
     public bool IsStackable()

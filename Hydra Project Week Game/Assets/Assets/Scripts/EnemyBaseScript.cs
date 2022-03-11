@@ -6,49 +6,69 @@ using UnityEngine.AI;
 
 public class EnemyBaseScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float enemyHealth = 10;
     public float damagePerHit = 0;
-    public int attackspeed = 1;
-    private float timer;
-    bool notDead = false;
-    public LayerMask raycastLayers = 3;
-    private float SeeDistece = 250f;
+    public int attackSpeed = 1;
+    public float wanderTime;
 
-    public Player_Controller playerController;
-    public Bunker_Script bunkerScript;
-    public PlayerHealth playerHealth;
+    private float timer;
+    private float wanderSpeed = 0.5f;
+    private float seeDistance = 250f;
+
+    bool isDead = false;
+    public LayerMask raycastLayers = 3;
+
+    private Player_Controller playerController;
+    private Bunker_Script bunkerScript;
+    private PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
-    //public HealthBar healthBar;
+    public HealthBar healthBar;
     private NavMeshAgent nav;
     public Transform target;
     void Start()
     {
-        playerController = FindObjectOfType<Player_Controller>().GetComponent<Player_Controller>();
-        bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
-        playerHealth = FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
-        enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-       // healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
+        playerController = GetComponent<Player_Controller>();
+        bunkerScript = GetComponent<Bunker_Script>();
+        playerHealth = GetComponent<PlayerHealth>();
+        enemySpawner = GetComponent<EnemySpawner>();
+        healthBar = GetComponent<HealthBar>();
         nav = GetComponent<NavMeshAgent>();
+
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
         RaycastHit hit;
+
         // If nothing is between this and target
         if (!Physics.Linecast(transform.position, target.position, out hit, raycastLayers))
         {
             // If in range, move to target
-            if (Vector3.Distance(transform.position, target.position) < SeeDistece)
+            if (Vector3.Distance(transform.position, target.position) < seeDistance)
+            {
                 nav.destination = target.position;
+            }
+        }
 
-
+        if (wanderTime > 0)
+        {
+            transform.Translate(Vector3.forward * wanderSpeed);
+            wanderTime -= Time.deltaTime;
+        }
+        else
+        {
+            // Enemy will wander around same area for random amount of time, before changing position.
+            wanderTime = Random.Range(5f, 15f);
+            Wander();
         }
     }
 
-    //test
+    void Wander()
+    {
+        transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+    }
 
     private void OnCollisionStay(Collision collision)
     {
@@ -67,7 +87,7 @@ public class EnemyBaseScript : MonoBehaviour
                 Debug.Log("hej");
                 //healthBar.SetHealth(playerHealth.currentPlayerHealth);
 
-                timer = attackspeed;
+                timer = attackSpeed;
 
             }
 
@@ -78,26 +98,13 @@ public class EnemyBaseScript : MonoBehaviour
         }
 
     }
-    /*private void OnCollisionStay(Collision collision)
-    {
-
-
-
-        if (collision.collider.CompareTag("Bunker"))
-        {
-            bunkerScript.TakeDamage();
-        }
-
-    }*/
-
-
 
     private void TakeDamage()
     {
         enemyHealth -= playerController.damage;
-        if (enemyHealth <= 0 && !notDead)
+        if (enemyHealth <= 0 && !isDead)
         {
-            notDead = true;
+            isDead = true;
             enemySpawner.enemyCount -= 1;
             Destroy(gameObject);
         }
