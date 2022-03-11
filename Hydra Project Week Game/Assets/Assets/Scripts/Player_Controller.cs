@@ -37,22 +37,22 @@ public class Player_Controller : MonoBehaviour
         {
             inCollider = true;
         }
-            //Item item = other.GetComponent<Item>();
+
+        Item item = other.GetComponent<Item>();
 
         if (other.CompareTag("Item") && other != null)
         {
-           // inventory.AddItem(item);
-        }
-        
-
-        
+            inventory.AddItem(item);
+        } 
     }
     private void OnTriggerExit(Collider other)
     {
         if(other.CompareTag("Upgrade"))
         {
             inCollider = false;
-            }
+        }
+
+        Item item = other.GetComponent<Item>();
 
         if(other.CompareTag("Item") && other != null)
         {

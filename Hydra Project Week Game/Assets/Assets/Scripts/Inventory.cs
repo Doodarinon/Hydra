@@ -3,13 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Internal managing of the player's inventory.
+/// </summary>
 public class Inventory
 {
     // Creates list to track items in inventory!
     public event EventHandler OnItemListChange;
     private List<Item> itemList;
 
-    // Gives the player their inventory.
+    /// <summary>
+    /// Declares the player's inventory.
+    /// </summary>
     public Inventory()
     {
         itemList = new List<Item>();
@@ -19,7 +24,10 @@ public class Inventory
         Debug.Log("Added " + itemList.Count + " item(s).");
     }
 
-    // Allows the player to add items to their inventory.
+    /// <summary>
+    /// Adds an item to the player's inventory.
+    /// </summary>
+    /// <param name="item"></param>
     public void AddItem(Item item)
     {
         if (item.IsStackable())
@@ -47,7 +55,10 @@ public class Inventory
         OnItemListChange?.Invoke(this, EventArgs.Empty);
     }
 
-    // Allows the player to remove an item.
+    /// <summary>
+    /// Removes an item from the player's inventory.
+    /// </summary>
+    /// <param name="item"></param>
     public void RemoveItem(Item item)
     {
         if (item.IsStackable())
@@ -74,6 +85,10 @@ public class Inventory
         OnItemListChange?.Invoke(this, EventArgs.Empty);
     }
 
+    /// <summary>
+    /// Calls on item list, can be used to for example compare items or add new items.
+    /// </summary>
+    /// <returns></returns>
     public List<Item> GetItemList()
     {
         return itemList;
