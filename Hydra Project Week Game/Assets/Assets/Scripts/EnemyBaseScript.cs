@@ -19,7 +19,7 @@ public class EnemyBaseScript : MonoBehaviour
     public Bunker_Script bunkerScript;
     public PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
-    public HealthBar healthBar;
+    //public HealthBar healthBar;
     private NavMeshAgent nav;
     public Transform target;
     void Start()
@@ -29,7 +29,7 @@ public class EnemyBaseScript : MonoBehaviour
         playerHealth = FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
         enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
+       // healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
         nav = GetComponent<NavMeshAgent>();
     }
 
@@ -65,7 +65,7 @@ public class EnemyBaseScript : MonoBehaviour
             {
                 playerHealth.currentPlayerHealth -= damagePerHit;
                 Debug.Log("hej");
-                healthBar.SetHealth(playerHealth.currentPlayerHealth);
+                //healthBar.SetHealth(playerHealth.currentPlayerHealth);
 
                 timer = attackspeed;
 
