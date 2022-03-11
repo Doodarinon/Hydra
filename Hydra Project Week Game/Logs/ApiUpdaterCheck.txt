@@ -272,3 +272,63 @@ C# parse time         : 2106ms
 candidates check time : 77ms
 console write time    : 1ms
 
+[api-updater (non-obsolete-error-filter)] 2022-03-11 09:50:03 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 194,7078ms
+moved types parse time: 223ms
+candidates parse time : 5ms
+C# parse time         : 585ms
+candidates check time : 102ms
+console write time    : 2ms
+
+[api-updater (non-obsolete-error-filter)] 2022-03-11 10:24:18 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 167,0251ms
+moved types parse time: 193ms
+candidates parse time : 6ms
+C# parse time         : 622ms
+candidates check time : 81ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2022-03-11 10:36:40 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 243,1138ms
+moved types parse time: 177ms
+candidates parse time : 4ms
+C# parse time         : 598ms
+candidates check time : 111ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 2022-03-11 10:45:38 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 219,9034ms
+moved types parse time: 164ms
+candidates parse time : 4ms
+C# parse time         : 698ms
+candidates check time : 109ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2022-03-11 10:45:47 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 197,6438ms
+moved types parse time: 178ms
+candidates parse time : 4ms
+C# parse time         : 938ms
+candidates check time : 115ms
+console write time    : 1ms
+
+[api-updater (non-obsolete-error-filter)] 2022-03-11 10:46:50 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 183,3434ms
+moved types parse time: 137ms
+candidates parse time : 3ms
+C# parse time         : 644ms
+candidates check time : 112ms
+console write time    : 1ms
+

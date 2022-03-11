@@ -6,18 +6,21 @@ using UnityEngine.AI;
 
 public class EnemyBaseScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float enemyHealth = 10;
     public float damagePerHit = 0;
-    public int attackspeed = 1;
+    public int attackSpeed = 1;
+    public float wanderTime;
+
     private float timer;
+    private float wanderSpeed = 0.5f;
+    private float SeeDistance = 250f;
+
     bool notDead = false;
     public LayerMask raycastLayers = 3;
-    private float SeeDistece = 250f;
 
-    public Player_Controller playerController;
-    public Bunker_Script bunkerScript;
-    public PlayerHealth playerHealth;
+    private Player_Controller playerController;
+    private Bunker_Script bunkerScript;
+    private PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
     public HealthBar healthBar;
     private NavMeshAgent nav;
@@ -36,19 +39,33 @@ public class EnemyBaseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(wanderTime > 0)
+        {
+            transform.Translate(Vector3.forward * wanderSpeed);
+            wanderTime -= Time.deltaTime;
+        }
+        else
+        {
+            // Enemy will wander around same area for random amount of time, before changing position.
+            wanderTime = Random.Range(5f, 15f);
+            Wander();
+        }
+
         RaycastHit hit;
+
         // If nothing is between this and target
         if (!Physics.Linecast(transform.position, target.position, out hit, raycastLayers))
         {
             // If in range, move to target
-            if (Vector3.Distance(transform.position, target.position) < SeeDistece)
+            if (Vector3.Distance(transform.position, target.position) < SeeDistance)
                 nav.destination = target.position;
-
-
         }
     }
 
-    //test
+    void Wander()
+    {
+        transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+    }
 
     private void OnCollisionStay(Collision collision)
     {
@@ -67,7 +84,7 @@ public class EnemyBaseScript : MonoBehaviour
                 Debug.Log("hej");
                 healthBar.SetHealth(playerHealth.currentPlayerHealth);
 
-                timer = attackspeed;
+                timer = attackSpeed;
 
             }
 
@@ -78,19 +95,6 @@ public class EnemyBaseScript : MonoBehaviour
         }
 
     }
-    /*private void OnCollisionStay(Collision collision)
-    {
-
-
-
-        if (collision.collider.CompareTag("Bunker"))
-        {
-            bunkerScript.TakeDamage();
-        }
-
-    }*/
-
-
 
     private void TakeDamage()
     {
