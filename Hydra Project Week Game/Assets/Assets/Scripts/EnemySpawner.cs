@@ -93,7 +93,6 @@ public class EnemySpawner : MonoBehaviour
         int counter = 0;
         for (i = 0; i < enemies.Count; i++)
         {
-            Debug.Log(i);
             if (counter == spawnPoints.Length)
             {
                 counter = 0;
