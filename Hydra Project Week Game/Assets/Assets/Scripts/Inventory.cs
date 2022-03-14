@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Manages the methods which cause changes in the inventory, such as adding items.
+/// Internal managing of the player's inventory.
 /// </summary>
 public class Inventory
 {
@@ -13,7 +13,9 @@ public class Inventory
     // Creates list to track items in inventory!
     private List<Item> itemList;
 
-    // Gives the player their inventory.
+    /// <summary>
+    /// Declares the player's inventory.
+    /// </summary>
     public Inventory()
     {
         itemList = new List<Item>();
@@ -89,7 +91,7 @@ public class Inventory
     }
 
     /// <summary>
-    /// Call on the item list.
+    /// Calls on item list, can be used to for example compare items or add new items.
     /// </summary>
     /// <returns></returns>
     public List<Item> GetItemList()

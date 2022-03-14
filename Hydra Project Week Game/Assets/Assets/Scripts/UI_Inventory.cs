@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// Manages the visual aspects of the inventory system.
+/// Manages the visual aspects of the player's inventory.
 /// </summary>
 public class UI_Inventory : MonoBehaviour
 {
@@ -27,7 +27,7 @@ public class UI_Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Shows or hides inventory depending on what button the player clicks.
+    /// Shows or hides inventory on button click.
     /// </summary>
     public void ShowHide()
     {
@@ -37,8 +37,9 @@ public class UI_Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets inventory to current state.
+    /// Sets inventory to current state in order to keep it updated.
     /// </summary>
+    /// <param name="inventory"></param>
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -49,7 +50,7 @@ public class UI_Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// When a change in the inventory occurs, this event will be called and refresh the inventory to sync with the current state of the inventory.
+    /// When a change in the inventory occurs, do a refresh.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -59,7 +60,7 @@ public class UI_Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Keeps the inventory updated to current state, both visually and function-wise.
+    /// Refreshes the inventory to keep it updated.
     /// </summary>
     private void RefreshInventoryItems()
     {

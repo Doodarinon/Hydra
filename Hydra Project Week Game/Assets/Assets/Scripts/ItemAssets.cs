@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Manages visual assets for each item which will be displayed in the inventory.
+/// Manages item assets such as allowing for adding sprites.
 /// </summary>
 public class ItemAssets : MonoBehaviour
 {
