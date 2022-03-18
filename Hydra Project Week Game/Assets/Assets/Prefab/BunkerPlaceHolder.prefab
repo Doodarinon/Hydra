@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 375891388748616347}
   - component: {fileID: 375891388748616348}
   m_Layer: 0
-  m_Name: BunkerPlaceHolder
+  m_Name: BunkerPlaceholder
   m_TagString: Bunker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
