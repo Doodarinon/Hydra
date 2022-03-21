@@ -11859,7 +11859,9 @@ MonoBehaviour:
     m_Bits: 0
   SeeDistece: 15
   playerHealth: {fileID: 0}
+  playerController: {fileID: 0}
   healthbar: {fileID: 0}
+  bunkerScript: {fileID: 0}
 --- !u!195 &852391699
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12106,7 +12108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d097c05070a0448b944b57f11d4967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundPlane: {fileID: 1784058338}
+  groudnPlane: {fileID: 1784058338}
   groundMask:
     serializedVersion: 2
     m_Bits: 128
@@ -12125,7 +12127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bd15ca4ca7e2e489203d6c1a92d8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityMultiplier: 10
+  gravity_multiplier: 10
 --- !u!114 &1169024046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12138,7 +12140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674002ff15ee0e24fb9182f1771f731b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  uiInventory: {fileID: 0}
+  movementSpeed: 10
+  animator: {fileID: 0}
   dashCooldown: 0
   dash: 10
   baseTimer: 5
