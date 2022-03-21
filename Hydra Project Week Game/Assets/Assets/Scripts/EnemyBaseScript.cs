@@ -10,15 +10,24 @@ public class EnemyBaseScript : MonoBehaviour
     public float damagePerHit = 0;
     public int attackSpeed = 1;
     public float wanderTime;
+    public int counter;
 
     private float timer;
     private int fenceAmmount;
     private float wanderSpeed = 0.5f;
     private float seeDistance = 250f;
-    public List<GameObject> fences = new List<GameObject>();
 
     bool isDead = false;
     public LayerMask raycastLayers = 3;
+    public GameObject player;
+    public GameObject[] bunker;
+    public GameObject[] fences1;
+    public GameObject[] fences2;
+    public GameObject[] fences3;
+    public GameObject closestFence;
+    public GameObject closestFence1;
+    public GameObject closestFence2;
+    public GameObject closestFence3;
 
     private Player_Controller playerController;
     private Bunker_Script bunkerScript;
@@ -35,27 +44,83 @@ public class EnemyBaseScript : MonoBehaviour
         enemySpawner = GetComponent<EnemySpawner>();
         healthBar = GetComponent<HealthBar>();
         nav = GetComponent<NavMeshAgent>();
-
-        for (int i = 0; i < fenceAmmount; i++)
-        {
-            try
-            {
-                fences.Add(GameObject.Find("Fence1*"));
-                Debug.Log("this works?");
-            }
-            catch (System.Exception)
-            {
-
-                throw;
-            }
-        }
-
+        fences1 = GameObject.FindGameObjectsWithTag("Fence1");
+        fences2 = GameObject.FindGameObjectsWithTag("Fence2");
+        fences3 = GameObject.FindGameObjectsWithTag("Fence3");
+        player = GameObject.FindGameObjectWithTag("Player");
         // target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        counter = 0;
+        bunker = GameObject.FindGameObjectsWithTag("Bunker");
+        closestFence1 = fences1[counter];
+        closestFence2 = fences2[counter];
+        closestFence3 = fences3[counter];
+        if (true) // Replace "True" with check that cheacks what lvl fences are in the 3 below
+        {
+            counter = 0;
+            foreach (GameObject temp in fences1)
+            {
+                if (Vector3.Distance(transform.position, closestFence1.transform.position) > Vector3.Distance(transform.position, fences1[counter].transform.position))
+                {
+                    closestFence1 = fences1[counter];
+                }
+                counter++;
+            }
+        }
+        if (true)
+        {
+            counter = 0;
+            foreach (GameObject temp in fences2)
+            {
+                if (Vector3.Distance(transform.position, closestFence2.transform.position) > Vector3.Distance(transform.position, fences2[counter].transform.position))
+                {
+                    closestFence2 = fences2[counter];
+                }
+                counter++;
+            }
+        }
+        if (true)
+        {
+            counter = 0;
+            foreach (GameObject temp in fences3)
+            {
+                if (Vector3.Distance(transform.position, closestFence3.transform.position) > Vector3.Distance(transform.position, fences3[counter].transform.position))
+                {
+                    closestFence3 = fences3[counter];
+                }
+                counter++;
+            }
+        }
+        Debug.Log("5");
+        if (Vector3.Distance(transform.position, closestFence1.transform.position) < Vector3.Distance(transform.position,closestFence2.transform.position) && Vector3.Distance(transform.position, closestFence1.transform.position) < Vector3.Distance(transform.position, closestFence3.transform.position))
+        {
+            closestFence = closestFence1;
+        }
+        else if (Vector3.Distance(transform.position, closestFence2.transform.position) < Vector3.Distance(transform.position, closestFence3.transform.position))
+        {
+            closestFence = closestFence2;
+            Debug.Log("2");
+        }
+        else
+        {
+            closestFence = closestFence3;
+        }
+        if (Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, closestFence.transform.position) && Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, player.transform.position))
+        {
+            target = bunker[0].transform;
+        }
+        else if (Vector3.Distance(transform.position, closestFence.transform.position) < Vector3.Distance(transform.position, player.transform.position))
+        {
+            target = closestFence.transform;
+        }
+        else
+        {
+            target = player.transform;
+        }
         // *Input dynamic target choice here*
 
         RaycastHit hit;

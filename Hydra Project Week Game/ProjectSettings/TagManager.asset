@@ -13,6 +13,9 @@ TagManager:
   - Bunker
   - Item
   - Upgrade
+  - Fence1
+  - Fence2
+  - Fence3
   layers:
   - Default
   - TransparentFX

@@ -55,12 +55,12 @@ public class Player_Controller : MonoBehaviour
         Item item = other.GetComponent<Item>();
         
         if(other.CompareTag("Item") && other != null)
-        {
+        { /*
             if (other.TryGetComponent(out Item item))
             {
 
-                inventory.AddItem(item);
-            }
+                inventory.AddItem(item); 
+            } */
             Destroy(gameObject);
         }
     }
@@ -126,18 +126,19 @@ public class Player_Controller : MonoBehaviour
     }
 
     // Use item.
+    
     public void UseItem(Item item)
-    {
+    { /*
         switch (item.itemType)
         {
             case Item.ItemType.BaseBallBat:
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
                 break;
             case Item.ItemType.Healthpack:
-                /*GetComponent<PlayerHealth>().currentPlayerHealth += 10;*/
+                GetComponent<PlayerHealth>().currentPlayerHealth += 10;
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
                 break;
         }
-        Debug.Log("Item has been used.");
-    }
+        Debug.Log("Item has been used."); */
+    } 
 }
