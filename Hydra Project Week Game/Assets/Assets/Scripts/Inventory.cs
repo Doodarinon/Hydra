@@ -19,8 +19,8 @@ public class Inventory
     {
         itemList = new List<Item>();
 
-        AddItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        Debug.Log("Added " + itemList.Count + " item(s).");
+        //AddItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        /*Debug.Log("Added " + itemList.Count + " item(s).");*/
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ public class Inventory
             {
                 if (inventoryItem.itemType == item.itemType)
                 {
-                    inventoryItem.amount += 1;
+                    inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;
                 }             
             }
@@ -67,7 +67,7 @@ public class Inventory
             {
                 if (inventoryItem.itemType == item.itemType)
                 {
-                    inventoryItem.amount -= 1;
+                    inventoryItem.amount -= item.amount;
                     itemInInventory = inventoryItem;
                 }        
             }
