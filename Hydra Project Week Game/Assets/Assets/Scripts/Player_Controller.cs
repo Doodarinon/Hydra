@@ -5,24 +5,20 @@ using UnityEngine.UI;
 
 public class Player_Controller : MonoBehaviour
 {
-    private Inventory inventory;
-    //public Bunker_Script bunkerScript;
-
-    private float movementSpeed = 5f;
-
-    public int damage = 10;
-    public float baseTimer = 1f;
-    public float dashCooldown;
-    public float timer;
-    public float dash;
-
-    private Vector3 movement;
-    //public Animator animator;
-
-    Rigidbody rb;
-    [SerializeField] private bool inCollider;
     // Declares player inventory.
     [SerializeField] private UI_Inventory uiInventory;
+    //public Bunker_Script bunkerScript;
+    private float movementSpeed = 5f;
+    private Inventory inventory;
+    public float baseTimer = 1f;
+    public float dashCooldown;
+    private Vector3 movement;
+    //public Animator animator;
+    [SerializeField] private bool inCollider;
+    public int damage = 10;
+    public float timer;
+    public float dash;
+    Rigidbody rb;
 
     void Start()
     {
@@ -34,16 +30,16 @@ public class Player_Controller : MonoBehaviour
         uiInventory.SetInventory(inventory);
     }
 
+    // Pick up item.
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Upgrade"))
+        /*if (other.CompareTag("Upgrade"))
         {
             inCollider = true;
-        }
+        }*/
 
-        Item item = other.gameObject.GetComponent<Item>();
+        Item item = other.GetComponent<Item>();
 
-        // Pick up item.
         if (other.CompareTag("Item") && other != null)
         {
             inventory.AddItem(item);
@@ -52,10 +48,22 @@ public class Player_Controller : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Upgrade"))
+        /*if(other.CompareTag("Upgrade"))
         {
             inCollider = false;
-        }
+        }*/
+
+        /*Item item = other.gameObject.GetComponent<Item>();
+
+        if(other.CompareTag("Item") && other != null)
+        {
+            if (other.TryGetComponent(out Item item))
+            {
+
+                inventory.AddItem(item);
+            }
+            Destroy(gameObject);
+        }*/
     }
 
     // Update is called once per frame
@@ -118,14 +126,19 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Allows the player to use the item they click on.
-    /// </summary>
-    /*public void UseItem()
+    // Use item.
+    public void UseItem(Item item)
     {
-        inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        GetComponent<PlayerHealth>().currentPlayerHealth += 10;
-
+        switch (item.itemType)
+        {
+            case Item.ItemType.BaseballBat:
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseballBat, amount = 1 });
+                break;
+            case Item.ItemType.Healthpack:
+                /*GetComponent<PlayerHealth>().currentPlayerHealth += 10;*/
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+                break;
+        }
         Debug.Log("Item has been used.");
-    }*/
+    }
 }
