@@ -55,11 +55,10 @@ public class EnemySpawner : MonoBehaviour
         {
             while (counter2 < randoNumbers.Count)
             {
-
                 if (randomNumber == randoNumbers[counter2])
                 {
-
                     randomNumber = Random.Range(0, tempEnemiesCount);
+                    counter2 = 0;
                 }
                 counter2++;
             }

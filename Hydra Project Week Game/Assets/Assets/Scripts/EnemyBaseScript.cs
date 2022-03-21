@@ -12,8 +12,10 @@ public class EnemyBaseScript : MonoBehaviour
     public float wanderTime;
 
     private float timer;
+    private int fenceAmmount;
     private float wanderSpeed = 0.5f;
     private float seeDistance = 250f;
+    public List<GameObject> fences = new List<GameObject>();
 
     bool isDead = false;
     public LayerMask raycastLayers = 3;
@@ -23,7 +25,7 @@ public class EnemyBaseScript : MonoBehaviour
     private PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
     public HealthBar healthBar;
-    private NavMeshAgent nav;
+    public NavMeshAgent nav;
     public Transform target;
     void Start()
     {
@@ -34,12 +36,28 @@ public class EnemyBaseScript : MonoBehaviour
         healthBar = GetComponent<HealthBar>();
         nav = GetComponent<NavMeshAgent>();
 
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        for (int i = 0; i < fenceAmmount; i++)
+        {
+            try
+            {
+                fences.Add(GameObject.Find("Fence1*"));
+                Debug.Log("this works?");
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        // target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // *Input dynamic target choice here*
+
         RaycastHit hit;
 
         // If nothing is between this and target

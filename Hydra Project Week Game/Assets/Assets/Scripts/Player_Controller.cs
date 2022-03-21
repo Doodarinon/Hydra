@@ -53,7 +53,7 @@ public class Player_Controller : MonoBehaviour
         }
 
         Item item = other.GetComponent<Item>();
-
+        
         if(other.CompareTag("Item") && other != null)
         {
             if (other.TryGetComponent(out Item item))
