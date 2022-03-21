@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// Manages item assets such as allowing for adding sprites.
@@ -15,6 +16,5 @@ public class ItemAssets : MonoBehaviour
     }
 
     // Add sprites here (for inventory icons)!
-      public Sprite baseballbatSprite;
       public Sprite healthpackSprite;
 }
