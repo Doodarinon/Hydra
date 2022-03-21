@@ -19,7 +19,7 @@ public class Inventory
     {
         itemList = new List<Item>();
 
-        //AddItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
         /*Debug.Log("Added " + itemList.Count + " item(s).");*/
     }
 
@@ -38,6 +38,7 @@ public class Inventory
                 {
                     inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;
+                    Debug.Log("Amount has increased");
                 }             
             }
             if (!itemAlreadyInInventory)

@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class Player_Controller : MonoBehaviour
 {
-    // Declares player inventory.
-    [SerializeField] private UI_Inventory uiInventory;
-    //public Bunker_Script bunkerScript;
-    private float movementSpeed = 5f;
     private Inventory inventory;
+    //public Bunker_Script bunkerScript;
+
+    private float movementSpeed = 5f;
+
+    public int damage = 10;
     public float baseTimer = 1f;
     public float dashCooldown;
-    private Vector3 movement;
-    //public Animator animator;
-    [SerializeField] private bool inCollider;
-    public int damage = 10;
     public float timer;
     public float dash;
+
+    private Vector3 movement;
+    //public Animator animator;
+
     Rigidbody rb;
+    [SerializeField] private bool inCollider;
+    // Declares player inventory.
+    [SerializeField] private UI_Inventory uiInventory;
 
     void Start()
     {
@@ -37,7 +41,7 @@ public class Player_Controller : MonoBehaviour
             inCollider = true;
         }
 
-        Item item = other.GetComponent<Item>();
+        Item item = other.gameObject.GetComponent<Item>();
 
         // Pick up item.
         if (other.CompareTag("Item") && other != null)
@@ -113,4 +117,15 @@ public class Player_Controller : MonoBehaviour
             //bunkerScript.Upgrade();
         }
     }
+
+    /// <summary>
+    /// Allows the player to use the item they click on.
+    /// </summary>
+    /*public void UseItem()
+    {
+        inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        GetComponent<PlayerHealth>().currentPlayerHealth += 10;
+
+        Debug.Log("Item has been used.");
+    }*/
 }
