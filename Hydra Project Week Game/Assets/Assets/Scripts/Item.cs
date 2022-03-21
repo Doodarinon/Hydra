@@ -12,7 +12,6 @@ public class Item : MonoBehaviour
     /// </summary>
     public enum ItemType
     {
-        BaseballBat,
         Healthpack,
     }
 
@@ -28,8 +27,6 @@ public class Item : MonoBehaviour
         switch (itemType)
         {
             default:
-            // If item is a baseball bat - assign baseball bat sprite.
-            case ItemType.BaseballBat: return ItemAssets.Instance.baseballbatSprite;
             // If item is a health pack - assign health pack sprite.
             case ItemType.Healthpack: return ItemAssets.Instance.healthpackSprite;
         }
@@ -46,11 +43,6 @@ public class Item : MonoBehaviour
             // IS stackable.
             case ItemType.Healthpack:
                 return true;
-
-            // Is NOT stackable.
-            case ItemType.BaseballBat:
-
-                return false;
         }
     }
 

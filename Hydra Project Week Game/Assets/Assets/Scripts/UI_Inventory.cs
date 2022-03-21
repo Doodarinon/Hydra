@@ -93,7 +93,7 @@ public class UI_Inventory : MonoBehaviour
 
             TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
             // If item is stackable and the player has more than one of that item.
-            if (item.amount > 1 && item.IsStackable())
+            if (item.amount > 1)
             {
                 text.SetText(item.amount.ToString());
             }
