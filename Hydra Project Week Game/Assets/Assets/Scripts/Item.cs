@@ -27,7 +27,6 @@ public class Item : MonoBehaviour
         switch (itemType)
         {
             default:
-            // If item is a health pack - assign health pack sprite.
             case ItemType.Healthpack: return ItemAssets.Instance.healthpackSprite;
         }
     }
@@ -40,7 +39,6 @@ public class Item : MonoBehaviour
         switch (itemType)
         {
             default:
-            // IS stackable.
             case ItemType.Healthpack:
                 return true;
         }
