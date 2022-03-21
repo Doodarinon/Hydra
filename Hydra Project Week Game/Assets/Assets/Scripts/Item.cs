@@ -12,7 +12,6 @@ public class Item : MonoBehaviour
     /// </summary>
     public enum ItemType
     {
-        BaseballBat,
         Healthpack,
     }
 
@@ -28,7 +27,6 @@ public class Item : MonoBehaviour
         switch (itemType)
         {
             default:
-            case ItemType.BaseballBat: return ItemAssets.Instance.baseballbatSprite;
             case ItemType.Healthpack: return ItemAssets.Instance.healthpackSprite;
         }
     }
@@ -43,8 +41,6 @@ public class Item : MonoBehaviour
             default:
             case ItemType.Healthpack:
                 return true;
-            case ItemType.BaseballBat:
-                return false;
         }
     }
 

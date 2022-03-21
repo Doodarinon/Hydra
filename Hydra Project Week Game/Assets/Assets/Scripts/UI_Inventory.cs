@@ -77,14 +77,12 @@ public class UI_Inventory : MonoBehaviour
             RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
 
-            useItemButton.onClick.AddListener(() => GetComponent<Player_Controller>().UseItem(item));
-
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
             image.sprite = item.GetSprite();
 
             TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
-            if (item.amount > 1 && item.IsStackable())
+            if (item.amount > 1)
             {
                 text.SetText(item.amount.ToString());
             }
@@ -100,5 +98,13 @@ public class UI_Inventory : MonoBehaviour
                y++;
            }
         }
+    }
+    // Use item.
+    public void UseItem()
+    {
+        inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        GetComponent<PlayerHealth>().currentPlayerHealth += 10;
+
+        Debug.Log("Item has been used.");
     }
 }

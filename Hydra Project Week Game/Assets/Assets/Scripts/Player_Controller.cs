@@ -30,16 +30,16 @@ public class Player_Controller : MonoBehaviour
         uiInventory.SetInventory(inventory);
     }
 
-    // Pick up item.
     public void OnTriggerEnter(Collider other)
     {
-        /*if (other.CompareTag("Upgrade"))
+        if (other.CompareTag("Upgrade"))
         {
             inCollider = true;
-        }*/
+        }
 
         Item item = other.GetComponent<Item>();
 
+        // Pick up item.
         if (other.CompareTag("Item") && other != null)
         {
             inventory.AddItem(item);
@@ -48,18 +48,10 @@ public class Player_Controller : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        /*if(other.CompareTag("Upgrade"))
+        if(other.CompareTag("Upgrade"))
         {
             inCollider = false;
-        }*/
-
-        /*Item item = other.gameObject.GetComponent<Item>();
-
-        if(other.CompareTag("Item") && other != null)
-        {
-            inventory.AddItem(item);
-            Destroy(gameObject);
-        }*/
+        }
     }
 
     // Update is called once per frame
@@ -120,21 +112,5 @@ public class Player_Controller : MonoBehaviour
         {
             //bunkerScript.Upgrade();
         }
-    }
-
-    // Use item.
-    public void UseItem(Item item)
-    {
-        switch (item.itemType)
-        {
-            case Item.ItemType.BaseballBat:
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseballBat, amount = 1 });
-                break;
-            case Item.ItemType.Healthpack:
-                /*GetComponent<PlayerHealth>().currentPlayerHealth += 10;*/
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-                break;
-        }
-        Debug.Log("Item has been used.");
     }
 }
