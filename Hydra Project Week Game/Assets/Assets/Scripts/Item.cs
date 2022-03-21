@@ -5,14 +5,14 @@ using UnityEngine;
 /// <summary>
 /// Manages items and their functionalities.
 /// </summary>
-public class Item
+public class Item : MonoBehaviour
 {
     /// <summary>
     /// List of each type of item.
     /// </summary>
     public enum ItemType
     {
-        BaseBallBat,
+        BaseballBat,
         Healthpack,
     }
 
@@ -29,7 +29,7 @@ public class Item
         {
             default:
             // If item is a baseball bat - assign baseball bat sprite.
-            case ItemType.BaseBallBat: return ItemAssets.Instance.baseballbatSprite;
+            case ItemType.BaseballBat: return ItemAssets.Instance.baseballbatSprite;
             // If item is a health pack - assign health pack sprite.
             case ItemType.Healthpack: return ItemAssets.Instance.healthpackSprite;
         }
@@ -46,8 +46,10 @@ public class Item
             // IS stackable.
             case ItemType.Healthpack:
                 return true;
+
             // Is NOT stackable.
-            case ItemType.BaseBallBat:
+            case ItemType.BaseballBat:
+
                 return false;
         }
     }
