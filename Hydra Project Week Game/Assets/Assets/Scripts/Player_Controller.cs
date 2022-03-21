@@ -26,8 +26,8 @@ public class Player_Controller : MonoBehaviour
         //animator = GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         // Creates player inventory.
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+       inventory = new Inventory();
+       uiInventory.SetInventory(inventory);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -37,7 +37,7 @@ public class Player_Controller : MonoBehaviour
             inCollider = true;
         }
 
-        Item item = other.GetComponent<Item>();
+        Item item = other.gameObject.GetComponent<Item>();
 
         // Pick up item.
         if (other.CompareTag("Item") && other != null)
@@ -71,17 +71,17 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    /*private void FixedUpdate()
+    private void FixedUpdate()
     {
         // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
-        rb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
+        /*rb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
         dashCooldown -= Time.deltaTime;
         // Debug.Log(dashCooldown);
         if (Input.GetKeyDown("space"))
         {
             PlayerDash();
-        }
-    }*/
+        }*/
+    }
 
     void PlayerDash()
     {
@@ -112,5 +112,21 @@ public class Player_Controller : MonoBehaviour
         {
             //bunkerScript.Upgrade();
         }
+    }
+
+    // Use item.
+    public void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.BaseballBat:
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseballBat, amount = 1 });
+                break;
+            case Item.ItemType.Healthpack:
+                /*GetComponent<PlayerHealth>().currentPlayerHealth += 10;*/
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+                break;
+        }
+        Debug.Log("Item has been used.");
     }
 }
