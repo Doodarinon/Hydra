@@ -7,13 +7,13 @@ public class Player_Controller : MonoBehaviour
 {
     // Declares player inventory.
     [SerializeField] private UI_Inventory uiInventory;
-    public Bunker_Script bunkerScript;
+    //public Bunker_Script bunkerScript;
     private float movementSpeed = 5f;
     private Inventory inventory;
     public float baseTimer = 1f;
     public float dashCooldown;
     private Vector3 movement;
-    public Animator animator;
+    //public Animator animator;
     [SerializeField] private bool inCollider;
     public int damage = 10;
     public float timer;
@@ -22,43 +22,44 @@ public class Player_Controller : MonoBehaviour
 
     void Start()
     {
-        bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
-        animator = GetComponentInChildren<Animator>();
+        //bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
+        //animator = GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         // Creates player inventory.
-       // inventory = new Inventory();
-       // uiInventory.SetInventory(inventory);
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     // Pick up item.
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Upgrade"))
+        /*if (other.CompareTag("Upgrade"))
         {
             inCollider = true;
-        }
+        }*/
 
         Item item = other.GetComponent<Item>();
 
         if (other.CompareTag("Item") && other != null)
         {
             inventory.AddItem(item);
+            Destroy(other.gameObject);
         } 
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Upgrade"))
+        /*if(other.CompareTag("Upgrade"))
         {
             inCollider = false;
-        }
+        }*/
 
-        Item item = other.GetComponent<Item>();
+        /*Item item = other.gameObject.GetComponent<Item>();
 
         if(other.CompareTag("Item") && other != null)
         {
             inventory.AddItem(item);
             Destroy(gameObject);
-        }
+        }*/
     }
 
     // Update is called once per frame
@@ -66,7 +67,7 @@ public class Player_Controller : MonoBehaviour
     {
         // Movement
         movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
-        // transform.Translate(movement_speed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movement_speed * Input.GetAxis("Vertical") * Time.deltaTime);
+        transform.Translate(movementSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
 
         if (timer > 0)
         {
@@ -78,7 +79,7 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
         rb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
@@ -88,7 +89,7 @@ public class Player_Controller : MonoBehaviour
         {
             PlayerDash();
         }
-    }
+    }*/
 
     void PlayerDash()
     {
@@ -110,14 +111,14 @@ public class Player_Controller : MonoBehaviour
 
     void PlayerAttack()
     {
-        animator.Play("melee_attack");
+        //animator.Play("melee_attack");
         timer = baseTimer;
     }
     public void ButtonClick()
     {
         if (inCollider)
         {
-            bunkerScript.Upgrade();
+            //bunkerScript.Upgrade();
         }
     }
 
@@ -126,8 +127,8 @@ public class Player_Controller : MonoBehaviour
     {
         switch (item.itemType)
         {
-            case Item.ItemType.BaseBallBat:
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseBallBat, amount = 1 });
+            case Item.ItemType.BaseballBat:
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseballBat, amount = 1 });
                 break;
             case Item.ItemType.Healthpack:
                 /*GetComponent<PlayerHealth>().currentPlayerHealth += 10;*/
