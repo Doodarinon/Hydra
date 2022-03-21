@@ -5,20 +5,24 @@ using UnityEngine.UI;
 
 public class Player_Controller : MonoBehaviour
 {
-    // Declares player inventory.
-    [SerializeField] private UI_Inventory uiInventory;
-    //public Bunker_Script bunkerScript;
-    private float movementSpeed = 5f;
     private Inventory inventory;
+    //public Bunker_Script bunkerScript;
+
+    private float movementSpeed = 5f;
+
+    public int damage = 10;
     public float baseTimer = 1f;
     public float dashCooldown;
-    private Vector3 movement;
-    //public Animator animator;
-    [SerializeField] private bool inCollider;
-    public int damage = 10;
     public float timer;
     public float dash;
+
+    private Vector3 movement;
+    //public Animator animator;
+
     Rigidbody rb;
+    [SerializeField] private bool inCollider;
+    // Declares player inventory.
+    [SerializeField] private UI_Inventory uiInventory;
 
     void Start()
     {
@@ -26,8 +30,8 @@ public class Player_Controller : MonoBehaviour
         //animator = GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody>();
         // Creates player inventory.
-       inventory = new Inventory();
-       uiInventory.SetInventory(inventory);
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     public void OnTriggerEnter(Collider other)
@@ -71,17 +75,17 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
-        /*rb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
         dashCooldown -= Time.deltaTime;
         // Debug.Log(dashCooldown);
         if (Input.GetKeyDown("space"))
         {
             PlayerDash();
-        }*/
-    }
+        }
+    }*/
 
     void PlayerDash()
     {
@@ -114,19 +118,14 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    // Use item.
-    public void UseItem(Item item)
+    /// <summary>
+    /// Allows the player to use the item they click on.
+    /// </summary>
+    /*public void UseItem()
     {
-        switch (item.itemType)
-        {
-            case Item.ItemType.BaseballBat:
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.BaseballBat, amount = 1 });
-                break;
-            case Item.ItemType.Healthpack:
-                /*GetComponent<PlayerHealth>().currentPlayerHealth += 10;*/
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-                break;
-        }
+        inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        GetComponent<PlayerHealth>().currentPlayerHealth += 10;
+
         Debug.Log("Item has been used.");
-    }
+    }*/
 }

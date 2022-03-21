@@ -13,7 +13,6 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
-    public Button useItemButton;
     bool state;
 
     private void Awake()
@@ -99,12 +98,14 @@ public class UI_Inventory : MonoBehaviour
            }
         }
     }
-    // Use item.
-    public void UseItem()
+    /// <summary>
+    /// Allows the player to use the item they click on.
+    /// </summary>
+    /*public void UseItem()
     {
         inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
         GetComponent<PlayerHealth>().currentPlayerHealth += 10;
 
         Debug.Log("Item has been used.");
-    }
+    }*/
 }

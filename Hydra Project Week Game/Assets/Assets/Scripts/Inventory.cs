@@ -8,9 +8,8 @@ using UnityEngine;
 /// </summary>
 public class Inventory
 {
-    // Decides what action to take after an inventory change.
-    public event EventHandler OnItemListChange;
     // Creates list to track items in inventory!
+    public event EventHandler OnItemListChange;
     private List<Item> itemList;
 
     /// <summary>
@@ -21,7 +20,7 @@ public class Inventory
         itemList = new List<Item>();
 
         AddItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        Debug.Log("Added " + itemList.Count + " item(s).");
+        /*Debug.Log("Added " + itemList.Count + " item(s).");*/
     }
 
     /// <summary>
@@ -30,7 +29,6 @@ public class Inventory
     /// <param name="item"></param>
     public void AddItem(Item item)
     {
-        // If the item is stackable.
         if (item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
@@ -38,9 +36,9 @@ public class Inventory
             {
                 if (inventoryItem.itemType == item.itemType)
                 {
-                    inventoryItem.amount += 1;
+                    inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;
-                    Debug.Log("Increased amount");
+                    Debug.Log("Amount has increased");
                 }             
             }
             if (!itemAlreadyInInventory)
@@ -49,7 +47,6 @@ public class Inventory
                 Debug.Log("Added new stackable item");
             }
         }
-        // If the item is NOT stackable.
         else
         {
             itemList.Add(item);
@@ -64,7 +61,6 @@ public class Inventory
     /// <param name="item"></param>
     public void RemoveItem(Item item)
     {
-        // If item is stackable it counts the amount you have (if any) to then remove only one (if you have multiple of the same).
         if (item.IsStackable())
         {
             Item itemInInventory = null;
@@ -72,17 +68,16 @@ public class Inventory
             {
                 if (inventoryItem.itemType == item.itemType)
                 {
-                    inventoryItem.amount -= 1;
+                    inventoryItem.amount -= item.amount;
                     itemInInventory = inventoryItem;
                 }        
             }
-            // If item less than/equal to 0, no item will be removed.
+            // Makes sure player has enough items to remove.
             if (itemInInventory != null && itemInInventory.amount <= 0)
             {
                 itemList.Remove(itemInInventory);
             }
         }
-        // Otherwise, the item used will be removed.
         else
         {
             itemList.Remove(item);
