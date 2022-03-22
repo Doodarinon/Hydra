@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentPlayerHealth += healthPlayer;
-        //healthbar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
+        healthbar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
         
     }
     public void Update()
