@@ -14,7 +14,7 @@ public class ItemAssets : MonoBehaviour
         Instance = this;
     }
 
-    // Used to instatiate/spawn items.
+    // Used to instantiate/spawn items.
     public Transform pfItemInWorld;
 
     // Add sprites here (for inventory icons)!

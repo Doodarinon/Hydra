@@ -7,7 +7,6 @@ using UnityEngine;
 /// </summary>
 public class ItemInWorld : MonoBehaviour
 {
-
     private Item item;
     /// <summary>
     /// Spawn an item into the world.
