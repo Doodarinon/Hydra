@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Player_Controller : MonoBehaviour
 {
     private Inventory inventory;
-    //public Bunker_Script bunkerScript;
+    public Bunker_Script bunkerScript;
 
     private float movementSpeed = 5f;
 
@@ -17,7 +17,7 @@ public class Player_Controller : MonoBehaviour
     public float dash;
 
     private Vector3 movement;
-    //public Animator animator;
+    public Animator animator;
 
     Rigidbody rb;
     [SerializeField] private bool inCollider;
@@ -26,9 +26,16 @@ public class Player_Controller : MonoBehaviour
 
     void Start()
     {
-        //bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
+        try
+        {
+            animator = GetComponentInChildren<Animator>();
+            bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
 
-        //animator = GetComponentInChildren<Animator>();
 
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -55,11 +62,11 @@ public class Player_Controller : MonoBehaviour
         {
             inventory.AddItem(itemInWorld.GetItem());
             itemInWorld.DestroySelf();
-        } 
+        }
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Upgrade"))
+        if (other.CompareTag("Upgrade"))
         {
             inCollider = false;
         }
@@ -130,14 +137,28 @@ public class Player_Controller : MonoBehaviour
 
     void PlayerAttack()
     {
-        //animator.Play("melee_attack");
-        timer = baseTimer;
+        try
+        {
+            timer = baseTimer;
+            animator.Play("melee_attack");
+        }
+        catch (System.Exception)
+        {
+            throw;
+        }
     }
     public void ButtonClick()
     {
         if (inCollider)
         {
-            //bunkerScript.Upgrade();
+            try
+            {
+                bunkerScript.Upgrade();
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }
