@@ -13,7 +13,6 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
-    public Button useItemButton;
     bool state;
 
     private void Awake()
@@ -74,15 +73,16 @@ public class UI_Inventory : MonoBehaviour
         // For every existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
+
             RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
-
-            useItemButton.onClick.AddListener(() => inventory.UseItem(item));
-            //inventory.UseItem(item);
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
             image.sprite = item.GetSprite();
+
+            // Adds a listener to every item that goes into the player's inventory.
+            itemslotRectTransform.GetComponent<Button>().onClick.AddListener(() => { inventory.UseItem(item); });
 
             TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
             if (item.amount > 1)
@@ -102,14 +102,4 @@ public class UI_Inventory : MonoBehaviour
            }
         }
     }
-    /// <summary>
-    /// Allows the player to use the item they click on.
-    /// </summary>
-    /*public void UseItem()
-    {
-        inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        GetComponent<PlayerHealth>().currentPlayerHealth += 10;
-
-        Debug.Log("Item has been used.");
-    }*/
 }
