@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> tempEnemies = new List<GameObject>();
     public GameObject[] spawnPoints;
     public List<int> randoNumbers = new List<int>();
+    Fence_Upgrade fenceUpgrade;
     public GameObject enemy1;
     public GameObject enemy2;
     public int enemyCount;
@@ -15,20 +16,28 @@ public class EnemySpawner : MonoBehaviour
     bool randomizing;
 
     // Please for the love of god dont look below here unless you want a stroke
-
+    private void Start()
+    {
+        fenceUpgrade = FindObjectOfType<Fence_Upgrade>().GetComponent<Fence_Upgrade>();
+    }
     public void ChooseEnemyAmmount(int enemyBaseAmmount, int waveNr, int enemyMultiplier)
     {
         tempEnemies.Clear();
         int enemy1MaxAmmount = enemyBaseAmmount * waveNr * enemyMultiplier;
         int enemy2MaxAmmount = enemyBaseAmmount * waveNr * enemyMultiplier;
-
-        for (int i = 0; i < enemy1MaxAmmount; i++)
+        if (enemy1 != null)
         {
-            tempEnemies.Add(enemy1);
+            for (int i = 0; i < enemy1MaxAmmount; i++)
+            {
+                tempEnemies.Add(enemy1);
+            }
         }
-        for (int i = 0; i < enemy2MaxAmmount; i++)
+        if (enemy2 != null)
         {
-            tempEnemies.Add(enemy2);
+            for (int i = 0; i < enemy2MaxAmmount; i++)
+            {
+                tempEnemies.Add(enemy2);
+            }
         }
     }
     public void Randomize()

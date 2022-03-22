@@ -34,6 +34,7 @@ public class EnemyBaseScript : MonoBehaviour
     private Bunker_Script bunkerScript;
     private PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
+    public Fence_Upgrade fenceUpgrade;
     public HealthBar healthBar;
     public NavMeshAgent nav;
     public Transform target;
@@ -44,6 +45,7 @@ public class EnemyBaseScript : MonoBehaviour
         playerHealth = FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
         enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
         healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
+        fenceUpgrade = FindObjectOfType<Fence_Upgrade>().GetComponent<Fence_Upgrade>();
         nav = GetComponent<NavMeshAgent>();
         fences1 = GameObject.FindGameObjectsWithTag("Fence1");
         fences2 = GameObject.FindGameObjectsWithTag("Fence2");
@@ -59,14 +61,11 @@ public class EnemyBaseScript : MonoBehaviour
         {
             damageTimer -= Time.deltaTime;
         }
-        counter = 0;
         bunker = GameObject.FindGameObjectsWithTag("Bunker");
-        closestFence1 = fences1[counter];
-        closestFence2 = fences2[counter];
-        closestFence3 = fences3[counter];
-        if (true) // Replace "True" with check that cheacks what lvl fences are in the 3 below
+        if (fenceUpgrade.fenceLvl == 1 && fences1[0] != null) // Replace "True" with check that cheacks what lvl fences are in the 3 below
         {
             counter = 0;
+            closestFence1 = fences1[counter];
             foreach (GameObject temp in fences1)
             {
                 if (Vector3.Distance(transform.position, closestFence1.transform.position) > Vector3.Distance(transform.position, fences1[counter].transform.position))
@@ -76,9 +75,10 @@ public class EnemyBaseScript : MonoBehaviour
                 counter++;
             }
         }
-        if (true)
+        if (fenceUpgrade.fenceLvl == 2 && fences2[0] != null)
         {
             counter = 0;
+            closestFence2 = fences2[counter];
             foreach (GameObject temp in fences2)
             {
                 if (Vector3.Distance(transform.position, closestFence2.transform.position) > Vector3.Distance(transform.position, fences2[counter].transform.position))
@@ -88,9 +88,10 @@ public class EnemyBaseScript : MonoBehaviour
                 counter++;
             }
         }
-        if (true)
+        if (fenceUpgrade.fenceLvl == 3 && fences3[0] != null)
         {
             counter = 0;
+            closestFence3 = fences3[counter];
             foreach (GameObject temp in fences3)
             {
                 if (Vector3.Distance(transform.position, closestFence3.transform.position) > Vector3.Distance(transform.position, fences3[counter].transform.position))
@@ -100,31 +101,47 @@ public class EnemyBaseScript : MonoBehaviour
                 counter++;
             }
         }
-        Debug.Log("5");
-        if (Vector3.Distance(transform.position, closestFence1.transform.position) < Vector3.Distance(transform.position,closestFence2.transform.position) && Vector3.Distance(transform.position, closestFence1.transform.position) < Vector3.Distance(transform.position, closestFence3.transform.position))
+        if (closestFence1 != null && closestFence2 != null && closestFence3 != null)
         {
-            closestFence = closestFence1;
+            if (Vector3.Distance(transform.position, closestFence1.transform.position) < Vector3.Distance(transform.position, closestFence2.transform.position) && Vector3.Distance(transform.position, closestFence1.transform.position) < Vector3.Distance(transform.position, closestFence3.transform.position))
+            {
+                closestFence = closestFence1;
+            }
+            else if (Vector3.Distance(transform.position, closestFence2.transform.position) < Vector3.Distance(transform.position, closestFence3.transform.position))
+            {
+                closestFence = closestFence2;
+            }
+            else
+            {
+                closestFence = closestFence3;
+            }
         }
-        else if (Vector3.Distance(transform.position, closestFence2.transform.position) < Vector3.Distance(transform.position, closestFence3.transform.position))
+        try
         {
-            closestFence = closestFence2;
-            Debug.Log("2");
+            if (Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, closestFence.transform.position) && Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, player.transform.position))
+            {
+                target = bunker[0].transform;
+            }
+            else if (Vector3.Distance(transform.position, closestFence.transform.position) < Vector3.Distance(transform.position, player.transform.position))
+            {
+                target = closestFence.transform;
+            }
+            else
+            {
+                target = player.transform;
+            }
         }
-        else
+        catch (System.Exception)
         {
-            closestFence = closestFence3;
-        }
-        if (Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, closestFence.transform.position) && Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, player.transform.position))
-        {
-            target = bunker[0].transform;
-        }
-        else if (Vector3.Distance(transform.position, closestFence.transform.position) < Vector3.Distance(transform.position, player.transform.position))
-        {
-            target = closestFence.transform;
-        }
-        else
-        {
-            target = player.transform;
+
+            if (Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, player.transform.position))
+            {
+                target = bunker[0].transform;
+            }
+            else
+            {
+                target = player.transform;
+            }
         }
         // *Input dynamic target choice here*
 
@@ -179,7 +196,7 @@ public class EnemyBaseScript : MonoBehaviour
             }
 
         }
-        if (collision.collider.CompareTag("Bunker"))
+        if (collision.collider.CompareTag("Bunker") && bunkerScript.timer <= 0)
         {
             bunkerScript.TakeDamage();
         }
@@ -204,6 +221,22 @@ public class EnemyBaseScript : MonoBehaviour
         {
             damageTimer = playerController.timer;
             TakeDamage();
+        }
+    }
+    public void FenceUpgradeChecker()
+    {
+        Debug.Log("Works");
+        if (fenceUpgrade.fenceLvl == 1)
+        {
+            fences1 = GameObject.FindGameObjectsWithTag("Fence1");
+        }
+        if (fenceUpgrade.fenceLvl == 2)
+        {
+            fences2 = GameObject.FindGameObjectsWithTag("Fence2");
+        }
+        if (fenceUpgrade.fenceLvl == 3)
+        {
+            fences3 = GameObject.FindGameObjectsWithTag("Fence3");
         }
     }
 }
