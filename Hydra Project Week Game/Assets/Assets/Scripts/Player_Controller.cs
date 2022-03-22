@@ -33,7 +33,7 @@ public class Player_Controller : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
 
         // Creates player inventory.
-        inventory = new Inventory(UseItem);
+        inventory = new Inventory();
         uiInventory.SetInventory(inventory);
 
         // Spawns item(s).
@@ -62,22 +62,6 @@ public class Player_Controller : MonoBehaviour
         if(other.CompareTag("Upgrade"))
         {
             inCollider = false;
-        }
-    }
-
-    /// <summary>
-    /// Method for player to use item.
-    /// </summary>
-    /// <param name="item"></param>
-    private void UseItem(Item item)
-    {
-        switch (item.itemType)
-        {
-            case Item.ItemType.Healthpack:
-                // If item is a healthpack, +10 to player's current health.
-                GetComponent<PlayerHealth>().currentPlayerHealth += 10;
-                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-                break;
         }
     }
 

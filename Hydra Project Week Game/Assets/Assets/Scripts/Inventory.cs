@@ -11,17 +11,12 @@ public class Inventory
     // Creates list to track items in inventory!
     public event EventHandler OnItemListChange;
     private List<Item> itemList;
-    /// <summary>
-    /// Action to use item.
-    /// </summary>
-    private Action<Item> useItemAction;
 
     /// <summary>
     /// Declares the player's inventory.
     /// </summary>
-    public Inventory(Action<Item> useItemAction)
+    public Inventory()
     {
-        this.useItemAction = useItemAction;
         itemList = new List<Item>();
     }
 
@@ -58,6 +53,20 @@ public class Inventory
     }
 
     /// <summary>
+    /// Allows the player to use the item they click on.
+    /// </summary>
+    public void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.Healthpack:
+                RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+                break;
+        }
+        Debug.Log("Item has been used");
+    }
+
+    /// <summary>
     /// Removes an item from the player's inventory.
     /// </summary>
     /// <param name="item"></param>
@@ -85,17 +94,6 @@ public class Inventory
             itemList.Remove(item);
         }
         OnItemListChange?.Invoke(this, EventArgs.Empty);
-    }
-
-    /// <summary>
-    /// Allows the player to use the item they click on.
-    /// </summary>
-    public void UseItem(Item item)
-    {
-        useItemAction(item);
-        //GetComponent<PlayerHealth>().currentPlayerHealth += 10;
-
-        Debug.Log("Item has been used.");
     }
 
     /// <summary>
