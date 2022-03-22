@@ -16,7 +16,7 @@ public class EnemyBaseScript : MonoBehaviour
     private float timer;
     private int fenceAmmount;
     private float wanderSpeed = 0.5f;
-    private float seeDistance = 25f;
+    private float seeDistance = 250f;
 
     bool isDead = false;
     public LayerMask raycastLayers = 3;
@@ -51,73 +51,62 @@ public class EnemyBaseScript : MonoBehaviour
         fences2 = GameObject.FindGameObjectsWithTag("Fence2");
         fences3 = GameObject.FindGameObjectsWithTag("Fence3");
         player = GameObject.FindGameObjectWithTag("Player");
+        fenceUpgrade.fences1.SetActive(false);
+        fenceUpgrade.fences2.SetActive(false);
+        fenceUpgrade.fences3.SetActive(false);
         // target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        bunker = GameObject.FindGameObjectsWithTag("Bunker");
         if (damageTimer > 0)
         {
             damageTimer -= Time.deltaTime;
         }
-        bunker = GameObject.FindGameObjectsWithTag("Bunker");
-        if (fenceUpgrade.fenceLvl == 1 && fences1[0] != null) // Replace "True" with check that cheacks what lvl fences are in the 3 below
+        if (fenceUpgrade.fenceLvl > 0)
         {
-            counter = 0;
-            closestFence1 = fences1[counter];
-            foreach (GameObject temp in fences1)
+            if (fenceUpgrade.fenceLvl == 1 && fences1[0] != null) // Replace "True" with check that cheacks what lvl fences are in the 3 below
             {
-                if (Vector3.Distance(transform.position, closestFence1.transform.position) > Vector3.Distance(transform.position, fences1[counter].transform.position))
+                counter = 0;
+                closestFence = fences1[counter];
+                foreach (GameObject temp in fences1)
                 {
-                    closestFence1 = fences1[counter];
+                    Debug.Log("i get here");
+                    if (Vector3.Distance(transform.position, closestFence.transform.position) > Vector3.Distance(transform.position, fences1[counter].transform.position))
+                    {
+                        closestFence = fences1[counter];
+                    }
+                    counter++;
                 }
-                counter++;
             }
-        }
-        if (fenceUpgrade.fenceLvl == 2 && fences2[0] != null)
-        {
-            counter = 0;
-            closestFence2 = fences2[counter];
-            foreach (GameObject temp in fences2)
+            else if (fenceUpgrade.fenceLvl == 2 && fences2[0] != null)
             {
-                if (Vector3.Distance(transform.position, closestFence2.transform.position) > Vector3.Distance(transform.position, fences2[counter].transform.position))
+                counter = 0;
+                closestFence = fences2[counter];
+                foreach (GameObject temp in fences2)
                 {
-                    closestFence2 = fences2[counter];
+                    if (Vector3.Distance(transform.position, closestFence.transform.position) > Vector3.Distance(transform.position, fences2[counter].transform.position))
+                    {
+                        closestFence = fences2[counter];
+                    }
+                    counter++;
                 }
-                counter++;
             }
-        }
-        if (fenceUpgrade.fenceLvl == 3 && fences3[0] != null)
-        {
-            counter = 0;
-            closestFence3 = fences3[counter];
-            foreach (GameObject temp in fences3)
+            else if (fenceUpgrade.fenceLvl == 3 && fences3[0] != null)
             {
-                if (Vector3.Distance(transform.position, closestFence3.transform.position) > Vector3.Distance(transform.position, fences3[counter].transform.position))
+                counter = 0;
+                closestFence = fences3[counter];
+                foreach (GameObject temp in fences3)
                 {
-                    closestFence3 = fences3[counter];
+                    if (Vector3.Distance(transform.position, closestFence.transform.position) > Vector3.Distance(transform.position, fences3[counter].transform.position))
+                    {
+                        closestFence = fences3[counter];
+                    }
+                    counter++;
                 }
-                counter++;
             }
-        }
-        if (closestFence1 != null && closestFence2 != null && closestFence3 != null)
-        {
-            if (Vector3.Distance(transform.position, closestFence1.transform.position) < Vector3.Distance(transform.position, closestFence2.transform.position) && Vector3.Distance(transform.position, closestFence1.transform.position) < Vector3.Distance(transform.position, closestFence3.transform.position))
-            {
-                closestFence = closestFence1;
-            }
-            else if (Vector3.Distance(transform.position, closestFence2.transform.position) < Vector3.Distance(transform.position, closestFence3.transform.position))
-            {
-                closestFence = closestFence2;
-            }
-            else
-            {
-                closestFence = closestFence3;
-            }
-        }
-        try
-        {
             if (Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, closestFence.transform.position) && Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, player.transform.position))
             {
                 target = bunker[0].transform;
@@ -131,9 +120,8 @@ public class EnemyBaseScript : MonoBehaviour
                 target = player.transform;
             }
         }
-        catch (System.Exception)
+        else
         {
-
             if (Vector3.Distance(transform.position, bunker[0].transform.position) < Vector3.Distance(transform.position, player.transform.position))
             {
                 target = bunker[0].transform;
@@ -143,7 +131,6 @@ public class EnemyBaseScript : MonoBehaviour
                 target = player.transform;
             }
         }
-        // *Input dynamic target choice here*
 
         RaycastHit hit;
 
