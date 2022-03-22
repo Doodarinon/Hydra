@@ -13,9 +13,6 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
-    /// <summary>
-    /// Button for using an item. Drag "itemImage" (which is a button) into this slot.
-    /// </summary>
     public Button useItemButton;
     bool state;
 
@@ -70,34 +67,28 @@ public class UI_Inventory : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        // Code only for the inventory's visualization.
         float x = -0.4f;
         float y = 0.4f;
-
         // Distance between slots.
         float itemSlotCellsize = 70f;
-
         // For every existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
             RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
 
-            // When item is clicked, the player use said item.
-            useItemButton.onClick.AddListener(() => GetComponent<Player_Controller>().UseItem(item));
+            useItemButton.onClick.AddListener(() => inventory.UseItem(item));
+            //inventory.UseItem(item);
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
-            // Each item has their own assigned sprite. The item image is in turn determinded by this.
             image.sprite = item.GetSprite();
 
             TextMeshProUGUI text = itemslotRectTransform.Find("amountText").GetComponent<TextMeshProUGUI>();
-            // If item is stackable and the player has more than one of that item.
-            if (item.amount > 1 && item.IsStackable())
+            if (item.amount > 1)
             {
                 text.SetText(item.amount.ToString());
             }
-            // Otherwise, the text is empty.
             else
             {
                 text.SetText("");
@@ -111,4 +102,14 @@ public class UI_Inventory : MonoBehaviour
            }
         }
     }
+    /// <summary>
+    /// Allows the player to use the item they click on.
+    /// </summary>
+    /*public void UseItem()
+    {
+        inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        GetComponent<PlayerHealth>().currentPlayerHealth += 10;
+
+        Debug.Log("Item has been used.");
+    }*/
 }
