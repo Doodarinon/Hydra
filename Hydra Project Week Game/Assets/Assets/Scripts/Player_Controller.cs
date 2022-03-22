@@ -27,11 +27,18 @@ public class Player_Controller : MonoBehaviour
     void Start()
     {
         //bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
+
         //animator = GetComponentInChildren<Animator>();
+
         rb = gameObject.GetComponent<Rigidbody>();
+
         // Creates player inventory.
-        inventory = new Inventory();
+        inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
+
+        // Spawns item(s).
+        ItemInWorld.SpawnItemInWorld(new Vector3(10, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(10, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
     }
 
     public void OnTriggerEnter(Collider other)
@@ -41,13 +48,13 @@ public class Player_Controller : MonoBehaviour
             inCollider = true;
         }
 
-        Item item = other.gameObject.GetComponent<Item>();
+        ItemInWorld itemInWorld = other.GetComponent<ItemInWorld>();
 
-        // Pick up item.
+        // Pick up item. Touching target and sees if it's tagged as an item.
         if (other.CompareTag("Item") && other != null)
         {
-            inventory.AddItem(item);
-            Destroy(other.gameObject);
+            inventory.AddItem(itemInWorld.GetItem());
+            itemInWorld.DestroySelf();
         } 
     }
     private void OnTriggerExit(Collider other)
@@ -55,6 +62,22 @@ public class Player_Controller : MonoBehaviour
         if(other.CompareTag("Upgrade"))
         {
             inCollider = false;
+        }
+    }
+
+    /// <summary>
+    /// Method for player to use item.
+    /// </summary>
+    /// <param name="item"></param>
+    private void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.Healthpack:
+                // If item is a healthpack, +10 to player's current health.
+                GetComponent<PlayerHealth>().currentPlayerHealth += 10;
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+                break;
         }
     }
 
@@ -117,15 +140,4 @@ public class Player_Controller : MonoBehaviour
             //bunkerScript.Upgrade();
         }
     }
-
-    /// <summary>
-    /// Allows the player to use the item they click on.
-    /// </summary>
-    /*public void UseItem()
-    {
-        inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        GetComponent<PlayerHealth>().currentPlayerHealth += 10;
-
-        Debug.Log("Item has been used.");
-    }*/
 }

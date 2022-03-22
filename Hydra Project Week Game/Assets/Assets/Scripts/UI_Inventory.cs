@@ -13,6 +13,7 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
+    public Button useItemButton;
     bool state;
 
     private void Awake()
@@ -75,6 +76,9 @@ public class UI_Inventory : MonoBehaviour
         {
             RectTransform itemslotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemslotRectTransform.gameObject.SetActive(true);
+
+            useItemButton.onClick.AddListener(() => inventory.UseItem(item));
+            //inventory.UseItem(item);
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();

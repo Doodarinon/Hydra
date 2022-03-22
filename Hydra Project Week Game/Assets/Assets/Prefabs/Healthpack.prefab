@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5327469726113154161}
   - component: {fileID: 1682723234537230813}
   - component: {fileID: 4848450816211224002}
-  - component: {fileID: 1035043853789456962}
+  - component: {fileID: -2941692319504617704}
   m_Layer: 0
-  m_Name: MedKit
+  m_Name: Healthpack
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,12 +109,12 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5975719310405985700}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.01355833, y: 0.00482623, z: 0.012211019}
   m_Center: {x: 0, y: 0.0023230775, z: 0.0011055097}
---- !u!114 &1035043853789456962
+--- !u!114 &-2941692319504617704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,8 +123,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5975719310405985700}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72d4dbf87de35a44894ab6c785228429, type: 3}
+  m_Script: {fileID: 11500000, guid: 135f3da5b081582489d44e2ac699c7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 0
-  amount: 0

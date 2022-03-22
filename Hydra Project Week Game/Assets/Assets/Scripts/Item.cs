@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Manages items and their functionalities.
 /// </summary>
-public class Item : MonoBehaviour
+public class Item
 {
     /// <summary>
     /// List of each type of item.
