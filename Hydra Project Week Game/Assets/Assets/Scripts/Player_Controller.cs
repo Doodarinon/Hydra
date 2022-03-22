@@ -7,13 +7,13 @@ public class Player_Controller : MonoBehaviour
 {
     // Declares player inventory.
     [SerializeField] private UI_Inventory uiInventory;
-    //public Bunker_Script bunkerScript;
+    public Bunker_Script bunkerScript;
     private float movementSpeed = 5f;
     private Inventory inventory;
     public float baseTimer = 1f;
     public float dashCooldown;
     private Vector3 movement;
-    //public Animator animator;
+    public Animator animator;
     [SerializeField] private bool inCollider;
     public int damage = 10;
     public float timer;

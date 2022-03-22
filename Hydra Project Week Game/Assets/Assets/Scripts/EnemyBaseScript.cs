@@ -10,12 +10,13 @@ public class EnemyBaseScript : MonoBehaviour
     public float damagePerHit = 0;
     public int attackSpeed = 1;
     public float wanderTime;
+    public float damageTimer;
     public int counter;
 
     private float timer;
     private int fenceAmmount;
     private float wanderSpeed = 0.5f;
-    private float seeDistance = 250f;
+    private float seeDistance = 25f;
 
     bool isDead = false;
     public LayerMask raycastLayers = 3;
@@ -38,11 +39,11 @@ public class EnemyBaseScript : MonoBehaviour
     public Transform target;
     void Start()
     {
-        playerController = GetComponent<Player_Controller>();
-        bunkerScript = GetComponent<Bunker_Script>();
-        playerHealth = GetComponent<PlayerHealth>();
-        enemySpawner = GetComponent<EnemySpawner>();
-        healthBar = GetComponent<HealthBar>();
+        playerController = FindObjectOfType<Player_Controller>().GetComponent<Player_Controller>();
+        bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
+        playerHealth = FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
+        enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
+        healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
         nav = GetComponent<NavMeshAgent>();
         fences1 = GameObject.FindGameObjectsWithTag("Fence1");
         fences2 = GameObject.FindGameObjectsWithTag("Fence2");
@@ -54,6 +55,10 @@ public class EnemyBaseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (damageTimer > 0)
+        {
+            damageTimer -= Time.deltaTime;
+        }
         counter = 0;
         bunker = GameObject.FindGameObjectsWithTag("Bunker");
         closestFence1 = fences1[counter];
@@ -134,8 +139,7 @@ public class EnemyBaseScript : MonoBehaviour
                 nav.destination = target.position;
             }
         }
-
-        if (wanderTime > 0)
+        else if (wanderTime > 0)
         {
             transform.Translate(Vector3.forward * wanderSpeed);
             wanderTime -= Time.deltaTime;
@@ -195,8 +199,10 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon") && playerController.timer > 0)
+
+        if (other.CompareTag("Weapon") && damageTimer <= 0 && playerController.timer > 0)
         {
+            damageTimer = playerController.timer;
             TakeDamage();
         }
     }
