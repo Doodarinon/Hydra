@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fence_Upgrade : MonoBehaviour
+public class FenceUpgrade : MonoBehaviour
 {
     public GameObject fences1;
     public GameObject fences2;
