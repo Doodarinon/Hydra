@@ -7,7 +7,7 @@ public class Game_Manager : MonoBehaviour
 
     public BunkerScript bunkerScript;
     public EnemySpawner enemySpawner;
-    Fence_Upgrade fenceUpgrade;
+    FenceUpgrade fenceUpgrade;
     int enemyBaseAmmount = 50;
     int enemyMultiplier = 2;
     public bool startRound;
