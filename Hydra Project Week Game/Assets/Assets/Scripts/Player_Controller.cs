@@ -8,7 +8,7 @@ public class Player_Controller : MonoBehaviour
     private Inventory inventory;
     private PlayerHealth playerHealth;
     private HealthBar healthBar;
-    //public Bunker_Script bunkerScript;
+    public Bunker_Script bunkerScript;
 
     private float movementSpeed = 5f;
 
