@@ -7,7 +7,7 @@ public class Fence_Upgrade : MonoBehaviour
     public GameObject fences1;
     public GameObject fences2;
     public GameObject fences3;
-    public int fenceLvl;
+    public int fenceLvl = 0;
     public GameObject[] enemys;
     public Bunker_Script bunkerScript;
     public List<EnemyBaseScript> enemyBaseScripts = new List<EnemyBaseScript>();

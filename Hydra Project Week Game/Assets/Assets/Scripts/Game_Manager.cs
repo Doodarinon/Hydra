@@ -8,7 +8,7 @@ public class Game_Manager : MonoBehaviour
     public Bunker_Script bunker_Script;
     public EnemySpawner enemySpawner;
     Fence_Upgrade fenceUpgrade;
-    int enemyBaseAmmount = 25;
+    int enemyBaseAmmount = 50;
     int enemyMultiplier = 2;
     public bool startRound;
     bool gameover = false;

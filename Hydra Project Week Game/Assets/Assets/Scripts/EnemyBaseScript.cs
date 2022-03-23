@@ -60,6 +60,19 @@ public class EnemyBaseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (fences1 == null && fenceUpgrade.fenceLvl == 1)
+        {
+            Debug.Log("works");
+            FenceUpgradeChecker();
+        }
+        if (fences2 == null && fenceUpgrade.fenceLvl == 2)
+        {
+            FenceUpgradeChecker();
+        }
+        if (fences3 == null && fenceUpgrade.fenceLvl == 3)
+        {
+            FenceUpgradeChecker();
+        }
         bunker = GameObject.FindGameObjectsWithTag("Bunker");
         if (damageTimer > 0)
         {
@@ -67,13 +80,12 @@ public class EnemyBaseScript : MonoBehaviour
         }
         if (fenceUpgrade.fenceLvl > 0)
         {
-            if (fenceUpgrade.fenceLvl == 1 && fences1[0] != null) // Replace "True" with check that cheacks what lvl fences are in the 3 below
+            if (fenceUpgrade.fenceLvl == 1 && fences1 != null) // Replace "True" with check that cheacks what lvl fences are in the 3 below
             {
                 counter = 0;
                 closestFence = fences1[counter];
                 foreach (GameObject temp in fences1)
                 {
-                    Debug.Log("i get here");
                     if (Vector3.Distance(transform.position, closestFence.transform.position) > Vector3.Distance(transform.position, fences1[counter].transform.position))
                     {
                         closestFence = fences1[counter];
@@ -81,7 +93,7 @@ public class EnemyBaseScript : MonoBehaviour
                     counter++;
                 }
             }
-            else if (fenceUpgrade.fenceLvl == 2 && fences2[0] != null)
+            else if (fenceUpgrade.fenceLvl == 2 && fences2 != null)
             {
                 counter = 0;
                 closestFence = fences2[counter];
@@ -94,7 +106,7 @@ public class EnemyBaseScript : MonoBehaviour
                     counter++;
                 }
             }
-            else if (fenceUpgrade.fenceLvl == 3 && fences3[0] != null)
+            else if (fenceUpgrade.fenceLvl == 3 && fences3 != null)
             {
                 counter = 0;
                 closestFence = fences3[counter];
