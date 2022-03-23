@@ -66,8 +66,8 @@ public class UI_Inventory : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        float x = -0.4f;
-        float y = 0.4f;
+        float x = -0.01f;
+        float y = 0.001f;
         // Distance between slots.
         float itemSlotCellsize = 70f;
         // For every existing item, create an item slot.

@@ -11,12 +11,14 @@ public class Inventory
     // Creates list to track items in inventory!
     public event EventHandler OnItemListChange;
     private List<Item> itemList;
+    private Action<Item> useItemAction;
 
     /// <summary>
     /// Declares the player's inventory.
     /// </summary>
-    public Inventory()
+    public Inventory(Action<Item> useItemAction)
     {
+        this.useItemAction = useItemAction;
         itemList = new List<Item>();
     }
 
@@ -31,23 +33,24 @@ public class Inventory
             bool itemAlreadyInInventory = false;
             foreach(Item inventoryItem in itemList)
             {
-                if (inventoryItem.itemType == item.itemType)
+                // Inventory item cannot surpass the max amount of stacked items.
+                if (inventoryItem.itemType == item.itemType && inventoryItem.amount != item.maxAmount)
                 {
                     inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;
-                    Debug.Log("Amount has increased");
+                    //Debug.Log("Amount has increased");
                 }             
             }
             if (!itemAlreadyInInventory)
             {
                 itemList.Add(item);
-                Debug.Log("Added new stackable item");
+                //Debug.Log("Added new stackable item");
             }
         }
         else
         {
             itemList.Add(item);
-            Debug.Log("Added new non-stackable item");
+            //Debug.Log("Added new non-stackable item");
         }
         OnItemListChange?.Invoke(this, EventArgs.Empty);
     }
@@ -57,13 +60,7 @@ public class Inventory
     /// </summary>
     public void UseItem(Item item)
     {
-        switch (item.itemType)
-        {
-            case Item.ItemType.Healthpack:
-                RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-                break;
-        }
-        Debug.Log("Item has been used");
+        useItemAction(item);
     }
 
     /// <summary>
