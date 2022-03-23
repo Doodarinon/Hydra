@@ -5,7 +5,7 @@ using UnityEngine;
 public class Game_Manager : MonoBehaviour
 {
 
-    public Bunker_Script bunker_Script;
+    public BunkerScript bunkerScript;
     public EnemySpawner enemySpawner;
     int enemyBaseAmmount = 250;
     int enemyMultiplier = 2;
@@ -15,7 +15,7 @@ public class Game_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bunker_Script = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
+        bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
         enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
        
     }

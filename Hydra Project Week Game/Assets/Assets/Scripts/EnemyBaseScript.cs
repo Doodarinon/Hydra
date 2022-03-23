@@ -18,8 +18,8 @@ public class EnemyBaseScript : MonoBehaviour
     bool isDead = false;
     public LayerMask raycastLayers = 3;
 
-    private Player_Controller playerController;
-    private Bunker_Script bunkerScript;
+    private PlayerController playerController;
+    private BunkerScript bunkerScript;
     private PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
     public HealthBar healthBar;
@@ -27,8 +27,8 @@ public class EnemyBaseScript : MonoBehaviour
     public Transform target;
     void Start()
     {
-        playerController = GetComponent<Player_Controller>();
-        bunkerScript = GetComponent<Bunker_Script>();
+        playerController = GetComponent<PlayerController>();
+        bunkerScript = GetComponent<BunkerScript>();
         playerHealth = GetComponent<PlayerHealth>();
         enemySpawner = GetComponent<EnemySpawner>();
         healthBar = GetComponent<HealthBar>();
