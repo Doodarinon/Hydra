@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemyBaseScript : MonoBehaviour
 {
     public float enemyHealth = 10;
-    public float damagePerHit = 0;
+    private float damagePerHit = 3;
     public int attackSpeed = 1;
     public float wanderTime;
     public float damageTimer;
@@ -26,9 +26,6 @@ public class EnemyBaseScript : MonoBehaviour
     public GameObject[] fences2;
     public GameObject[] fences3;
     public GameObject closestFence;
-    public GameObject closestFence1;
-    public GameObject closestFence2;
-    public GameObject closestFence3;
 
     private Player_Controller playerController;
     private Bunker_Script bunkerScript;
@@ -177,8 +174,6 @@ public class EnemyBaseScript : MonoBehaviour
 
         if (collision.collider.CompareTag("Player"))
         {
-
-
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
@@ -187,7 +182,7 @@ public class EnemyBaseScript : MonoBehaviour
             {
                 playerHealth.currentPlayerHealth -= damagePerHit;
                 Debug.Log("hej");
-                //healthBar.SetHealth(playerHealth.currentPlayerHealth);
+                healthBar.SetHealth(playerHealth.currentPlayerHealth);
 
                 timer = attackSpeed;
 

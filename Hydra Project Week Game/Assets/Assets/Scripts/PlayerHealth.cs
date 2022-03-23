@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public float maxPlayerHealth = 100;
-    public float currentPlayerHealth;
+    public float currentPlayerHealth = 0;
     public HealthBar healthbar;
     bool dead = false;
 
@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        healthbar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
         currentPlayerHealth = maxPlayerHealth;
         healthbar.SetMaxHealth(maxPlayerHealth);
     }
