@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: fc5c3009d50d06e409170d01d10f47af
+guid: 2db9dd3299b0fc94b9ff2c2f92e94baa
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: berries
-    second: {fileID: 2100000, guid: ed7d13c00aa47a54e99f56db6a6f8b1d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 72a64274e061b0a44b55d88d74d132a8, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
