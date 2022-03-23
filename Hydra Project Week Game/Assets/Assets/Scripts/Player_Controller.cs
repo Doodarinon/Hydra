@@ -33,7 +33,7 @@ public class Player_Controller : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
 
         // Creates player inventory.
-        inventory = new Inventory();
+        inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
 
         // Spawns item(s).
@@ -63,6 +63,17 @@ public class Player_Controller : MonoBehaviour
         {
             inCollider = false;
         }
+    }
+
+    private void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.Healthpack:
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+                break;
+        }
+        //Debug.Log("Item has been used");
     }
 
     // Update is called once per frame
