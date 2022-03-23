@@ -349,26 +349,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &544476586 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7552289729098015436, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
-  m_PrefabInstance: {fileID: 1152906815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &544476587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544476586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7704c5486eb1b09419a003aee321d00f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxPlayerStamina: 50
-  currentPlayerStamina: 0
-  staminaBar: {fileID: 625425045}
 --- !u!114 &625425045 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3533762074021257409, guid: 4a91b05ae2e7afe48abbe60f3a4e664c, type: 3}
@@ -620,7 +600,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7552289729098015430, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
   m_PrefabInstance: {fileID: 1152906815}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544476586}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 674002ff15ee0e24fb9182f1771f731b, type: 3}
@@ -633,6 +613,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 544476587, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
+      propertyPath: staminaBar
+      value: 
+      objectReference: {fileID: 625425045}
     - target: {fileID: 7552289729098015424, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -681,18 +665,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 3986491430039030582}
-    - target: {fileID: 7552289729098015428, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
-      propertyPath: healthbar
-      value: 
-      objectReference: {fileID: 3986491430039030582}
-    - target: {fileID: 7552289729098015428, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
-      propertyPath: healthPlayer
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7552289729098015430, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
-      propertyPath: dash
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7552289729098015430, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
       propertyPath: uiInventory
       value: 

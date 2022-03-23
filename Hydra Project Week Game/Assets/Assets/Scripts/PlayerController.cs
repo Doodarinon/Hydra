@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStamina playerStamina;
     private HealthBar healthBar;
     private StaminaBar staminaBar;
-    //public BunkerScript bunkerScript;
+    public BunkerScript bunkerScript;
 
     private float movementSpeed = 5;
 
@@ -20,6 +20,12 @@ public class PlayerController : MonoBehaviour
     public float timer;
     public float dash;
 
+<<<<<<< Updated upstream
+=======
+    private float staminaDrain = 0.1f;
+    private float stamina = 0f;
+    private float sprintSpeed = 1.2f;
+>>>>>>> Stashed changes
     private Vector3 movement;
     //public Animator animator;
 
@@ -30,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
+        bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
 
         //animator = GetComponentInChildren<Animator>();
 
