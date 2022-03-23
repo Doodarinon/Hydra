@@ -62,7 +62,6 @@ public class EnemyBaseScript : MonoBehaviour
     {
         if (fences1 == null && fenceUpgrade.fenceLvl == 1)
         {
-            Debug.Log("works");
             FenceUpgradeChecker();
         }
         if (fences2 == null && fenceUpgrade.fenceLvl == 2)
@@ -224,7 +223,6 @@ public class EnemyBaseScript : MonoBehaviour
     }
     public void FenceUpgradeChecker()
     {
-        Debug.Log("Works");
         if (fenceUpgrade.fenceLvl == 1)
         {
             fences1 = GameObject.FindGameObjectsWithTag("Fence1");

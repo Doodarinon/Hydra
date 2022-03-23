@@ -16,6 +16,9 @@ public class Player_Controller : MonoBehaviour
     public float timer;
     public float dash;
 
+    private Image staminaBar;
+    private float stamina;
+    private float sprintSpeed = 1.2f;
     private Vector3 movement;
     public Animator animator;
 
