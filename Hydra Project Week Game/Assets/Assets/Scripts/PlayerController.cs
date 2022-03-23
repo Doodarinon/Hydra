@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player_Controller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Inventory inventory;
     private PlayerHealth playerHealth;
+    private PlayerStamina playerStamina;
     private HealthBar healthBar;
-    public Bunker_Script bunkerScript;
+    private StaminaBar staminaBar;
+    //public BunkerScript bunkerScript;
 
-    private float movementSpeed = 5f;
+    private float movementSpeed = 5;
 
     public int damage = 10;
-    public float baseTimer = 1f;
+    public float baseTimer = 1;
     public float dashCooldown;
     public float timer;
     public float dash;
@@ -28,26 +30,19 @@ public class Player_Controller : MonoBehaviour
     Rigidbody rb;
     [SerializeField] private bool inCollider;
     // Declares player inventory.
-    [SerializeField] private UI_Inventory uiInventory;
+    [SerializeField] private UIInventory uiInventory;
 
     void Start()
     {
-        try
-        {
-            animator = GetComponentInChildren<Animator>();
-            bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
-        }
-        catch (System.Exception)
-        {
-            Debug.Log("Either animator or bunker script or both dont exist, should be fine without");
-            throw;
-        }
+        //bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
 
 
         rb = gameObject.GetComponent<Rigidbody>();
 
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         healthBar = playerHealth.GetComponent<HealthBar>();
+        playerStamina = gameObject.GetComponent<PlayerStamina>();
+        staminaBar = playerStamina.GetComponent<StaminaBar>();
 
         // Creates player inventory.
         inventory = new Inventory(UseItem);
@@ -92,7 +87,7 @@ public class Player_Controller : MonoBehaviour
                 if(playerHealth.currentPlayerHealth < playerHealth.maxPlayerHealth)
                 {
                     playerHealth.currentPlayerHealth += 10;
-                    playerHealth.healthbar.SetHealth(playerHealth.currentPlayerHealth);
+                    playerHealth.healthBar.SetHealth(playerHealth.currentPlayerHealth);
                 }
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
                 break;
@@ -117,34 +112,30 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    /*private void FixedUpdate()
+    private void FixedUpdate()
     {
         // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
         rb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
         dashCooldown -= Time.deltaTime;
         // Debug.Log(dashCooldown);
-        if (Input.GetKeyDown("space"))
+        if (Input.GetButtonDown("Dash"))
         {
             PlayerDash();
         }
-    }*/
+    }
 
     void PlayerDash()
     {
         if (dashCooldown <= 0)
         {
-            // Vector3 mousePos = new Vector3(Input.mousePosition.x, transform.position.y, Input.mousePosition.z);
+            Vector3 mousePos = new Vector3(Input.mousePosition.x, transform.position.y, Input.mousePosition.z);
             rb.AddRelativeForce(Vector3.forward * dash, ForceMode.Impulse);
 
             dashCooldown = 2f;
+            playerStamina.UseStamina(10);
 
-            Debug.Log("Dash Succesful");
+            //Debug.Log("Dash Succesful");
         }
-        else
-        {
-            Debug.Log("You have a cooldown for " + dashCooldown + " seconds");
-        }
-
     }
 
     void PlayerAttack()

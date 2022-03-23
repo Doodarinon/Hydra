@@ -8,15 +8,14 @@ public class PlayerHealth : MonoBehaviour
 {
     public float maxPlayerHealth = 100;
     public float currentPlayerHealth;
-    public HealthBar healthbar;
-    bool dead = false;
+    public HealthBar healthBar;
 
     private bool isDead;
 
     private void Start()
     {
         currentPlayerHealth = maxPlayerHealth;
-        healthbar.SetMaxHealth(maxPlayerHealth);
+        healthBar.SetMaxHealth(maxPlayerHealth);
     }
     private void Update()
     {

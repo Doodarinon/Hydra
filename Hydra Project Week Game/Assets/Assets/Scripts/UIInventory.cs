@@ -7,7 +7,7 @@ using TMPro;
 /// <summary>
 /// Manages the visual aspects of the player's inventory.
 /// </summary>
-public class UI_Inventory : MonoBehaviour
+public class UIInventory : MonoBehaviour
 {
     private Inventory inventory;
     private Transform itemSlotContainer;

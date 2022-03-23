@@ -412,27 +412,43 @@ C# parse time         : 243ms
 candidates check time : 26ms
 console write time    : 0ms
 
-[api-updater (non-obsolete-error-filter)] 2022-03-23 11:58:09 : Starting C:/Program Files/Unity/Hub/Editor/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
-[api-updater (non-obsolete-error-filter)] Exception caught while loading types from C:\Users\gustav.magnusson4\Documents\GitHub\Hydra\Hydra Project Week Game\Library\ScriptAssemblies\Unity.CollabProxy.Editor.dll (some types may not be loaded)
-	Exception of type 'System.Reflection.ReflectionTypeLoadException' was thrown.
-	  at (wrapper managed-to-native) System.Reflection.Assembly.GetTypes(System.Reflection.Assembly,bool)
-  at System.Reflection.Assembly.GetTypes () [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
-  at APIUpdater.NonObsoleteApiUpdaterDetector.ExtraInfoParser+<LoadTypesWithMovedFromAttributeAsync>d__3.MoveNext () [0x000c8] in <68bff7873e0e4aa69a14dfc30bebbe3e>:0 
-	Could not load file or assembly 'UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies.
-
-[api-updater (non-obsolete-error-filter)] Exception caught while loading types from C:\Users\gustav.magnusson4\Documents\GitHub\Hydra\Hydra Project Week Game\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll (some types may not be loaded)
-	Exception of type 'System.Reflection.ReflectionTypeLoadException' was thrown.
-	  at (wrapper managed-to-native) System.Reflection.Assembly.GetTypes(System.Reflection.Assembly,bool)
-  at System.Reflection.Assembly.GetTypes () [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
-  at APIUpdater.NonObsoleteApiUpdaterDetector.ExtraInfoParser+<LoadTypesWithMovedFromAttributeAsync>d__3.MoveNext () [0x000c8] in <68bff7873e0e4aa69a14dfc30bebbe3e>:0 
-	Could not load file or assembly 'UnityEditor.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies.
-
+[api-updater (non-obsolete-error-filter)] 2022-03-23 14:19:11 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
 [api-updater (non-obsolete-error-filter)] 
 ----------------------------------
-jit/startup time      : 993,7902ms
-moved types parse time: 64ms
+jit/startup time      : 2169,7999ms
+moved types parse time: 104ms
 candidates parse time : 1ms
-C# parse time         : 794ms
+C# parse time         : 657ms
+candidates check time : 100ms
+console write time    : 2ms
+
+[api-updater (non-obsolete-error-filter)] 2022-03-23 14:19:38 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 236,281ms
+moved types parse time: 56ms
+candidates parse time : 1ms
+C# parse time         : 223ms
+candidates check time : 42ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 2022-03-23 14:19:49 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 132,9573ms
+moved types parse time: 138ms
+candidates parse time : 3ms
+C# parse time         : 345ms
 candidates check time : 48ms
+console write time    : 0ms
+
+[api-updater (non-obsolete-error-filter)] 2022-03-23 14:20:17 : Starting C:/Users/thea.vonbromsen/Documents/UnityProjects/2020.3.26f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 342,0416ms
+moved types parse time: 59ms
+candidates parse time : 2ms
+C# parse time         : 300ms
+candidates check time : 34ms
 console write time    : 0ms
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bunker_Script : MonoBehaviour
+public class BunkerScript : MonoBehaviour
 {
     private int defaultTimer = 5;
     public float timer;

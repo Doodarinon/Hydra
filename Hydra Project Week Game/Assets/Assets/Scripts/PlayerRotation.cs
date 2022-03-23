@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Rotation : MonoBehaviour
+public class PlayerRotation : MonoBehaviour
 {
     [SerializeField] private GameObject groundPlane;
     [SerializeField] private LayerMask groundMask;
