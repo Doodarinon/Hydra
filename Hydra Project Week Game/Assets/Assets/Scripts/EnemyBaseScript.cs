@@ -112,7 +112,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon") && playerController.timer > 0)
+        if (other.CompareTag("Weapon") && playerController.Timer > 0)
         {
             TakeDamage();
         }
