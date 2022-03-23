@@ -33,7 +33,8 @@ public class Inventory
             bool itemAlreadyInInventory = false;
             foreach(Item inventoryItem in itemList)
             {
-                if (inventoryItem.itemType == item.itemType)
+                // Inventory item cannot surpass the max amount of stacked items.
+                if (inventoryItem.itemType == item.itemType && inventoryItem.amount != item.maxAmount)
                 {
                     inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;

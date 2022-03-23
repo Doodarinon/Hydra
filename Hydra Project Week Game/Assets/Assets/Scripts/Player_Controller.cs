@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Player_Controller : MonoBehaviour
 {
     private Inventory inventory;
+    private PlayerHealth playerHealth;
+    private HealthBar healthBar;
     //public Bunker_Script bunkerScript;
 
     private float movementSpeed = 5f;
@@ -32,13 +34,16 @@ public class Player_Controller : MonoBehaviour
 
         rb = gameObject.GetComponent<Rigidbody>();
 
+        playerHealth = gameObject.GetComponent<PlayerHealth>();
+        healthBar = playerHealth.GetComponent<HealthBar>();
+
         // Creates player inventory.
         inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
 
         // Spawns item(s).
         ItemInWorld.SpawnItemInWorld(new Vector3(10, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(10, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(5, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
     }
 
     public void OnTriggerEnter(Collider other)
@@ -69,7 +74,14 @@ public class Player_Controller : MonoBehaviour
     {
         switch (item.itemType)
         {
+            // If item is a healthpack, +10 to current health.**
             case Item.ItemType.Healthpack:
+                // *Provided that current health is below max value.
+                if(playerHealth.currentPlayerHealth < playerHealth.maxPlayerHealth)
+                {
+                    playerHealth.currentPlayerHealth += 10;
+                    playerHealth.healthbar.SetHealth(playerHealth.currentPlayerHealth);
+                }
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
                 break;
         }

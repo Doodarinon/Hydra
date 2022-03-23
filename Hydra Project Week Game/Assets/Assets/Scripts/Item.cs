@@ -16,7 +16,9 @@ public class Item
     }
 
     public ItemType itemType;
+    
     public int amount;
+    public int maxAmount = 10;
 
     /// <summary>
     /// Assigns a sprite to each item to be displayed in the inventory.
