@@ -9,12 +9,12 @@ public class Fence_Upgrade : MonoBehaviour
     public GameObject fences3;
     public int fenceLvl = 0;
     public GameObject[] enemys;
-    public Bunker_Script bunkerScript;
+    public BunkerScript bunkerScript;
     public List<EnemyBaseScript> enemyBaseScripts = new List<EnemyBaseScript>();
     int counter;
     void Start()
     {
-        bunkerScript = FindObjectOfType<Bunker_Script>().GetComponent<Bunker_Script>();
+        bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
     }
 
     // Update is called once per frame

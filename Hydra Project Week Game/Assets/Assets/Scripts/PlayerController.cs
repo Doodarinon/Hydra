@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStamina playerStamina;
     private HealthBar healthBar;
     private StaminaBar staminaBar;
-    //public BunkerScript bunkerScript;
+    public BunkerScript bunkerScript;
 
     private float movementSpeed = 5;
 
@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
     public float timer;
     public float dash;
 
+<<<<<<< Updated upstream
+=======
     private float staminaDrain = 0.1f;
     private float stamina = 0f;
-    private Image staminaBar;
     private float sprintSpeed = 1.2f;
+>>>>>>> Stashed changes
     private Vector3 movement;
-    public Animator animator;
+    //public Animator animator;
 
     Rigidbody rb;
     [SerializeField] private bool inCollider;
@@ -34,8 +36,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
+        bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
 
+        //animator = GetComponentInChildren<Animator>();
 
         rb = gameObject.GetComponent<Rigidbody>();
 
@@ -67,11 +70,11 @@ public class PlayerController : MonoBehaviour
         {
             inventory.AddItem(itemInWorld.GetItem());
             itemInWorld.DestroySelf();
-        }
+        } 
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Upgrade"))
+        if(other.CompareTag("Upgrade"))
         {
             inCollider = false;
         }
@@ -140,28 +143,14 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAttack()
     {
-        try
-        {
-            timer = baseTimer;
-            animator.Play("melee_attack");
-        }
-        catch (System.Exception)
-        {
-            throw;
-        }
+        //animator.Play("melee_attack");
+        timer = baseTimer;
     }
     public void ButtonClick()
     {
         if (inCollider)
         {
-            try
-            {
-                bunkerScript.Upgrade();
-            }
-            catch
-            {
-                throw;
-            }
+            //bunkerScript.Upgrade();
         }
     }
 }
