@@ -18,6 +18,10 @@ public class Player_Controller : MonoBehaviour
     public float timer;
     public float dash;
 
+    private float staminaDrain = 0.1f;
+    private float stamina = 0f;
+    private Image staminaBar;
+    private float sprintSpeed = 1.2f;
     private Vector3 movement;
     public Animator animator;
 
@@ -35,6 +39,7 @@ public class Player_Controller : MonoBehaviour
         }
         catch (System.Exception)
         {
+            Debug.Log("Either animator or bunker script or both dont exist, should be fine without");
             throw;
         }
 
