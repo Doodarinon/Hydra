@@ -31,7 +31,7 @@ public class EnemyBaseScript : MonoBehaviour
     private BunkerScript bunkerScript;
     private PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
-    public Fence_Upgrade fenceUpgrade;
+    public FenceUpgrade fenceUpgrade;
     public HealthBar healthBar;
     public NavMeshAgent nav;
     public Transform target;
