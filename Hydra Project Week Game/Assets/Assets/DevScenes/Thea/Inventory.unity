@@ -666,6 +666,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3986491430039030582}
     - target: {fileID: 7552289729098015430, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
+      propertyPath: baseTimer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552289729098015430, guid: c2f6c74c6aa07f74886a6b34226603a6, type: 3}
       propertyPath: uiInventory
       value: 
       objectReference: {fileID: 969015401}

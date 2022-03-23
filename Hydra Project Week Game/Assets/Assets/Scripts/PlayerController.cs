@@ -13,12 +13,19 @@ public class PlayerController : MonoBehaviour
     public BunkerScript bunkerScript;
 
     private float movementSpeed = 5;
+    private float dashCooldown;
+    private float timer;
 
     public int damage = 10;
     public float baseTimer = 1;
-    public float dashCooldown;
-    public float timer;
     public float dash;
+
+    // Allow other scripts to access timer.
+    public float Timer
+    {
+        get { return timer; }
+        set { timer = value; }
+    }
 
     private Vector3 movement;
     //public Animator animator;
@@ -74,6 +81,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Use item currently in player's inventory.
+    /// </summary>
+    /// <param name="item"></param>
     private void UseItem(Item item)
     {
         switch (item.itemType)
@@ -95,7 +106,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Movement
+        // Player movement.
         movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
         transform.Translate(movementSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
 
@@ -103,7 +114,7 @@ public class PlayerController : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire1") && timer <= 0)
+        if (Input.GetButtonDown("Fire") && timer <= 0)
         {
             PlayerAttack();
         }
@@ -111,8 +122,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
-        //rb.MovePosition(transform.position + (movement * movementSpeed * Time.fixedDeltaTime));
         dashCooldown -= Time.deltaTime;
         // Debug.Log(dashCooldown);
         if (Input.GetButtonDown("Dash"))
@@ -125,11 +134,12 @@ public class PlayerController : MonoBehaviour
     {
         if (dashCooldown <= 0)
         {
+            // Accelerates the player using mouse position and movement speed, then adds it to the current position.
             Vector3 mousePos = new Vector3(Input.mousePosition.x, transform.position.y, Input.mousePosition.z);
             rb.AddRelativeForce(Vector3.forward * dash, ForceMode.Impulse);
 
             dashCooldown = 2f;
-            playerStamina.UseStamina(10);
+            playerStamina.UseStamina(15);
 
             //Debug.Log("Dash Succesful");
         }
@@ -139,6 +149,7 @@ public class PlayerController : MonoBehaviour
     {
         //animator.Play("melee_attack");
         timer = baseTimer;
+        playerStamina.UseStamina(5);
     }
     public void ButtonClick()
     {
