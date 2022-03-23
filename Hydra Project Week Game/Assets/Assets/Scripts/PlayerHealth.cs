@@ -11,22 +11,19 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthbar;
     bool dead = false;
 
+    private bool isDead;
+
     private void Start()
     {
         currentPlayerHealth = maxPlayerHealth;
         healthbar.SetMaxHealth(maxPlayerHealth);
     }
-    public void Update()
+    private void Update()
     {
-        //Right now this checks if player has 0 health and deletes the player if health below 0. Change this in futere. 
-        //I destroy this object to not cause spamm in the console.
         if (currentPlayerHealth <= 0)
         {
-            Debug.Log("dead");
-            dead = true;
-            if (dead == true)
-            {
-                Destroy(this.gameObject);
-            }
+            Destroy(gameObject);
+            isDead = true;
         }
+    }
 }
