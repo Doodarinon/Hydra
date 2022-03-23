@@ -45,7 +45,7 @@ public class Fence_Upgrade : MonoBehaviour
         foreach (GameObject temp in enemys)
         {
             enemyBaseScripts.Add(enemys[counter].GetComponent<EnemyBaseScript>());
-            enemyBaseScripts[counter].FenceUpgradeChecker();
+            //enemyBaseScripts[counter].FenceUpgradeChecker();
             counter++;
 
         }

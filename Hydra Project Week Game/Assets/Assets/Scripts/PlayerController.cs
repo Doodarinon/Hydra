@@ -20,12 +20,6 @@ public class PlayerController : MonoBehaviour
     public float timer;
     public float dash;
 
-<<<<<<< Updated upstream
-=======
-    private float staminaDrain = 0.1f;
-    private float stamina = 0f;
-    private float sprintSpeed = 1.2f;
->>>>>>> Stashed changes
     private Vector3 movement;
     //public Animator animator;
 
@@ -36,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
+        //bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
 
         //animator = GetComponentInChildren<Animator>();
 
@@ -118,7 +112,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // Accelerates the players rigidbody using movement (direction) and movementspeed and adds it to the current pos
-        rb.MovePosition(transform.position + movement * movementSpeed * Time.fixedDeltaTime);
+        //rb.MovePosition(transform.position + (movement * movementSpeed * Time.fixedDeltaTime));
         dashCooldown -= Time.deltaTime;
         // Debug.Log(dashCooldown);
         if (Input.GetButtonDown("Dash"))
