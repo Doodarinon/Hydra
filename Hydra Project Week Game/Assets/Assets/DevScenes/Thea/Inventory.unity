@@ -802,7 +802,7 @@ PrefabInstance:
     - target: {fileID: 7343444139988708535, guid: 8c23bd04a0b2b5e42b3b4303a8292951, type: 3}
       propertyPath: pfItemInWorld
       value: 
-      objectReference: {fileID: 6459804131430285086, guid: c99f0fadca2dfa24fa82f03f235f1722, type: 3}
+      objectReference: {fileID: 6459804131430285086, guid: 8f91f11bccdec104dad56f37b01793bc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c23bd04a0b2b5e42b3b4303a8292951, type: 3}
 --- !u!1001 &7518687673739865751
@@ -814,6 +814,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6846986901011690696, guid: 7c00dec691509f241bc8ff717d7a2edc, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518687674355962881, guid: 7c00dec691509f241bc8ff717d7a2edc, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7518687674728447872, guid: 7c00dec691509f241bc8ff717d7a2edc, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7518687674728447872, guid: 7c00dec691509f241bc8ff717d7a2edc, type: 3}
