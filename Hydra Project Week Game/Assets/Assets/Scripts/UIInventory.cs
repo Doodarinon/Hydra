@@ -13,7 +13,7 @@ public class UIInventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
-    bool state;
+    public bool state;
 
     private void Awake()
     {

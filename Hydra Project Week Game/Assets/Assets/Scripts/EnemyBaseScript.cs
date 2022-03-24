@@ -8,12 +8,12 @@ public class EnemyBaseScript : MonoBehaviour
 {
     public float enemyHealth = 10;
     private float damagePerHit = 3;
-    public int attackSpeed = 1;
+    public int attackSpeed = 2;
     public float wanderTime;
     public float damageTimer;
     public int counter;
 
-    private float timer;
+    public float timer;
     private int fenceAmmount;
     private float wanderSpeed = 0.5f;
     private float seeDistance = 250f;
@@ -30,18 +30,19 @@ public class EnemyBaseScript : MonoBehaviour
     private PlayerController playerController;
     private BunkerScript bunkerScript;
     private PlayerHealth playerHealth;
-    public EnemySpawner enemySpawner;
-    public Fence_Upgrade fenceUpgrade;
-    public HealthBar healthBar;
-    public NavMeshAgent nav;
-    public Transform target;
+    private EnemySpawner enemySpawner;
+    private FenceUpgrade fenceUpgrade;
+    private HealthBar healthBar;
+    private NavMeshAgent nav;
+    private Transform target;
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
-        bunkerScript = GetComponent<BunkerScript>();
-        playerHealth = GetComponent<PlayerHealth>();
-        enemySpawner = GetComponent<EnemySpawner>();
-        healthBar = GetComponent<HealthBar>();
+        playerController =  FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
+        playerHealth =  FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
+        enemySpawner =  FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
+        fenceUpgrade = FindObjectOfType<FenceUpgrade>().GetComponent<FenceUpgrade>();
+        healthBar =  FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
+        bunkerScript =  FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
         nav = GetComponent<NavMeshAgent>();
         fences1 = GameObject.FindGameObjectsWithTag("Fence1");
         fences2 = GameObject.FindGameObjectsWithTag("Fence2");
@@ -179,12 +180,9 @@ public class EnemyBaseScript : MonoBehaviour
             }
             if (timer <= 0)
             {
-                playerHealth.currentPlayerHealth -= damagePerHit;
-                Debug.Log("hej");
-                healthBar.SetHealth(playerHealth.currentPlayerHealth);
-
                 timer = attackSpeed;
-
+                playerHealth.currentPlayerHealth -= damagePerHit;
+                healthBar.SetHealth(playerHealth.currentPlayerHealth);
             }
 
         }
@@ -208,7 +206,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon") && playerController.Timer > 0)
+        if (other.CompareTag("Weapon") && playerController.Timer > 0 && damageTimer <= 0)
         {
             damageTimer = playerController.timer;
             TakeDamage();

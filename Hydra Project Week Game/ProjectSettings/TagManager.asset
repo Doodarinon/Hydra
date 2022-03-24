@@ -16,6 +16,7 @@ TagManager:
   - Fence1
   - Fence2
   - Fence3
+  - Resource
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        healthbar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
+        healthBar = FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
         currentPlayerHealth = maxPlayerHealth;
         healthBar.SetMaxHealth(maxPlayerHealth);
     }

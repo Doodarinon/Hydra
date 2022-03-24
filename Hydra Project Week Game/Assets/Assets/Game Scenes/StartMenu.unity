@@ -806,9 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0b2fcf987177b46a55e1c329ab1b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene1: GameScene
-  scene2: Settings
-  scene3: Credits
 --- !u!4 &1012385051
 Transform:
   m_ObjectHideFlags: 0

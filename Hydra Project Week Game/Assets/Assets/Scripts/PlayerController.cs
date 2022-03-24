@@ -9,13 +9,13 @@ public class PlayerController : MonoBehaviour
     private PlayerHealth playerHealth;
     private PlayerStamina playerStamina;
     private HealthBar healthBar;
-    private StaminaBar staminaBar;
     public BunkerScript bunkerScript;
+    private GameManager gameManager;
 
     private float movementSpeed = 5;
     private float dashCooldown;
-    private float timer;
 
+    public float timer;
     public int damage = 10;
     public float baseTimer = 1;
     public float dash;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private Vector3 movement;
-    //public Animator animator;
+    public Animator animator;
 
     Rigidbody rb;
     [SerializeField] private bool inCollider;
@@ -37,16 +37,21 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
-
-        //animator = GetComponentInChildren<Animator>();
-
+        /*try
+        {
+            bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
+            animator = GetComponentInChildren<Animator>();
+        }
+        catch
+        {
+            throw;
+        }*/
         rb = gameObject.GetComponent<Rigidbody>();
-
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         healthBar = playerHealth.GetComponent<HealthBar>();
         playerStamina = gameObject.GetComponent<PlayerStamina>();
-        staminaBar = playerStamina.GetComponent<StaminaBar>();
+        GameObject gm = GameObject.Find("GameManager");
+        gameManager = gm.GetComponent<GameManager>();
 
         // Creates player inventory.
         inventory = new Inventory(UseItem);
@@ -72,6 +77,12 @@ public class PlayerController : MonoBehaviour
             inventory.AddItem(itemInWorld.GetItem());
             itemInWorld.DestroySelf();
         } 
+
+        if(other.CompareTag("Resource") && other != null)
+        {
+            gameManager.Materials++;
+            Destroy(other.gameObject);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -147,9 +158,13 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAttack()
     {
-        //animator.Play("melee_attack");
-        timer = baseTimer;
-        playerStamina.UseStamina(5);
+        // Player cannot attack while in inventory.
+        if (!uiInventory.state)
+        {
+            //animator.Play("melee_attack");
+            timer = baseTimer;
+            playerStamina.UseStamina(5);
+        }
     }
     public void ButtonClick()
     {
