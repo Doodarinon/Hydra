@@ -27,9 +27,9 @@ public class EnemyBaseScript : MonoBehaviour
     public GameObject[] fences3;
     public GameObject closestFence;
 
-    private PlayerController playerController;
-    private BunkerScript bunkerScript;
-    private PlayerHealth playerHealth;
+    public PlayerController playerController;
+    public BunkerScript bunkerScript;
+    public PlayerHealth playerHealth;
     public EnemySpawner enemySpawner;
     public FenceUpgrade fenceUpgrade;
     public HealthBar healthBar;
@@ -37,11 +37,12 @@ public class EnemyBaseScript : MonoBehaviour
     public Transform target;
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
-        bunkerScript = GetComponent<BunkerScript>();
-        playerHealth = GetComponent<PlayerHealth>();
-        enemySpawner = GetComponent<EnemySpawner>();
-        healthBar = GetComponent<HealthBar>();
+        playerController =  FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
+        playerHealth =  FindObjectOfType<PlayerHealth>().GetComponent<PlayerHealth>();
+        enemySpawner =  FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
+        fenceUpgrade = FindObjectOfType<FenceUpgrade>().GetComponent<FenceUpgrade>();
+        healthBar =  FindObjectOfType<HealthBar>().GetComponent<HealthBar>();
+        bunkerScript =  FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
         nav = GetComponent<NavMeshAgent>();
         fences1 = GameObject.FindGameObjectsWithTag("Fence1");
         fences2 = GameObject.FindGameObjectsWithTag("Fence2");

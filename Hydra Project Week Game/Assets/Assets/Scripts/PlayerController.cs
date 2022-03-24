@@ -9,13 +9,12 @@ public class PlayerController : MonoBehaviour
     private PlayerHealth playerHealth;
     private PlayerStamina playerStamina;
     private HealthBar healthBar;
-    private StaminaBar staminaBar;
     public BunkerScript bunkerScript;
 
     private float movementSpeed = 5;
     private float dashCooldown;
-    private float timer;
 
+    public float timer;
     public int damage = 10;
     public float baseTimer = 1;
     public float dash;
@@ -46,7 +45,6 @@ public class PlayerController : MonoBehaviour
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         healthBar = playerHealth.GetComponent<HealthBar>();
         playerStamina = gameObject.GetComponent<PlayerStamina>();
-        staminaBar = playerStamina.GetComponent<StaminaBar>();
 
         // Creates player inventory.
         inventory = new Inventory(UseItem);
