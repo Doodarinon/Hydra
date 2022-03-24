@@ -18,6 +18,6 @@ public class ItemAssets : MonoBehaviour
     public Transform pfItemInWorld;
 
     // Add sprites here (for inventory icons)!
-      public Sprite baseballbatSprite;
+      public Sprite materialsSprite;
       public Sprite healthpackSprite;
 }

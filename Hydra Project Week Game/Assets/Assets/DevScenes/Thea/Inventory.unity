@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: pfItemInWorld
       value: 
       objectReference: {fileID: 6459804131430285086, guid: 8f91f11bccdec104dad56f37b01793bc, type: 3}
+    - target: {fileID: 7343444139988708535, guid: 8c23bd04a0b2b5e42b3b4303a8292951, type: 3}
+      propertyPath: materialsSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a4be69da4caf6bb43bf3bc8ef27c93eb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c23bd04a0b2b5e42b3b4303a8292951, type: 3}
 --- !u!1001 &7518687673739865751
