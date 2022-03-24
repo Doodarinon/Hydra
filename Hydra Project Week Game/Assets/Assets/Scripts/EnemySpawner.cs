@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> tempEnemies = new List<GameObject>();
     public GameObject[] spawnPoints;
     public List<int> randoNumbers = new List<int>();
-    Fence_Upgrade fenceUpgrade;
+    FenceUpgrade fenceUpgrade;
     public GameObject enemy1;
     public GameObject enemy2;
     public int enemyCount;
@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     // Please for the love of god dont look below here unless you want a stroke
     private void Start()
     {
-        fenceUpgrade = FindObjectOfType<Fence_Upgrade>().GetComponent<Fence_Upgrade>();
+        fenceUpgrade = FindObjectOfType<FenceUpgrade>().GetComponent<FenceUpgrade>();
     }
     public void ChooseEnemyAmmount(int enemyBaseAmmount, int waveNr, int enemyMultiplier)
     {
