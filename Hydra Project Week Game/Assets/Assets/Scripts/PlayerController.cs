@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private Vector3 movement;
-    //public Animator animator;
+    public Animator animator;
 
     Rigidbody rb;
     [SerializeField] private bool inCollider;
@@ -36,12 +36,16 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        //bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
-
-        //animator = GetComponentInChildren<Animator>();
-
+        try
+        {
+            bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
+            animator = GetComponentInChildren<Animator>();
+        }
+        catch
+        {
+            throw;
+        }
         rb = gameObject.GetComponent<Rigidbody>();
-
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         healthBar = playerHealth.GetComponent<HealthBar>();
         playerStamina = gameObject.GetComponent<PlayerStamina>();
