@@ -210,7 +210,7 @@ public class EnemyBaseScript : MonoBehaviour
     {
         if (other.CompareTag("Weapon") && playerController.Timer > 0)
         {
-            damageTimer = playerController.timer;
+            damageTimer = playerController.Timer;
             TakeDamage();
         }
     }
