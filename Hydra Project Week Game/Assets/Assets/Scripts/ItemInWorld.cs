@@ -13,7 +13,7 @@ public class ItemInWorld : MonoBehaviour
     /// </summary>
     public static ItemInWorld SpawnItemInWorld(Vector3 position, Item item)
     {
-        Transform transform = Instantiate(ItemAssets.Instance.pfItemInWorld, position, Quaternion.identity);
+        Transform transform = Instantiate(ItemAssets.Instance.prefabItemInWorld, position, Quaternion.identity);
 
         ItemInWorld itemInWorld = transform.GetComponent<ItemInWorld>();
         itemInWorld.SetItem(item);
