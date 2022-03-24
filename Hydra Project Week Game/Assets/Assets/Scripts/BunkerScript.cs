@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class BunkerScript : MonoBehaviour
 {
-    private int defaultTimer = 5;
+    public int cost;
     public float timer;
     public float hp = 1000;
-    public GameObject[] levels;
+
     private int level;
+    private int defaultTimer = 5;
+
+    private GameManager gameManager;
+
+    public GameObject[] levels;
+
     // Start is called before the first frame update
+    private void Start()
+    {
+        GameObject gm = GameObject.Find("GameManager");
+        gameManager = gm.GetComponent<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,9 +33,12 @@ public class BunkerScript : MonoBehaviour
 
     public void Upgrade()
     {
-        level++;
-        levels[level].SetActive(true);
-        levels[level-1].SetActive(false);
+        if(cost <= gameManager.Materials)
+        {
+            level++;
+            levels[level].SetActive(true);
+            levels[level-1].SetActive(false);
+        }
     }
 
     public void TakeDamage()
