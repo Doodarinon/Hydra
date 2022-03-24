@@ -27,14 +27,14 @@ public class EnemyBaseScript : MonoBehaviour
     public GameObject[] fences3;
     public GameObject closestFence;
 
-    public PlayerController playerController;
-    public BunkerScript bunkerScript;
-    public PlayerHealth playerHealth;
-    public EnemySpawner enemySpawner;
-    public FenceUpgrade fenceUpgrade;
-    public HealthBar healthBar;
-    public NavMeshAgent nav;
-    public Transform target;
+    private PlayerController playerController;
+    private BunkerScript bunkerScript;
+    private PlayerHealth playerHealth;
+    private EnemySpawner enemySpawner;
+    private FenceUpgrade fenceUpgrade;
+    private HealthBar healthBar;
+    private NavMeshAgent nav;
+    private Transform target;
     void Start()
     {
         playerController =  FindObjectOfType<PlayerController>().GetComponent<PlayerController>();
@@ -211,7 +211,7 @@ public class EnemyBaseScript : MonoBehaviour
     {
         if (other.CompareTag("Weapon") && playerController.Timer > 0)
         {
-            damageTimer = playerController.Timer;
+            damageTimer = playerController.timer;
             TakeDamage();
         }
     }
