@@ -8,12 +8,12 @@ public class EnemyBaseScript : MonoBehaviour
 {
     public float enemyHealth = 10;
     private float damagePerHit = 3;
-    public int attackSpeed = 1;
+    public int attackSpeed = 2;
     public float wanderTime;
     public float damageTimer;
     public int counter;
 
-    private float timer;
+    public float timer;
     private int fenceAmmount;
     private float wanderSpeed = 0.5f;
     private float seeDistance = 250f;
@@ -180,12 +180,9 @@ public class EnemyBaseScript : MonoBehaviour
             }
             if (timer <= 0)
             {
-                playerHealth.currentPlayerHealth -= damagePerHit;
-                Debug.Log("hej");
-                healthBar.SetHealth(playerHealth.currentPlayerHealth);
-
                 timer = attackSpeed;
-
+                playerHealth.currentPlayerHealth -= damagePerHit;
+                healthBar.SetHealth(playerHealth.currentPlayerHealth);
             }
 
         }
@@ -209,7 +206,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon") && playerController.Timer > 0)
+        if (other.CompareTag("Weapon") && playerController.Timer > 0 && damageTimer <= 0)
         {
             damageTimer = playerController.timer;
             TakeDamage();
