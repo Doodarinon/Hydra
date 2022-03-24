@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStamina playerStamina;
     private HealthBar healthBar;
     public BunkerScript bunkerScript;
+    private GameManager gameManager;
 
     private float movementSpeed = 5;
     private float dashCooldown;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        try
+        /*try
         {
             bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
             animator = GetComponentInChildren<Animator>();
@@ -44,11 +45,13 @@ public class PlayerController : MonoBehaviour
         catch
         {
             throw;
-        }
+        }*/
         rb = gameObject.GetComponent<Rigidbody>();
         playerHealth = gameObject.GetComponent<PlayerHealth>();
         healthBar = playerHealth.GetComponent<HealthBar>();
         playerStamina = gameObject.GetComponent<PlayerStamina>();
+        GameObject gm = GameObject.Find("GameManager");
+        gameManager = gm.GetComponent<GameManager>();
 
         // Creates player inventory.
         inventory = new Inventory(UseItem);
@@ -74,6 +77,12 @@ public class PlayerController : MonoBehaviour
             inventory.AddItem(itemInWorld.GetItem());
             itemInWorld.DestroySelf();
         } 
+
+        if(other.CompareTag("Resource") && other != null)
+        {
+            gameManager.Materials++;
+            Destroy(other.gameObject);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -149,9 +158,13 @@ public class PlayerController : MonoBehaviour
 
     void PlayerAttack()
     {
-        //animator.Play("melee_attack");
-        timer = baseTimer;
-        playerStamina.UseStamina(5);
+        // Player cannot attack while in inventory.
+        if (!uiInventory.state)
+        {
+            //animator.Play("melee_attack");
+            timer = baseTimer;
+            playerStamina.UseStamina(5);
+        }
     }
     public void ButtonClick()
     {

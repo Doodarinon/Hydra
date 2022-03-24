@@ -15,9 +15,8 @@ public class ItemAssets : MonoBehaviour
     }
 
     // Used to instantiate/spawn items.
-    public Transform pfItemInWorld;
+    public Transform prefabItemInWorld;
 
     // Add sprites here (for inventory icons)!
-      public Sprite materialsSprite;
       public Sprite healthpackSprite;
 }

@@ -12,7 +12,6 @@ public class Item
     /// </summary>
     public enum ItemType
     {
-        Materials,
         Healthpack,
     }
 
@@ -30,8 +29,6 @@ public class Item
         switch (itemType)
         {
             default:
-            // If item is a material - assign material sprite.
-            case ItemType.Materials: return ItemAssets.Instance.materialsSprite;
             // If item is a health pack - assign healthpack sprite.
             case ItemType.Healthpack: return ItemAssets.Instance.healthpackSprite;
         }
@@ -47,11 +44,6 @@ public class Item
             default:
             // IS stackable.
             case ItemType.Healthpack:
-                return true;
-
-            // Is NOT stackable.
-            case ItemType.Materials:
-
                 return true;
         }
     }
