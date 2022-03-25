@@ -10,8 +10,25 @@ public class Inventory
 {
     // Creates list to track items in inventory!
     public event EventHandler OnItemListChange;
+
     private List<Item> itemList;
     private Action<Item> useItemAction;
+
+    private int capacity = 6;
+
+    /// <summary>
+    /// Does the inventory have capacity to store another item?
+    /// </summary>
+    /// <returns></returns>
+    public bool HasCapacity()
+    {
+        if(capacity > itemList.Count)
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     /// <summary>
     /// Declares the player's inventory.
@@ -28,13 +45,13 @@ public class Inventory
     /// <param name="item"></param>
     public void AddItem(Item item)
     {
-        // Inventory item cannot surpass the max amount of stacked items.
-        if (item.IsStackable() && item.amount < item.maxAmount)
+        if (item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
             foreach(Item inventoryItem in itemList)
             {
-                if (inventoryItem.itemType == item.itemType)
+                // Inventory item cannot surpass the max amount of stacked items. If it does, then a new slot will be created.
+                if (inventoryItem.itemType == item.itemType && inventoryItem.amount < item.maxAmount)
                 {
                     inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;
