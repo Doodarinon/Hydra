@@ -6,26 +6,26 @@ using UnityEngine.AI;
 
 public class EnemyBaseScript : MonoBehaviour
 {
-    public float enemyHealth = 10;
+    public float enemyHealth = 30;
     private float damagePerHit = 3;
     public int attackSpeed = 2;
     public float wanderTime;
     public float damageTimer;
     public int counter;
 
-    public float timer;
+    private float timer;
     private int fenceAmmount;
     private float wanderSpeed = 0.5f;
     private float seeDistance = 250f;
 
     bool isDead = false;
     public LayerMask raycastLayers = 3;
-    public GameObject player;
-    public GameObject[] bunker;
-    public GameObject[] fences1;
-    public GameObject[] fences2;
-    public GameObject[] fences3;
-    public GameObject closestFence;
+    private GameObject player;
+    private GameObject[] bunker;
+    private GameObject[] fences1;
+    private GameObject[] fences2;
+    private GameObject[] fences3;
+    private GameObject closestFence;
 
     private PlayerController playerController;
     private BunkerScript bunkerScript;
@@ -206,7 +206,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon") && playerController.Timer > 0 && damageTimer <= 0)
+        if (other.CompareTag("Weapon") && playerController.timer > 0 && damageTimer <= 0)
         {
             damageTimer = playerController.timer;
             TakeDamage();

@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviour
     public EnemySpawner enemySpawner;
 
     FenceUpgrade fenceUpgrade;
-
-    int enemyBaseAmmount = 50;
+    int enemyBaseAmmount = 100;
     int enemyMultiplier = 2;
     int waveNr = 1;
 

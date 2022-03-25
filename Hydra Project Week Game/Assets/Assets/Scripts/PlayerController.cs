@@ -17,15 +17,10 @@ public class PlayerController : MonoBehaviour
 
     public float timer;
     public int damage = 10;
-    public float baseTimer = 1;
+    public float baseTimer = 0.6f;
     public float dash;
 
-    // Allow other scripts to access timer.
-    public float Timer
-    {
-        get { return timer; }
-        set { timer = value; }
-    }
+
 
     private Vector3 movement;
     public Animator animator;
@@ -54,8 +49,8 @@ public class PlayerController : MonoBehaviour
         gameManager = gm.GetComponent<GameManager>();
 
         // Creates player inventory.
-        inventory = new Inventory(UseItem);
-        uiInventory.SetInventory(inventory);
+        //inventory = new Inventory(UseItem);
+        //uiInventory.SetInventory(inventory);
 
         // Spawns item(s).
         ItemInWorld.SpawnItemInWorld(new Vector3(10, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
@@ -126,8 +121,9 @@ public class PlayerController : MonoBehaviour
         {
             timer -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("Fire") && timer <= 0)
+        if (Input.GetButtonDown("Fire") && timer <= 0 && playerStamina.currentPlayerStamina >= 5)
         {
+            Debug.Log("works");
             PlayerAttack();
         }
     }
@@ -162,7 +158,14 @@ public class PlayerController : MonoBehaviour
         // Player cannot attack while in inventory.
         if (!uiInventory.state)
         {
-            //animator.Play("melee_attack");
+        try
+        {
+            animator.Play("melee_attack");
+        }
+        catch
+        {
+            throw;
+        }
             timer = baseTimer;
             playerStamina.UseStamina(5);
         }

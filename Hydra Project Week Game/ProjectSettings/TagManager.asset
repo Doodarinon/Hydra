@@ -16,6 +16,13 @@ TagManager:
   - Fence1
   - Fence2
   - Fence3
+  - SpawnPoint
+  - Tile
+  - Right
+  - Left
+  - Top
+  - Bottom
+  - NoTurn
   - Resource
   layers:
   - Default
