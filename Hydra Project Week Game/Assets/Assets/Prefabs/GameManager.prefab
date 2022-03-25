@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3488638205058516615}
   - component: {fileID: 2735230137129330757}
+  - component: {fileID: 7536914913899662942}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,3 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f08e001dee9b641a4f6aa26dc7c1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialsText: {fileID: 0}
+  bunkerScript: {fileID: 0}
+  enemySpawner: {fileID: 0}
+  startRound: 0
+--- !u!114 &7536914913899662942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5671508793695073980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb00e0760e835014e801f5f37467443f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  fenceLvl: 0
+  fences1: {fileID: 0}
+  fences2: {fileID: 0}
+  fences3: {fileID: 0}
+  enemies: []
+  bunkerScript: {fileID: 0}
+  enemyBaseScripts: []
