@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1655204227343179779}
   - component: {fileID: 2187604666089877805}
   - component: {fileID: 2746815209889514112}
-  - component: {fileID: 6613832506712819759}
   - component: {fileID: 907206096321580985}
   - component: {fileID: 6705742748799228227}
+  - component: {fileID: 4582800873952900700}
   m_Layer: 7
   m_Name: SpawnPoint
   m_TagString: Tile
@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.27352569, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!114 &2746815209889514112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,19 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddb3bdd86c90224192a424eb90b7f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &6613832506712819759
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35704912509953703}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.26171765, z: 0}
 --- !u!54 &907206096321580985
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90,6 +77,19 @@ Rigidbody:
   m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!65 &6705742748799228227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35704912509953703}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
+--- !u!65 &4582800873952900700
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,8 +145,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!114 &8074689657859405491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,6 +592,7 @@ MonoBehaviour:
   done: 0
   farCollision: {fileID: 0}
   tileHolder: {fileID: 0}
+  tags: []
 --- !u!54 &4106359232531654722
 Rigidbody:
   m_ObjectHideFlags: 0
