@@ -1289,20 +1289,20 @@ MonoBehaviour:
   deadEndTop: {fileID: 702925264507747235, guid: 1563c23422445eb42a5c4a22c7362d42, type: 3}
   deadEndBottom: {fileID: 4988758827949587198, guid: d3acc6d46a896df409134e2a2870f04d, type: 3}
   fourWay: {fileID: 761026930}
-  tRight: {fileID: 3062038688228505928, guid: 48c6d9668edbf6d489969cd7752bee71, type: 3}
-  tLeft: {fileID: 3420832620267255364, guid: 70e3a9bedd6faf04dbfbbac30199f54a, type: 3}
-  tTop: {fileID: 9075595152744495824, guid: 142ac30f8bde12243bcfd93e9b8658c5, type: 3}
-  tBottom: {fileID: 7243533135080344994, guid: fa794122f5822d5409b60e80fb0f32f9, type: 3}
+  tRight: {fileID: 3420832620267255364, guid: 70e3a9bedd6faf04dbfbbac30199f54a, type: 3}
+  tLeft: {fileID: 3062038688228505928, guid: 48c6d9668edbf6d489969cd7752bee71, type: 3}
+  tTop: {fileID: 7243533135080344994, guid: fa794122f5822d5409b60e80fb0f32f9, type: 3}
+  tBottom: {fileID: 9075595152744495824, guid: 142ac30f8bde12243bcfd93e9b8658c5, type: 3}
   straightVertical: {fileID: 4111791636658959280, guid: 58825fd6f008cd647bced153908cecc7, type: 3}
   straightHorizontal: {fileID: 8778576467304909949, guid: b90e110d6088473499031820440719a9, type: 3}
   topTurnRight: {fileID: 3321033916441558935, guid: a431833bc3a016442a2d58942ce24261, type: 3}
   topTurnLeft: {fileID: 3316708453954535173, guid: edfaa479e4413594cbc5ce39cf648d6f, type: 3}
   bottomTurnRight: {fileID: 5526403605990416652, guid: 97a7cc078cdc54542855b001c245aa28, type: 3}
   bottomTurnLeft: {fileID: 363743353989445926, guid: beb617e24ee0aaa4c9fb5e31533fcfd3, type: 3}
-  rightTurnTop: {fileID: 5526403605990416652, guid: 97a7cc078cdc54542855b001c245aa28, type: 3}
-  rightTurnBottom: {fileID: 3316708453954535173, guid: edfaa479e4413594cbc5ce39cf648d6f, type: 3}
-  leftTurnTop: {fileID: 363743353989445926, guid: beb617e24ee0aaa4c9fb5e31533fcfd3, type: 3}
-  leftTurnBottom: {fileID: 3321033916441558935, guid: a431833bc3a016442a2d58942ce24261, type: 3}
+  rightTurnTop: {fileID: 363743353989445926, guid: beb617e24ee0aaa4c9fb5e31533fcfd3, type: 3}
+  rightTurnBottom: {fileID: 3321033916441558935, guid: a431833bc3a016442a2d58942ce24261, type: 3}
+  leftTurnTop: {fileID: 5526403605990416652, guid: 97a7cc078cdc54542855b001c245aa28, type: 3}
+  leftTurnBottom: {fileID: 3316708453954535173, guid: edfaa479e4413594cbc5ce39cf648d6f, type: 3}
   tilesForRight: []
   tilesForLeft: []
   tilesForBottom: []
