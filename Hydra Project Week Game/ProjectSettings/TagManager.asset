@@ -23,6 +23,7 @@ TagManager:
   - Top
   - Bottom
   - NoTurn
+  - Resource
   layers:
   - Default
   - TransparentFX

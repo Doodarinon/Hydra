@@ -12,7 +12,6 @@ public class Item
     /// </summary>
     public enum ItemType
     {
-        BaseballBat,
         Healthpack,
     }
 
@@ -30,9 +29,7 @@ public class Item
         switch (itemType)
         {
             default:
-            // If item is a baseball bat - assign baseball bat sprite.
-            case ItemType.BaseballBat: return ItemAssets.Instance.baseballbatSprite;
-            // If item is a health pack - assign health pack sprite.
+            // If item is a health pack - assign healthpack sprite.
             case ItemType.Healthpack: return ItemAssets.Instance.healthpackSprite;
         }
     }
@@ -48,11 +45,6 @@ public class Item
             // IS stackable.
             case ItemType.Healthpack:
                 return true;
-
-            // Is NOT stackable.
-            case ItemType.BaseballBat:
-
-                return false;
         }
     }
 
