@@ -12,11 +12,12 @@ public class CloseCollisionCheck : MonoBehaviour
     private Vector3 forLeft;
     private Vector3 forTop;
     private Vector3 forBottom;
-    private Vector3 rightAmmount;
-    private Vector3 leftAmmount;
-    private Vector3 topAmmount;
-    private Vector3 bottomAmmount;
-    private int counter = 0;
+    private int tempName = 0;
+    private int tempName1 = 1;
+    private int tempName2 = 2;
+    private int tempName3 = 3;
+    private int tempName4 = 4;
+    public new List<string> tags = new List<string>();
 
     private void Start()
     {
@@ -26,10 +27,35 @@ public class CloseCollisionCheck : MonoBehaviour
         forBottom = transform.position;
         farCollision = GetComponentInChildren<FarCollisionCheck>();
         tileHolder = FindObjectOfType<TileHolder>().GetComponent<TileHolder>();
+        tags.Add("1");
+        tags.Add("2");
+        tags.Add("3");
+        tags.Add("4");
+        tags.Add("5");
     }
     private void OnTriggerStay(Collider other) // I am truly sorry for the warcrimes you will witness below, I didnt want to steal someones code so I tried making my own
     {
-        if (other.CompareTag("Player") && !done)
+        if (other.CompareTag("Left") && other.tag != tags[tempName])
+        {
+            tags[tempName] = other.tag;
+        }
+        else if (other.CompareTag("Top"))
+        {
+            tags[tempName1] = other.tag;
+        }
+        else if (other.CompareTag("Right"))
+        {
+            tags[tempName2] = other.tag;
+        }
+        else if (other.CompareTag("Bottom"))
+        {
+            tags[tempName3] = other.tag;
+        }
+        else if (other.CompareTag("NoTurn"))
+        {
+            tags[tempName4] = other.tag;
+        }
+        else if (other.CompareTag("Player") && !done)
         {
             GenerateTile(other);
         }
@@ -38,120 +64,116 @@ public class CloseCollisionCheck : MonoBehaviour
     {
         if (farCollision.occupied && !done)
         {
-            if (gameObject.tag == "Top")
+            if (tags[tempName1] == "Top" && farCollision.occupied)
             {
                 Instantiate(tileHolder.deadEndBottom, forTop, transform.rotation);
                 done = true;
             }
-            if (gameObject.tag == "Bottom")
+            if (tags[tempName3] == "Bottom" && farCollision.occupied)
             {
                 Instantiate(tileHolder.deadEndTop, forBottom, transform.rotation);
                 done = true;
             }
-            if (gameObject.tag == "Left")
+            if (tags[tempName] == "Left" && farCollision.occupied)
             {
                 Instantiate(tileHolder.deadEndRight, forLeft, transform.rotation);
                 done = true;
             }
-            if (gameObject.tag == "Right")
+            if (tags[tempName2] == "Right" && farCollision.occupied)
             {
                 Instantiate(tileHolder.deadEndLeft, forRight, transform.rotation);
                 done = true;
             }
         }
-        if (!done && other.tag == "NoTurn" && (gameObject.tag == "Top" || gameObject.tag ==  "Bottom"))
+        if (!done && tags[tempName4] == "NoTurn" && gameObject.CompareTag("Top") || tags[tempName4] == "NoTurn" && gameObject.CompareTag("Bottom") && !done)
         {
             Instantiate(tileHolder.straightVertical, forTop, transform.rotation);
             done = true;
             Debug.Log("Works");
         }
-        else if (!done && other.tag == "NoTurn" && (gameObject.tag == "Left" || gameObject.tag == "Right"))
+        else if (!done && tags[tempName4] == "NoTurn" && gameObject.CompareTag("Left") || tags[tempName4] == "NoTurn" &&  gameObject.CompareTag("Right") && !done)
         {
-            Instantiate(tileHolder.straightVertical, forTop, transform.rotation);
+            Instantiate(tileHolder.straightHorizontal, forTop, transform.rotation);
             done = true;
             Debug.Log("Works");
         }
         else if (gameObject.tag == "Top" && !done)
         {
-            if (other.tag == "Bottom" && other.tag == "Right" && other.tag == "Left")
+            if (tags[tempName3] == "Bottom" && tags[tempName2] == "Right" && tags[tempName] == "Left")
             {
                 Instantiate(tileHolder.fourWay, forTop, transform.rotation);
                 done = true;
             }
-            else if (other.tag == "Right" && other.tag == "Bottom")
+            else if (tags[tempName2] == "Right" && tags[tempName3] == "Bottom")
             {
                 Instantiate(tileHolder.tRight, forTop, transform.rotation);
                 done = true;
             }
-            else if (other.tag == "Left" && other.tag == "Bottom")
+            else if (tags[tempName] == "Left" && tags[tempName3] == "Bottom")
             {
                 Instantiate(tileHolder.tLeft, forTop, transform.rotation);
                 done = true;
             }
-            else if (other.tag == "Left" && other.tag == "Right")
+            else if (tags[tempName] == "Left" && tags[tempName2] == "Right")
             {
                 Instantiate(tileHolder.tTop, forTop, transform.rotation);
                 done = true;
             }
-            else if (other.tag == "Bottom")
+            else if (tags[tempName3] == "Bottom")
             {
                 Instantiate(tileHolder.straightVertical, forTop, transform.rotation);
                 done = true;
             }
-            else if (other.tag == "Right")
+            else if (tags[tempName2] == "Right")
             {
                 Instantiate(tileHolder.topTurnRight, forTop, transform.rotation);
                 done = true;
             }
-            else if (other.tag == "Left")
+            else if (tags[tempName] == "Left")
             {
                 Instantiate(tileHolder.topTurnLeft, forTop, transform.rotation);
                 done = true;
             }
-            else if (other.tag == "Top")
-            {
-                Debug.Log("Doesnt work");
-            }
         }
         else if (gameObject.tag == "Bottom" && !done)
         {
-            if (other.tag == "Top" && other.tag == "Right" && other.tag == "Left")
+            if (tags[tempName1] == "Top" && tags[tempName2] == "Right" && tags[tempName] == "Left")
             {
                 Instantiate(tileHolder.fourWay, forBottom, transform.rotation);
                 done = true;
                 Debug.Log("Works2");
             }
-            else if (other.tag == "Top" && other.tag == "Right")
+            else if (tags[tempName1] == "Top" && tags[tempName2] == "Right")
             {
                 Instantiate(tileHolder.tRight, forBottom, transform.rotation);
                 done = true;
                 Debug.Log("Works2");
             }
-            else if (other.tag == "Top" && other.tag =="Left")
+            else if (tags[tempName1] == "Top" && tags[tempName] =="Left")
             {
                 Instantiate(tileHolder.tLeft, forBottom, transform.rotation);
                 done = true;
                 Debug.Log("Works2");
             }
-            else if (other.tag == "Left" && other.tag == "Right")
+            else if (tags[tempName] == "Left" && tags[tempName2] == "Right")
             {
                 Instantiate(tileHolder.tBottom, forBottom, transform.rotation);
                 done = true;
                 Debug.Log("Works2");
             }
-            if (other.tag == "Top")
+            if (tags[tempName2] == "Top")
             {
                 Instantiate(tileHolder.straightVertical, forBottom, transform.rotation);
                 done = true;
                 Debug.Log("Works2");
             }
-            else if (other.tag == "Right")
+            else if (tags[tempName2] == "Right")
             {
+                Debug.Log("Works2");
                 Instantiate(tileHolder.bottomTurnRight, forBottom, transform.rotation);
                 done = true;
-                Debug.Log("Works2");
             }
-            else if (other.tag == "Left")
+            else if (tags[tempName] == "Left")
             {
                 Instantiate(tileHolder.bottomTurnLeft, forBottom, transform.rotation);
                 done = true;
@@ -160,88 +182,88 @@ public class CloseCollisionCheck : MonoBehaviour
         }
         else if (gameObject.tag == "Left" && !done)
         {
-            if (other.tag == "Bottom" && other.tag == "Right" && other.tag == "Top")
+            if (tags[tempName3] == "Bottom" && tags[tempName2] == "Right" && tags[tempName1] == "Top")
             {
                 Instantiate(tileHolder.fourWay, forLeft, transform.rotation);
                 done = true;
                 Debug.Log("Works3");
             }
-            else if (other.tag == "Top" && other.tag == "Right")
+            else if (tags[tempName1] == "Top" && tags[tempName2] == "Right")
             {
                 Instantiate(tileHolder.tTop, forLeft, transform.rotation);
                 done = true;
                 Debug.Log("Works3");
             }
-            else if (other.tag == "Right" && other.tag == "Bottom")
+            else if (tags[tempName2] == "Right" && tags[tempName3] == "Bottom")
             {
                 Instantiate(tileHolder.tBottom, forLeft, transform.rotation);
                 done = true;
                 Debug.Log("Works3");
             }
-            else if ((other.tag == "Top" && other.tag == "Bottom"))
+            else if ((tags[tempName1] == "Top" && tags[tempName3] == "Bottom"))
             {
                 Instantiate(tileHolder.tLeft, forLeft, transform.rotation);
                 done = true;
                 Debug.Log("Works3");
             }
-            else if (other.tag == "Right")
+            else if (tags[tempName2] == "Right")
             {
                 Instantiate(tileHolder.straightHorizontal, forLeft, transform.rotation);
                 done = true;
                 Debug.Log("Works3");
             }
-            else if (other.tag == "Top")
+            else if (tags[tempName1] == "Top")
             {
-                Instantiate(tileHolder.leftTurnTop, forLeft, transform.rotation);
+                Instantiate(tileHolder.leftTurnBottom, forLeft, transform.rotation);
                 done = true;
                 Debug.Log("Works3");
             }
-            else if (other.tag == "Bottom")
+            else if (tags[tempName3] == "Bottom")
             {
-                Instantiate(tileHolder.leftTurnBottom, forLeft, transform.rotation);
+                Instantiate(tileHolder.leftTurnTop, forLeft, transform.rotation);
                 done = true;
                 Debug.Log("Works3");
             }
         }
         else if (gameObject.tag == "Right" && !done)
         {
-            if (other.CompareTag("Bottom") && other.CompareTag("Left") && other.CompareTag("Top"))
+            if (tags[tempName3] == "Bottom" && tags[tempName] == "Left" && tags[tempName1] == "Top")
             {
                 Instantiate(tileHolder.fourWay, forRight, transform.rotation);
                 done = true;
                 Debug.Log("Works4");
             }
-            else if (other.CompareTag("Top") && other.CompareTag("Left"))
+            else if (tags[tempName] == "Left" && tags[tempName1] == "Top")
             {
                 Instantiate(tileHolder.tTop, forRight, transform.rotation);
                 done = true;
                 Debug.Log("Works4");
             }
-            else if (other.CompareTag("Top") && other.CompareTag("Bottom"))
+            else if (tags[tempName1] == "Top" && tags[tempName3] == "Bottom")
             {
                 Instantiate(tileHolder.tLeft, forRight, transform.rotation);
                 done = true;
                 Debug.Log("Works4");
             }
-            else if (other.CompareTag("Bottom") && other.CompareTag("Right"))
+            else if (tags[tempName] == "Left" && tags[tempName3] == "Bottom")
             {
                 Instantiate(tileHolder.tBottom, forRight, transform.rotation);
                 done = true;
                 Debug.Log("Works4");
             }
-            else if (other.CompareTag("Left"))
+            else if (tags[tempName] == "Left")
             {
                 Instantiate(tileHolder.straightHorizontal, forRight, transform.rotation);
                 done = true;
                 Debug.Log("Works4");
             }
-            else if (other.CompareTag("Top"))
+            else if (tags[tempName1] == "Top")
             {
                 Instantiate(tileHolder.rightTurnTop, forRight, transform.rotation);
                 done = true;
                 Debug.Log("Works4");
             }
-            else if (other.CompareTag("Bottom"))
+            else if (tags[tempName3] == "Bottom")
             {
                 Instantiate(tileHolder.rightTurnBottom, forRight, transform.rotation);
                 done = true;
@@ -274,7 +296,7 @@ public class CloseCollisionCheck : MonoBehaviour
         }
         else
         {
-            Debug.Log("Oh no");
+            Debug.Log(done);
         }
     }
 }
