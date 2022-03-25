@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
             itemInWorld.DestroySelf();
         } 
 
+        // Pick up resource that can be used to upgrade.
         if(other.CompareTag("Resource") && other != null)
         {
             gameManager.Materials++;
