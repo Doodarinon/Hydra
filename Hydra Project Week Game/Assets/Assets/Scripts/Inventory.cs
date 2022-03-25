@@ -28,13 +28,13 @@ public class Inventory
     /// <param name="item"></param>
     public void AddItem(Item item)
     {
-        if (item.IsStackable())
+        // Inventory item cannot surpass the max amount of stacked items.
+        if (item.IsStackable() && item.amount < item.maxAmount)
         {
             bool itemAlreadyInInventory = false;
             foreach(Item inventoryItem in itemList)
             {
-                // Inventory item cannot surpass the max amount of stacked items.
-                if (inventoryItem.itemType == item.itemType && inventoryItem.amount != item.maxAmount)
+                if (inventoryItem.itemType == item.itemType)
                 {
                     inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;
