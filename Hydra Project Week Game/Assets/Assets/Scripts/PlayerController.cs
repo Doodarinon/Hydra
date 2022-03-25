@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             ItemInWorld itemInWorld = other.GetComponent<ItemInWorld>();
             // Only picks up item if within inventory capacity.
-            if(inventory.hasCapacity())
+            if(inventory.HasCapacity())
             {
                 inventory.AddItem(itemInWorld.GetItem());
                 itemInWorld.DestroySelf();

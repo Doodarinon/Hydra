@@ -44,7 +44,7 @@ public class Item
             default:
             // IS stackable.
             case ItemType.Healthpack:
-                return false;
+                return true;
         }
     }
 

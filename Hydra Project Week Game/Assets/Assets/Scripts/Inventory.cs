@@ -20,7 +20,7 @@ public class Inventory
     /// Does the inventory have capacity to store another item?
     /// </summary>
     /// <returns></returns>
-    public bool hasCapacity()
+    public bool HasCapacity()
     {
         if(capacity > itemList.Count)
         {
