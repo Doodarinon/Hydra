@@ -52,18 +52,9 @@ public class PlayerController : MonoBehaviour
         inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
 
-        // Spawns item(s).
+        // Spawns item(s) Change position to where they should spawn.
         ItemInWorld.SpawnItemInWorld(new Vector3(10, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
         ItemInWorld.SpawnItemInWorld(new Vector3(5, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(9, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(8, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(7, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(6, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(5, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(6, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(7, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(8, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
-        ItemInWorld.SpawnItemInWorld(new Vector3(9, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
     }
 
     public void OnTriggerEnter(Collider other)
