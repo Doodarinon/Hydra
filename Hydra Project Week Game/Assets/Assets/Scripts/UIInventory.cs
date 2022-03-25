@@ -66,10 +66,10 @@ public class UIInventory : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        float x = -0.01f;
-        float y = 0.001f;
+        float x = 0;
+        float y = 0;
         // Distance between slots.
-        float itemSlotCellsize = 70f;
+        float itemSlotCellsize = 60f;
         // For every existing item, create an item slot.
         foreach (Item item in inventory.GetItemList())
         {
@@ -95,10 +95,10 @@ public class UIInventory : MonoBehaviour
             }
 
            x++;
-           if(x > 4)
+           if(x > 2)
            {
-               x = -0.4f;
-               y++;
+               x = 0;
+               y--;
            }
         }
     }

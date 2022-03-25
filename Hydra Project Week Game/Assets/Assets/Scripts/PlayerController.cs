@@ -49,12 +49,21 @@ public class PlayerController : MonoBehaviour
         gameManager = gm.GetComponent<GameManager>();
 
         // Creates player inventory.
-        //inventory = new Inventory(UseItem);
-        //uiInventory.SetInventory(inventory);
+        inventory = new Inventory(UseItem);
+        uiInventory.SetInventory(inventory);
 
         // Spawns item(s).
         ItemInWorld.SpawnItemInWorld(new Vector3(10, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
         ItemInWorld.SpawnItemInWorld(new Vector3(5, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(9, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(8, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(7, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(6, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(5, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(6, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(7, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(8, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
+        ItemInWorld.SpawnItemInWorld(new Vector3(9, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
     }
 
     public void OnTriggerEnter(Collider other)
@@ -64,13 +73,16 @@ public class PlayerController : MonoBehaviour
             inCollider = true;
         }
 
-        ItemInWorld itemInWorld = other.GetComponent<ItemInWorld>();
-
         // Pick up item. Touching target and sees if it's tagged as an item.
         if (other.CompareTag("Item") && other != null)
         {
-            inventory.AddItem(itemInWorld.GetItem());
-            itemInWorld.DestroySelf();
+            ItemInWorld itemInWorld = other.GetComponent<ItemInWorld>();
+            // Only picks up item if within inventory capacity.
+            if(inventory.hasCapacity())
+            {
+                inventory.AddItem(itemInWorld.GetItem());
+                itemInWorld.DestroySelf();
+            }
         } 
 
         // Pick up resource that can be used to upgrade.
@@ -123,7 +135,6 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire") && timer <= 0 && playerStamina.currentPlayerStamina >= 5)
         {
-            Debug.Log("works");
             PlayerAttack();
         }
     }
@@ -160,7 +171,7 @@ public class PlayerController : MonoBehaviour
         {
         try
         {
-            animator.Play("melee_attack");
+            //animator.Play("melee_attack");
         }
         catch
         {
