@@ -11,25 +11,21 @@ public class AllreadyRoomCheck : MonoBehaviour
         {
             collisionCheck = other.GetComponent<CloseCollisionCheck>();
             collisionCheck.done = true;
-            Debug.Log(other.name);
         }
         if (other.CompareTag("Top"))
         {
             collisionCheck = other.GetComponent<CloseCollisionCheck>();
             collisionCheck.done = true;
-            Debug.Log(other.name);
         }
         if (other.CompareTag("Left"))
         {
             collisionCheck = other.GetComponent<CloseCollisionCheck>();
             collisionCheck.done = true;
-            Debug.Log(other.name);
         }
         if (other.CompareTag("Right"))
         {
             collisionCheck = other.GetComponent<CloseCollisionCheck>();
             collisionCheck.done = true;
-            Debug.Log(other.name);
         }
     }
 }

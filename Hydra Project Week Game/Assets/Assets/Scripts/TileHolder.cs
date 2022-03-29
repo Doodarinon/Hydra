@@ -36,28 +36,24 @@ public class TileHolder : MonoBehaviour
         tilesForRight.Add(tLeft);
         tilesForRight.Add(tTop);
         tilesForRight.Add(tBottom);
-        tilesForRight.Add(fourWay);
         tilesForRight.Add(straightHorizontal); 
         tilesForLeft.Add(leftTurnTop);
         tilesForLeft.Add(leftTurnBottom);
         tilesForLeft.Add(tRight);
         tilesForLeft.Add(tTop);
         tilesForLeft.Add(tBottom);
-        tilesForLeft.Add(fourWay);
         tilesForLeft.Add(straightHorizontal);
         tilesForTop.Add(topTurnRight);
         tilesForTop.Add(topTurnLeft);
         tilesForTop.Add(tBottom);
         tilesForTop.Add(tRight);
         tilesForTop.Add(tLeft);
-        tilesForTop.Add(fourWay);
         tilesForTop.Add(straightVertical);
         tilesForBottom.Add(bottomTurnRight);
         tilesForBottom.Add(bottomTurnLeft);
         tilesForBottom.Add(tTop);
         tilesForBottom.Add(tRight);
         tilesForBottom.Add(tLeft);
-        tilesForBottom.Add(fourWay);
         tilesForBottom.Add(straightVertical);
     }
 }

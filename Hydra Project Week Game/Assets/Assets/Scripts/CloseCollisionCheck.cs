@@ -18,7 +18,6 @@ public class CloseCollisionCheck : MonoBehaviour
     private int listNumberBottom = 3;
     private int listNumberNoTurn = 4;
     public string[] tags;
-    private bool dontDoTwice = false;
 
     private void Start()
     {
@@ -29,10 +28,6 @@ public class CloseCollisionCheck : MonoBehaviour
         forBottom = transform.position;
         farCollision = GetComponentInChildren<FarCollisionCheck>();
         tileHolder = FindObjectOfType<TileHolder>().GetComponent<TileHolder>();
-        if (!dontDoTwice)
-        {
-            Debug.Log("Add numbers to list at: " + gameObject.name);
-        }
     }
     private void OnTriggerEnter(Collider other) // I am truly sorry for the warcrimes you will witness below, I didnt want to steal someones code so I tried making my own
     {
@@ -63,40 +58,7 @@ public class CloseCollisionCheck : MonoBehaviour
     }
     void GenerateTile(Collider other)
     {
-        if (farCollision.occupied && !done)
-        {
-            if (gameObject.CompareTag("Top") && farCollision.occupied)
-            {
-                Instantiate(tileHolder.deadEndBottom, forTop, transform.rotation);
-                done = true;
-            }
-            if (gameObject.CompareTag("Bottom") && farCollision.occupied)
-            {
-                Instantiate(tileHolder.deadEndTop, forBottom, transform.rotation);
-                done = true;
-            }
-            if (gameObject.CompareTag("Left") && farCollision.occupied)
-            {
-                Instantiate(tileHolder.deadEndRight, forLeft, transform.rotation);
-                done = true;
-            }
-            if (gameObject.CompareTag("Right") && farCollision.occupied)
-            {
-                Instantiate(tileHolder.deadEndLeft, forRight, transform.rotation);
-                done = true;
-            }
-        }
-        if (!done && tags[listNumberNoTurn] == "NoTurn" && gameObject.CompareTag("Top") || tags[listNumberNoTurn] == "NoTurn" && gameObject.CompareTag("Bottom") && !done)
-        {
-            Instantiate(tileHolder.straightVertical, forTop, transform.rotation);
-            done = true;
-        }
-        else if (!done && tags[listNumberNoTurn] == "NoTurn" && gameObject.CompareTag("Left") || tags[listNumberNoTurn] == "NoTurn" &&  gameObject.CompareTag("Right") && !done)
-        {
-            Instantiate(tileHolder.straightHorizontal, forTop, transform.rotation);
-            done = true;
-        }
-        else if (gameObject.tag == "Top" && !done)
+        if (gameObject.tag == "Top" && !done)
         {
             if (tags[listNumberBottom] == "Bottom" && tags[listNumberRight] == "Right" && tags[listNumberLeft] == "Left")
             {
@@ -131,6 +93,16 @@ public class CloseCollisionCheck : MonoBehaviour
             else if (tags[listNumberLeft] == "Left")
             {
                 Instantiate(tileHolder.topTurnRight, forTop, transform.rotation);
+                done = true;
+            }
+            else if (farCollision.occupied)
+            {
+                Instantiate(tileHolder.deadEndBottom, forTop, transform.rotation);
+                done = true;
+            }
+            else if (tags[listNumberNoTurn] == "NoTurn")
+            {
+                Instantiate(tileHolder.straightVertical, forRight, transform.rotation);
                 done = true;
             }
         }
@@ -171,6 +143,16 @@ public class CloseCollisionCheck : MonoBehaviour
                 Instantiate(tileHolder.bottomTurnRight, forBottom, transform.rotation);
                 done = true;
             }
+            else if (farCollision.occupied)
+            {
+                Instantiate(tileHolder.deadEndTop, forBottom, transform.rotation);
+                done = true;
+            }
+            else if (tags[listNumberNoTurn] == "NoTurn")
+            {
+                Instantiate(tileHolder.straightVertical, forRight, transform.rotation);
+                done = true;
+            }
         }
         else if (gameObject.tag == "Left" && !done)
         {
@@ -207,6 +189,16 @@ public class CloseCollisionCheck : MonoBehaviour
             else if (tags[listNumberBottom] == "Bottom")
             {
                 Instantiate(tileHolder.leftTurnTop, forLeft, transform.rotation);
+                done = true;
+            }
+            else if(farCollision.occupied)
+            {
+                Instantiate(tileHolder.deadEndRight, forLeft, transform.rotation);
+                done = true;
+            }
+            else if (tags[listNumberNoTurn] == "NoTurn")
+            {
+                Instantiate(tileHolder.straightHorizontal, forRight, transform.rotation);
                 done = true;
             }
         }
@@ -247,26 +239,63 @@ public class CloseCollisionCheck : MonoBehaviour
                 Instantiate(tileHolder.rightTurnTop, forRight, transform.rotation);
                 done = true;
             }
+            else if (farCollision.occupied)
+            {
+                Instantiate(tileHolder.deadEndLeft, forRight, transform.rotation);
+                done = true;
+            }
+            else if(tags[listNumberNoTurn] == "NoTurn")
+            {
+                Instantiate(tileHolder.straightHorizontal, forRight, transform.rotation);
+                done = true;
+            }
+        }
+        else if (farCollision.occupied && !done)
+        {
+            if (gameObject.CompareTag("Top") && farCollision.occupied)
+            {
+                Instantiate(tileHolder.deadEndBottom, forTop, transform.rotation);
+                done = true;
+            }
+            if (gameObject.CompareTag("Bottom") && farCollision.occupied)
+            {
+                Instantiate(tileHolder.deadEndTop, forBottom, transform.rotation);
+                done = true;
+            }
+            if (gameObject.CompareTag("Left") && farCollision.occupied)
+            {
+                Instantiate(tileHolder.deadEndRight, forLeft, transform.rotation);
+                done = true;
+            }
+            if (gameObject.CompareTag("Right") && farCollision.occupied)
+            {
+                Instantiate(tileHolder.deadEndLeft, forRight, transform.rotation);
+                done = true;
+            }
         }
         if (gameObject.CompareTag("Top") && !done)
         {
             Instantiate(tileHolder.tilesForTop[Random.Range(0, tileHolder.tilesForTop.Count)], forTop, transform.rotation);
             done = true;
+            Debug.Log("Works1");
         }
         else if (gameObject.CompareTag("Bottom") && !done)
         {
             Instantiate(tileHolder.tilesForBottom[Random.Range(0, tileHolder.tilesForBottom.Count)], forBottom, transform.rotation);
             done = true;
+            Debug.Log("Works2");
         }
         else if (gameObject.CompareTag("Right") && !done)
         {
             Instantiate(tileHolder.tilesForRight[Random.Range(0, tileHolder.tilesForRight.Count)], forRight, transform.rotation);
             done = true;
+            Debug.Log("Works3");
         }
         else if (gameObject.CompareTag("Left") && !done)
         {
             Instantiate(tileHolder.tilesForLeft[Random.Range(0, tileHolder.tilesForLeft.Count)], forLeft, transform.rotation);
             done = true;
+            Debug.Log("Works4");
         }
     }
 }
