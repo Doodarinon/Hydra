@@ -20,13 +20,12 @@ public class PlayerController : MonoBehaviour
     public float baseTimer = 0.6f;
     public float dash;
 
-
-
     private Vector3 movement;
     public Animator animator;
 
     Rigidbody rb;
-    [SerializeField] private bool inCollider;
+    private bool inCollider;
+
     // Declares player inventory.
     [SerializeField] private UIInventory uiInventory;
 
