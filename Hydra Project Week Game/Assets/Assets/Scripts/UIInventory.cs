@@ -13,7 +13,14 @@ public class UIInventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
-    public bool state;
+    private bool state;
+
+    // Using getter and setter to allow bool to be accessed outside, but not be configurated in edit mode.
+    public bool State
+    {
+        get { return state; }
+        set { state = value; }
+    }
 
     private void Awake()
     {

@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
     void PlayerAttack()
     {
         // Player cannot attack while in inventory.
-        if (!uiInventory.state)
+        if (!uiInventory.State)
         {
         try
         {
