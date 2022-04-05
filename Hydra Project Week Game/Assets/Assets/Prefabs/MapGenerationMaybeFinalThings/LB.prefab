@@ -78,6 +78,7 @@ MonoBehaviour:
   done: 0
   farCollision: {fileID: 0}
   tileHolder: {fileID: 0}
+  tags: []
 --- !u!54 &2517540601190269136
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -361,6 +362,7 @@ MonoBehaviour:
   done: 0
   farCollision: {fileID: 0}
   tileHolder: {fileID: 0}
+  tags: []
 --- !u!54 &7523675998441915104
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -518,11 +520,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6823202553106834809}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!1 &7015876930953971762
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,8 +568,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!114 &2703004611105402823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,6 +596,7 @@ GameObject:
   - component: {fileID: 4751119157528442476}
   - component: {fileID: 2088689333904001849}
   - component: {fileID: 1095977550052835989}
+  - component: {fileID: 5051859551262300253}
   m_Layer: 7
   m_Name: SpawnPoint
   m_TagString: Tile
@@ -626,8 +629,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.26171765, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!114 &4751119157528442476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,8 +654,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.26171765, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!54 &1095977550052835989
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -669,3 +672,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &5051859551262300253
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728783964363400028}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: -0.26171765, z: 0}

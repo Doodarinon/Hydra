@@ -43,8 +43,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!114 &1334322517659299662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,8 +103,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.26171765, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!114 &4374078388957281380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,8 +128,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.26171765, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!54 &443632770179215875
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -299,6 +299,7 @@ MonoBehaviour:
   done: 0
   farCollision: {fileID: 0}
   tileHolder: {fileID: 0}
+  tags: []
 --- !u!54 &3643681943087622250
 Rigidbody:
   m_ObjectHideFlags: 0

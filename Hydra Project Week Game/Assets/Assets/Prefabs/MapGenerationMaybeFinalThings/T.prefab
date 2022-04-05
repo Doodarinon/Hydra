@@ -179,6 +179,7 @@ MonoBehaviour:
   done: 0
   farCollision: {fileID: 0}
   tileHolder: {fileID: 0}
+  tags: []
 --- !u!54 &4626529894436810122
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -251,8 +252,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!114 &5622328181366861645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +430,7 @@ GameObject:
   - component: {fileID: 8721041856228606489}
   - component: {fileID: 2950718388905350328}
   - component: {fileID: 3009742653340899480}
+  - component: {fileID: 4888397279703937686}
   m_Layer: 7
   m_Name: SpawnPoint
   m_TagString: Tile
@@ -461,8 +463,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.26171765, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!114 &8721041856228606489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,8 +488,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5, z: 1}
-  m_Center: {x: 0, y: -0.26171765, z: 0}
+  m_Size: {x: 1, y: 0.23614776, z: 1}
+  m_Center: {x: 0, y: -0.6418949, z: 0}
 --- !u!54 &3009742653340899480
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -504,6 +506,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &4888397279703937686
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5513586926600497146}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: -0.26171765, z: 0}
 --- !u!1 &7119937736265103486
 GameObject:
   m_ObjectHideFlags: 0

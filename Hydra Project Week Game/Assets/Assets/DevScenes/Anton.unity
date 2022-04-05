@@ -1201,6 +1201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 302716450701156479, guid: 8c77a3bffb2382941b36737b37a2b803, type: 3}
+      propertyPath: tags.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2541578832302147998, guid: 8c77a3bffb2382941b36737b37a2b803, type: 3}
       propertyPath: m_Name
       value: fourWay
@@ -1297,12 +1301,12 @@ MonoBehaviour:
   straightHorizontal: {fileID: 8778576467304909949, guid: b90e110d6088473499031820440719a9, type: 3}
   topTurnRight: {fileID: 3321033916441558935, guid: a431833bc3a016442a2d58942ce24261, type: 3}
   topTurnLeft: {fileID: 3316708453954535173, guid: edfaa479e4413594cbc5ce39cf648d6f, type: 3}
-  bottomTurnRight: {fileID: 5526403605990416652, guid: 97a7cc078cdc54542855b001c245aa28, type: 3}
-  bottomTurnLeft: {fileID: 363743353989445926, guid: beb617e24ee0aaa4c9fb5e31533fcfd3, type: 3}
-  rightTurnTop: {fileID: 363743353989445926, guid: beb617e24ee0aaa4c9fb5e31533fcfd3, type: 3}
-  rightTurnBottom: {fileID: 3321033916441558935, guid: a431833bc3a016442a2d58942ce24261, type: 3}
-  leftTurnTop: {fileID: 5526403605990416652, guid: 97a7cc078cdc54542855b001c245aa28, type: 3}
-  leftTurnBottom: {fileID: 3316708453954535173, guid: edfaa479e4413594cbc5ce39cf648d6f, type: 3}
+  bottomTurnRight: {fileID: 363743353989445926, guid: beb617e24ee0aaa4c9fb5e31533fcfd3, type: 3}
+  bottomTurnLeft: {fileID: 5526403605990416652, guid: 97a7cc078cdc54542855b001c245aa28, type: 3}
+  rightTurnTop: {fileID: 5526403605990416652, guid: 97a7cc078cdc54542855b001c245aa28, type: 3}
+  rightTurnBottom: {fileID: 3316708453954535173, guid: edfaa479e4413594cbc5ce39cf648d6f, type: 3}
+  leftTurnTop: {fileID: 363743353989445926, guid: beb617e24ee0aaa4c9fb5e31533fcfd3, type: 3}
+  leftTurnBottom: {fileID: 3321033916441558935, guid: a431833bc3a016442a2d58942ce24261, type: 3}
   tilesForRight: []
   tilesForLeft: []
   tilesForBottom: []
