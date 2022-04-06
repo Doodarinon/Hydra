@@ -86,6 +86,8 @@ public class UIInventory : MonoBehaviour
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
+
+            // Display sprite designated to specific item.
             image.sprite = item.GetSprite();
 
             // Adds a listener to every item that goes into the player's inventory.
