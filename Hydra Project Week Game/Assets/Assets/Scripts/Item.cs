@@ -8,7 +8,7 @@ using UnityEngine;
 public class Item
 {
     /// <summary>
-    /// List of each type of item.
+    /// An enum in which an item is declared. This is where you add more item types!
     /// </summary>
     public enum ItemType
     {
