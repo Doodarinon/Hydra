@@ -14,7 +14,7 @@ public class EnemyBaseScript : MonoBehaviour
     public int counter;
 
     private float timer;
-    private int fenceAmmount;
+    private int fenceAmount;
     private float wanderSpeed = 0.5f;
     private float seeDistance = 250f;
 
@@ -51,7 +51,6 @@ public class EnemyBaseScript : MonoBehaviour
         fenceUpgrade.fences1.SetActive(false);
         fenceUpgrade.fences2.SetActive(false);
         fenceUpgrade.fences3.SetActive(false);
-        // target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame

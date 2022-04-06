@@ -15,13 +15,15 @@ public class FenceUpgrade : MonoBehaviour
 
     private GameManager gameManager;
 
-    public BunkerScript bunkerScript;
+    private BunkerScript bunkerScript;
 
     public List<EnemyBaseScript> enemyBaseScripts = new List<EnemyBaseScript>();
 
     void Start()
     {
-        //bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
+        GameObject bunker = GameObject.Find("Bunker");
+        bunkerScript = bunker.GetComponent<BunkerScript>();
+
         GameObject gm = GameObject.Find("GameManager");
         gameManager = gm.GetComponent<GameManager>();
     }
@@ -58,7 +60,7 @@ public class FenceUpgrade : MonoBehaviour
         foreach (GameObject temp in enemies)
         {
             enemyBaseScripts.Add(enemies[counter].GetComponent<EnemyBaseScript>());
-            //enemyBaseScripts[counter].FenceUpgradeChecker();
+            enemyBaseScripts[counter].FenceUpgradeChecker();
             counter++;
 
         }
