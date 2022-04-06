@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    private GameManager gameManager;
+
     public float maxPlayerHealth = 100;
     public float currentPlayerHealth;
     public HealthBar healthBar;
@@ -16,6 +18,8 @@ public class PlayerHealth : MonoBehaviour
     {
         currentPlayerHealth = maxPlayerHealth;
         healthBar.SetMaxHealth(maxPlayerHealth);
+        GameObject gm = GameObject.Find("GameManager");
+        gameManager = gm.GetComponent<GameManager>();
     }
     private void Update()
     {
@@ -24,7 +28,12 @@ public class PlayerHealth : MonoBehaviour
             isDead = true;
 
             if (isDead)
+            {
                 Destroy(this.gameObject);
+                gameManager.GameOver = true;
+            }
+            else
+                gameManager.GameOver = false;
         }
     }
 }

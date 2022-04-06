@@ -28,8 +28,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    bool startRound;
-    bool gameover = false;
+    private bool startRound;
+
+    // Using getter and setter to allow other scripts to reach, but making it invisible in edit.
+    public bool StartRound
+    {
+        get { return startRound; }
+        set { startRound = value; }
+    }
+
+    private bool gameOver;
+
+    public bool GameOver
+    {
+        get { return gameOver; }
+        set { gameOver = value; }
+    }
 
     // Start is called before the first frame update
     private void Start()

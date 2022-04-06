@@ -8,10 +8,11 @@ using UnityEngine;
 /// </summary>
 public class Inventory
 {
-    // Creates list to track items in inventory!
     public event EventHandler OnItemListChange;
 
+    // Creates list to track items in inventory!
     private List<Item> itemList;
+
     private Action<Item> useItemAction;
 
     private int capacity = 6;
