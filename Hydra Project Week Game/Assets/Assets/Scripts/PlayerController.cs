@@ -20,13 +20,12 @@ public class PlayerController : MonoBehaviour
     public float baseTimer = 0.6f;
     public float dash;
 
-
-
     private Vector3 movement;
     public Animator animator;
 
     Rigidbody rb;
-    [SerializeField] private bool inCollider;
+    private bool inCollider;
+
     // Declares player inventory.
     [SerializeField] private UIInventory uiInventory;
 
@@ -52,7 +51,7 @@ public class PlayerController : MonoBehaviour
         inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
 
-        // Spawns item(s) Change position to where they should spawn.
+        // Spawns item(s). Change position to where they should spawn and add more!
         ItemInWorld.SpawnItemInWorld(new Vector3(10, 1, -5), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
         ItemInWorld.SpawnItemInWorld(new Vector3(5, 1, -10), new Item { itemType = Item.ItemType.Healthpack, amount = 1 });
     }
@@ -116,10 +115,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Player movement.
-        movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
-        transform.Translate(movementSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
-
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -128,16 +123,20 @@ public class PlayerController : MonoBehaviour
         {
             PlayerAttack();
         }
-    }
 
-    private void FixedUpdate()
-    {
         dashCooldown -= Time.deltaTime;
         // Debug.Log(dashCooldown);
         if (Input.GetButtonDown("Dash"))
         {
             PlayerDash();
         }
+    }
+
+    private void FixedUpdate()
+    {
+        // Player movement.
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
+        transform.Translate(movementSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0f, movementSpeed * Input.GetAxis("Vertical") * Time.deltaTime);
     }
 
     void PlayerDash()
@@ -158,7 +157,7 @@ public class PlayerController : MonoBehaviour
     void PlayerAttack()
     {
         // Player cannot attack while in inventory.
-        if (!uiInventory.state)
+        if (!uiInventory.State)
         {
         try
         {

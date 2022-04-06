@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool startRound;
+    bool startRound;
     bool gameover = false;
 
     // Start is called before the first frame update
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     {
         //bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
         //enemySpawner = FindObjectOfType<EnemySpawner>().GetComponent<EnemySpawner>();
+
         // Player begins with no materials.
         Materials = 0;
     }

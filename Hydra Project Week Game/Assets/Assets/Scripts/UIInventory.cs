@@ -13,7 +13,14 @@ public class UIInventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Transform background;
-    public bool state;
+    private bool state;
+
+    // Using getter and setter to allow bool to be accessed outside, but not be configurated in edit mode.
+    public bool State
+    {
+        get { return state; }
+        set { state = value; }
+    }
 
     private void Awake()
     {
@@ -79,6 +86,8 @@ public class UIInventory : MonoBehaviour
 
             itemslotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellsize, y * itemSlotCellsize);
             Image image = itemslotRectTransform.Find("itemImage").GetComponent<Image>();
+
+            // Display sprite designated to specific item.
             image.sprite = item.GetSprite();
 
             // Adds a listener to every item that goes into the player's inventory.
