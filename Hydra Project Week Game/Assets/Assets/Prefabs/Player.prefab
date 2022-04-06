@@ -452,6 +452,7 @@ GameObject:
   - component: {fileID: 860339508356121097}
   - component: {fileID: 3001521555715944822}
   - component: {fileID: 7845233458744088904}
+  - component: {fileID: 5869224114273186392}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -536,10 +537,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bunkerScript: {fileID: 0}
+  timer: 0
   damage: 10
   baseTimer: 5
   dash: 0
-  inCollider: 0
+  animator: {fileID: 0}
   uiInventory: {fileID: 0}
 --- !u!114 &8298822223943329528
 MonoBehaviour:
@@ -587,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bd15ca4ca7e2e489203d6c1a92d8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity_multiplier: 1
+  gravityMultiplier: 1
 --- !u!114 &7845233458744088904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,3 +602,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ed0b11850145c4995dd76170bb2500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5869224114273186392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8551277127781641558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7704c5486eb1b09419a003aee321d00f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPlayerStamina: 50
+  currentPlayerStamina: 0
+  staminaBar: {fileID: 0}

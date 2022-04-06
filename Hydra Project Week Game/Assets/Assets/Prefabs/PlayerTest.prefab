@@ -611,7 +611,6 @@ GameObject:
   - component: {fileID: 7552289729098015431}
   - component: {fileID: 7552289729098015428}
   - component: {fileID: 544476587}
-  - component: {fileID: 2129246453}
   m_Layer: 0
   m_Name: PlayerTest
   m_TagString: Player
@@ -735,7 +734,6 @@ MonoBehaviour:
   baseTimer: 1
   dash: 10
   animator: {fileID: 0}
-  inCollider: 0
   uiInventory: {fileID: 0}
 --- !u!114 &7552289729098015431
 MonoBehaviour:
@@ -786,19 +784,6 @@ MonoBehaviour:
   maxPlayerStamina: 50
   currentPlayerStamina: 0
   staminaBar: {fileID: 0}
---- !u!114 &2129246453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7552289729098015436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86c5c04b642344499f5fc233da90ad4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
 --- !u!1 &7552289729254802442
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,14 +938,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f594143b22826ef4c9537361dbbf4bbc, type: 3}
---- !u!1 &7209830548487154168 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f594143b22826ef4c9537361dbbf4bbc, type: 3}
-  m_PrefabInstance: {fileID: 7552289729796576425}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8017997246235046722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f594143b22826ef4c9537361dbbf4bbc, type: 3}
+  m_PrefabInstance: {fileID: 7552289729796576425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7209830548487154168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f594143b22826ef4c9537361dbbf4bbc, type: 3}
   m_PrefabInstance: {fileID: 7552289729796576425}
   m_PrefabAsset: {fileID: 0}
 --- !u!136 &7552289729115001595
