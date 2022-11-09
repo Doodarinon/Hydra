@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        
         /*try
         {
             bunkerScript = FindObjectOfType<BunkerScript>().GetComponent<BunkerScript>();
@@ -115,12 +116,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonDown("Fire"))
+        {
+            animator.Play("melee_attack");
+        }
         if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
         if (Input.GetButtonDown("Fire") && timer <= 0 && playerStamina.currentPlayerStamina >= 5)
         {
+           
             PlayerAttack();
         }
 
@@ -161,7 +167,8 @@ public class PlayerController : MonoBehaviour
         {
         try
         {
-            //animator.Play("melee_attack");
+                //animator.Play("melee_attack");
+                
         }
         catch
         {
